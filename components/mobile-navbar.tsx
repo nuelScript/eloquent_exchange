@@ -1,10 +1,4 @@
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Firstline } from "iconsax-react";
 import { Button } from "./ui/button";
 import { routes } from "./navbar";

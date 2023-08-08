@@ -17,7 +17,7 @@ export function ModeToggle() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className="hidden min-[912px]:block">
+      <DropdownMenuTrigger asChild className="hidden min-[912px]:flex">
         <Button variant="ghost" size="icon">
           <Sun
             color="#FFBE18"
