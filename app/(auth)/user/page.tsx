@@ -35,7 +35,7 @@ const formSchema = z.object({
   password: z.string().min(8, {
     message: "Password must be at least 8 characters long",
   }),
-  mobile: z.boolean().default(false),
+  mobile: z.boolean().default(false).optional(),
 });
 
 const font = Revalia({ subsets: ["latin"], weight: ["400"] });
@@ -66,7 +66,7 @@ const AuthPage = () => {
     console.log(values);
   };
   return (
-    <div className="min-h-screen flex justify-between pt-12 px-8 relative">
+    <div className="min-h-screen flex justify-between pt-12 px-10 relative">
       <div className="flex flex-col items-start gap-y-8">
         <Image
           src="/coin.svg"
@@ -110,7 +110,7 @@ const AuthPage = () => {
           )}
         </p>
       </div>
-      <div className="flex flex-col space-y-4 w-[500px]">
+      <div className="flex flex-col space-y-8 w-[500px]">
         <h1 className="text-4xl font-semibold text-primary">
           {variant === "login" ? "Welcome Back!" : "Create Account"}
         </h1>
@@ -212,7 +212,6 @@ const AuthPage = () => {
                 </Link>
               )}
               <Button
-                type="submit"
                 className="w-full bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#FFCC66] dark:hover:bg-primary"
                 variant="default"
               >
