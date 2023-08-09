@@ -60,7 +60,7 @@ const Navbar = () => {
                 variant="Outline"
                 className={cn(
                   "w-6 h-6 mr-2",
-                  pathname === route.href ? "text-sky-500" : "text-primary"
+                  pathname === route.href ? "text-[#4168B7]" : "text-primary"
                 )}
               />
               <div className="hover:text-sky-500 transition">{route.label}</div>
