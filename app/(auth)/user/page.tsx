@@ -212,7 +212,7 @@ const AuthPage = () => {
                 </Link>
               )}
               <Button
-                className="w-full bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#FFCC66] dark:hover:bg-primary"
+                className="w-full text-white bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#FFCC66] dark:hover:bg-primary hover:text-white dark:hover:text-white"
                 variant="default"
               >
                 {variant === "login" ? "Sign-in" : "Create Account"}
@@ -232,15 +232,15 @@ const AuthPage = () => {
         <div className="flex gap-x-8 justify-center">
           <div
             onClick={() => {}}
-            className="w-10 h-10 rounded-lg border-[#FFCC66] border flex items-center justify-center cursor-pointer hover:scale-110 peer"
+            className="w-10 h-10 rounded-lg border-[#FFCC66] border flex items-center justify-center cursor-pointer group"
           >
-            <FcGoogle className="w-6 h-6 peer-hover:scale-110" />
+            <FcGoogle className="w-6 h-6 group-hover:scale-110" />
           </div>
           <div
             onClick={() => {}}
-            className="w-10 h-10 rounded-lg border-[#FFCC66] border flex items-center justify-center cursor-pointer peer hover:scale-110"
+            className="w-10 h-10 rounded-lg border-[#FFCC66] border flex items-center justify-center cursor-pointer group "
           >
-            <Apple variant="Bold" className="w-6 h-6 peer-hover:scale-110" />
+            <Apple variant="Bold" className="w-6 h-6 group-hover:scale-110" />
           </div>
         </div>
       </div>

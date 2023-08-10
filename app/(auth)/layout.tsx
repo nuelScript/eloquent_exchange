@@ -6,9 +6,11 @@ export default function AuthPageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <LandingNavbar />
-      {children}
+    <div className="bg-[url('/light.svg')] bg-center bg-no-repeat bg-cover bg-fixed dark:bg-[url('/dark.svg')]">
+      <div className="bg-[url('/rockets.svg')] bg-center bg-no-repeat bg-contain bg-fixed ">
+        <LandingNavbar />
+        {children}
+      </div>
     </div>
   );
 }

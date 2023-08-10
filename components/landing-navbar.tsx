@@ -44,9 +44,9 @@ const LandingNavbar = () => {
         </div>
       </div>
       <div className="flex gap-x-4">
-        <Button className="bg-[#4168B7] text-primary dark:bg-[#FFCC66] active:text-primary hover:text-primary active:bg-secondary dark:active:bg-primary text-base font-normal">
+        <Button className="bg-[#4168B7] dark:hover:bg-primary text-white dark:bg-[#FFCC66] active:text-primary hover:text-white dark:hover:text-black active:bg-secondary dark:active:bg-primary text-base font-normal group transition">
           Get Started
-          <Crown1 className="h-6 w-6 text-white ml-2" />
+          <Crown1 className="h-6 w-6 text-white ml-2 dark:group-hover:text-black transition" />
         </Button>
         <ModeToggle />
       </div>

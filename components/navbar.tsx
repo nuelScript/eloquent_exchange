@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "@/components/mode-toggle";
 import MobileSidebar from "@/components/mobile-navbar";
+import { useTheme } from "next-themes";
 
 export const routes = [
   {
@@ -34,6 +35,7 @@ export const routes = [
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { setTheme } = useTheme();
   return (
     <div className="w-full flex justify-between items-center px-4 min-[912px]:px-8 py-4">
       <Link href="/dashboard">
@@ -43,7 +45,7 @@ const Navbar = () => {
             width={180}
             height={180}
             alt="Logo"
-            className="object-contain"
+            className="object-contain bg-"
           />
         </div>
       </Link>
@@ -65,7 +67,7 @@ const Navbar = () => {
                     : "text-primary"
                 )}
               />
-              <div className="hover:text-[#4168B7] dark:text-[#FFCC66] transition">
+              <div className="hover:text-[#4168B7] dark:hover:text-[#FFCC66] transition">
                 {route.label}
               </div>
             </div>
