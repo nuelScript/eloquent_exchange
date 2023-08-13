@@ -63,11 +63,11 @@ const Navbar = () => {
                 className={cn(
                   "w-6 h-6 mr-2",
                   pathname === route.href
-                    ? "text-[#4168B7] dark:text-[#FFCC66]"
+                    ? "text-[#4168B7] dark:text-[#A77700]"
                     : "text-primary"
                 )}
               />
-              <div className="hover:text-[#4168B7] dark:hover:text-[#FFCC66] transition">
+              <div className="hover:text-[#4168B7] dark:hover:text-[#A77700] transition">
                 {route.label}
               </div>
             </div>

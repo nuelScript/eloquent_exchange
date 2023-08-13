@@ -92,7 +92,7 @@ const AuthPage = () => {
               If you don&apos;t have an account, you can{" "}
               <span
                 onClick={toggleVariant}
-                className="text-[#4168B7] dark:text-[#FFCC66] cursor-pointer hover:underline"
+                className="text-[#4168B7] dark:text-[#A77700] cursor-pointer hover:underline"
               >
                 Register Here.
               </span>{" "}
@@ -102,7 +102,7 @@ const AuthPage = () => {
               Already have an account? click here to{" "}
               <span
                 onClick={toggleVariant}
-                className="text-[#4168B7] dark:text-[#FFCC66] cursor-pointer hover:underline"
+                className="text-[#4168B7] dark:text-[#A77700] cursor-pointer hover:underline"
               >
                 Sign in.
               </span>
@@ -135,7 +135,7 @@ const AuthPage = () => {
                         <Input
                           disabled={isLoading}
                           placeholder="Full name"
-                          className="border-t-0 font-medium text-primary rounded-none border-x-0 border-b-amber-500 border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                          className="border-t-0 font-medium text-primary rounded-none border-x-0 border-b-[#A77700] border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                           {...field}
                         />
                       </FormControl>
@@ -154,7 +154,7 @@ const AuthPage = () => {
                         type="email"
                         disabled={isLoading}
                         placeholder="Email Address"
-                        className="border-t-0 font-medium text-primary rounded-none border-x-0 border-b-amber-500 border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-t-0 font-medium text-primary rounded-none border-x-0 border-b-[#A77700] border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         {...field}
                       />
                     </FormControl>
@@ -172,7 +172,7 @@ const AuthPage = () => {
                         disabled={isLoading}
                         placeholder="Password"
                         type="password"
-                        className="border-t-0 font-medium text-primary rounded-none border-x-0 border-b-amber-500 border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-t-0 font-medium text-primary rounded-none border-x-0 border-b-[#A77700] border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         {...field}
                       />
                     </FormControl>
@@ -206,13 +206,13 @@ const AuthPage = () => {
               ) : (
                 <Link
                   href=""
-                  className="text-muted-foreground w-full flex justify-end items-center"
+                  className="text-muted-foreground w-full flex justify-end items-center hover:underline"
                 >
                   Recover Password
                 </Link>
               )}
               <Button
-                className="w-full text-white bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#FFCC66] dark:hover:bg-primary hover:text-white dark:hover:text-white"
+                className="w-full text-white bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary hover:text-white dark:hover:text-black"
                 variant="default"
               >
                 {variant === "login" ? "Sign-in" : "Create Account"}
@@ -232,13 +232,13 @@ const AuthPage = () => {
         <div className="flex gap-x-8 justify-center">
           <div
             onClick={() => {}}
-            className="w-10 h-10 rounded-lg border-[#FFCC66] border flex items-center justify-center cursor-pointer group"
+            className="w-10 h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
           >
             <FcGoogle className="w-6 h-6 group-hover:scale-110" />
           </div>
           <div
             onClick={() => {}}
-            className="w-10 h-10 rounded-lg border-[#FFCC66] border flex items-center justify-center cursor-pointer group "
+            className="w-10 h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group "
           >
             <Apple variant="Bold" className="w-6 h-6 group-hover:scale-110" />
           </div>

@@ -26,7 +26,7 @@ const LandingNavbar = () => {
   return (
     <div className="flex justify-between items-center px-10 py-4">
       <div className="flex space-x-8 items-center">
-        <div className="w-5 h-5 border-2 dark:border-[#FFCC66] border-[#4168B7] rounded-full"></div>
+        <div className="w-5 h-5 border-2 dark:border-[#A77700] border-[#4168B7] rounded-full"></div>
         <div className="flex gap-x-8">
           {routes.map((route) => (
             <Link
@@ -35,7 +35,7 @@ const LandingNavbar = () => {
               className="text-base min-[912px]:flex hidden font-medium cursor-pointer"
             >
               <div className="flex ">
-                <div className="hover:text-[#4168B7] dark:hover:text-[#FFCC66] transition">
+                <div className="hover:text-[#4168B7] dark:hover:text-[#A77700] transition">
                   {route.name}
                 </div>
               </div>
@@ -44,7 +44,7 @@ const LandingNavbar = () => {
         </div>
       </div>
       <div className="flex gap-x-4">
-        <Button className="bg-[#4168B7] dark:hover:bg-primary text-white dark:bg-[#FFCC66] active:text-primary hover:text-white dark:hover:text-black active:bg-secondary dark:active:bg-primary text-base font-normal group transition">
+        <Button className="bg-[#4168B7] dark:hover:bg-primary text-white dark:bg-[#A77700] active:text-primary hover:text-white dark:hover:text-black active:bg-secondary dark:active:bg-primary text-base font-normal group transition">
           Get Started
           <Crown1 className="h-6 w-6 text-white ml-2 dark:group-hover:text-black transition" />
         </Button>
