@@ -13,7 +13,13 @@ export const routes = [
   {
     label: "Dashboard",
     icon: Building4,
-    href: "/dashboard",
+    href:
+      "/dashboard" ||
+      "/dashboard/transactions" ||
+      "/dashboard/transactions/buy&sell" ||
+      "/dashboard/transactions/checkout" ||
+      "/dashboard/transactions/instructions" ||
+      "/dashboard/transactions/payment",
   },
   {
     label: "Refer and Earn",
@@ -29,21 +35,21 @@ export const routes = [
     label: "Sign out",
     icon: LogoutCurve,
     onclick: () => {},
-    href: "",
+    href: "/auth/signout",
   },
 ];
 
 const Navbar = () => {
   const pathname = usePathname();
-  const { setTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   return (
     <div className="w-full flex justify-between items-center px-4 min-[912px]:px-8 py-4">
       <Link href="/dashboard">
         <div className="">
           <Image
-            src="/logo.svg"
-            width={180}
-            height={180}
+            src={resolvedTheme === "dark" ? "/logo.svg" : "/logo2.svg"}
+            width={200}
+            height={200}
             alt="Logo"
             className="object-contain bg-"
           />
@@ -62,7 +68,7 @@ const Navbar = () => {
                 variant="Outline"
                 className={cn(
                   "w-6 h-6 mr-2",
-                  pathname === route.href
+                  pathname.startsWith(route.href)
                     ? "text-[#4168B7] dark:text-[#A77700]"
                     : "text-primary"
                 )}

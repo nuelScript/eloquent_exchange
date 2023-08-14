@@ -1,3 +1,5 @@
+"use client";
+
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Firstline } from "iconsax-react";
 import { Button } from "./ui/button";
@@ -7,9 +9,11 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 const MobileSidebar = () => {
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
 
   const [isMounted, setIsMounted] = useState(false);
 
@@ -29,7 +33,12 @@ const MobileSidebar = () => {
       <SheetContent className="p-0" side="left">
         <div className="flex items-center justify-start pt-16 px-8">
           <Link href="/dashboard">
-            <Image src="/logo.png" alt="Logo" width={180} height={180} />
+            <Image
+              src={resolvedTheme === "dark" ? "/logo.svg" : "/logo2.svg"}
+              alt="Logo"
+              width={200}
+              height={200}
+            />
           </Link>
         </div>
         <div className="flex px-8 pt-12 gap-y-8 flex-col">
@@ -45,7 +54,7 @@ const MobileSidebar = () => {
                   variant="Outline"
                   className={cn(
                     "w-6 h-6 mr-2",
-                    pathname === route.href
+                    pathname.startsWith(route.href)
                       ? "text-[#4168B7] dark:text-[#FFCC66]"
                       : "text-primary"
                   )}
