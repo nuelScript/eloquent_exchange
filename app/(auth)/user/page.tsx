@@ -35,7 +35,9 @@ const formSchema = z.object({
   password: z.string().min(8, {
     message: "Password must be at least 8 characters long",
   }),
-  mobile: z.boolean().default(false).optional(),
+  terms: z.boolean({
+    required_error: "Please agree to the terms and policy",
+  }),
 });
 
 const font = Revalia({ subsets: ["latin"], weight: ["400"] });
@@ -47,9 +49,6 @@ const AuthPage = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: "",
-      password: "",
-      mobile: false,
     },
   });
   const toggleVariant = useCallback(() => {
@@ -122,7 +121,7 @@ const AuthPage = () => {
         <div>
           <Form {...form}>
             <form
-              onClick={form.handleSubmit(onSubmit)}
+              onSubmit={form.handleSubmit(onSubmit)}
               className="space-y-8 flex flex-col"
             >
               {variant === "register" && (
@@ -183,22 +182,25 @@ const AuthPage = () => {
               {variant === "register" ? (
                 <div className="flex items-center w-full justify-end">
                   <FormField
-                    name="mobile"
+                    name="terms"
                     control={form.control}
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-center space-x-3 space-y-0">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                          />
-                        </FormControl>
-                        <FormLabel className="text-muted-foreground text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                          I agree to the{" "}
-                          <Link href="/terms" className="underline">
-                            terms & policy
-                          </Link>
-                        </FormLabel>
+                      <FormItem className="flex flex-col items-center space-x-3 space-y-0">
+                        <div className="flex items-center space-x-3">
+                          <FormControl>
+                            <Checkbox
+                              checked={field.value}
+                              onCheckedChange={field.onChange}
+                            />
+                          </FormControl>
+                          <FormLabel className="text-muted-foreground text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                            I agree to the{" "}
+                            <Link href="/terms" className="underline">
+                              terms & policy
+                            </Link>
+                          </FormLabel>
+                        </div>
+                        <FormMessage />
                       </FormItem>
                     )}
                   />
