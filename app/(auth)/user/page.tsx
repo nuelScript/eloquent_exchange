@@ -65,7 +65,7 @@ const AuthPage = () => {
     console.log(values);
   };
   return (
-    <div className="min-h-screen flex justify-between pt-12 px-10 relative">
+    <div className="flex justify-between pt-12 px-10 relative min-h-screen bg-[url('/rockets.svg')] bg-center bg-no-repeat bg-contain bg-fixed">
       <div className="flex flex-col items-start gap-y-8">
         <Image
           src="/coin.svg"
