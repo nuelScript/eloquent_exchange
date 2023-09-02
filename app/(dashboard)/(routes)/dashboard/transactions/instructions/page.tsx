@@ -71,21 +71,21 @@ const CheckoutInstructionsPage = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-6 flex flex-col items-start"
+          className="space-y-8 flex flex-col items-center"
         >
           <FormField
             control={form.control}
             name="checked"
             render={({ field }) => (
               <FormItem className="flex flex-col items-center space-x-3 space-y-0">
-                <div className="flex space-x-2 ">
+                <div className="flex space-x-2 items-center justify-center">
                   <FormControl>
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <FormLabel className="text-muted-foreground font-medium">
+                  <FormLabel className="text-muted-foreground font-normal text-lg">
                     I agree to the instructions above and want to proceed to
                     payment section
                   </FormLabel>
@@ -94,10 +94,12 @@ const CheckoutInstructionsPage = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full" variant="custom">
-            Continue
-            <BitcoinRefresh className="ml-2 w-6 h-6" />
-          </Button>
+          <div className="w-3/4 flex justify-center">
+            <Button type="submit" className="w-full" variant="custom">
+              Continue
+              <BitcoinRefresh className="ml-2 w-6 h-6" />
+            </Button>
+          </div>
         </form>
       </Form>
     </div>

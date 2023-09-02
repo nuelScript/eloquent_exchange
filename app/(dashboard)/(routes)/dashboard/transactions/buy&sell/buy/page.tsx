@@ -1,20 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -24,54 +18,54 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { BitcoinRefresh } from "iconsax-react";
 import { useForm } from "react-hook-form";
+import { TbCurrencyNaira } from "react-icons/tb";
 import * as z from "zod";
 
 const formSchema = z.object({
-  paymentMethod: z.string({
-    required_error: "Please select a payment method",
-  }),
+  network: z.string().min(1),
+  walletAddress: z.string().min(1),
 });
 
-const PaymentPage = () => {
+const Buypage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      network: "",
+      walletAddress: "",
+    },
   });
-
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
   };
   return (
-    <div className="flex justify-center items-center pt-12">
-      <Card className="w-[450px] border-none bg-transparent shadow-none">
-        <CardHeader className="text-3xl text-primary font-semibold text-center">
-          Payment method
-        </CardHeader>
-        <CardDescription className="text-lg text-primary font-medium text-center pb-4">
-          Kindly select your preferred payment method
-        </CardDescription>
-        <CardContent className="flex flex-col space-y-8">
+    <div className="flex justify-center flex-col space-y-8 items-center pt-12">
+      <p className="text-primary font-medium text-lg">
+        Selling <span className="font-semibold">$10000</span> worth of Litecoin
+        at <span className="font-semibold">₦84600000.00</span>
+      </p>
+      <p className="text-primary font-medium">
+        Kindly provide your wallet address
+      </p>
+      <Card className="bg-transparent border-none shadow-none w-[400px]">
+        <CardContent className="py-2">
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col space-y-4"
-            >
+            <form className="space-y-12" onSubmit={form.handleSubmit(onSubmit)}>
               <FormField
                 control={form.control}
-                name="paymentMethod"
+                name="network"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-muted-foreground">
-                      Select Payment Method
+                    <FormLabel className="font-normal text-primary text-base">
+                      Network
                     </FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger className="bg-transparent">
-                          <SelectValue />
+                        <SelectTrigger className="w-full bg-transparent">
+                          <SelectValue placeholder="Select coin network" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -94,13 +88,9 @@ const PaymentPage = () => {
                         </SelectGroup>
                       </SelectContent>
                     </Select>
-                    <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button variant="custom" type="submit">
-                Buy Crypto <BitcoinRefresh className="ml-2 w-6 h-6" />
-              </Button>
             </form>
           </Form>
         </CardContent>
@@ -109,4 +99,4 @@ const PaymentPage = () => {
   );
 };
 
-export default PaymentPage;
+export default Buypage;

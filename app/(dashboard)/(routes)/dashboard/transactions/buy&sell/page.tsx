@@ -1,4 +1,14 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -11,10 +21,30 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { OFFICIAL_RATES } from "@/constants";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowSwapHorizontal } from "iconsax-react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
+const formSchema = z.object({
+  coinType: z.string().min(1),
+  amount: z.coerce.number().min(0),
+});
 
 const BuyandSellPage = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      coinType: "",
+      amount: 0,
+    },
+  });
+
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
+    console.log(data);
+  };
   return (
-    <div className="flex w-full justify-center items-center">
+    <div className="flex w-full justify-center items-center pt-10 ">
       <Tabs defaultValue="Buy Crypto" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2 gap-x-8 bg-transparent">
           <TabsTrigger
@@ -32,37 +62,131 @@ const BuyandSellPage = () => {
         </TabsList>
         <TabsContent value="Buy Crypto">
           <Card className="bg-transparent border-none shadow-none">
-            <CardContent className="space-y-12 py-2">
-              <div className="space-y-4">
-                <Label htmlFor="coin type" className="font-normal">
-                  Coin type
-                </Label>
-                <Select>
-                  <SelectTrigger className="w-full bg-transparent">
-                    <SelectValue placeholder="Select coin name" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem value="bitcoin">Bitcoin</SelectItem>
-                      <SelectItem value="ethereum">Ethereum</SelectItem>
-                      <SelectItem value="usdt">USDT</SelectItem>
-                      <SelectItem value="dodge">Dodge</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-4">
-                <Label
-                  htmlFor="amount"
-                  className="font-normal flex justify-between"
+            <CardContent className="py-2">
+              <Form {...form}>
+                <form
+                  className="space-y-12"
+                  onSubmit={form.handleSubmit(onSubmit)}
                 >
-                  <span>Amount</span>{" "}
-                  <span className="text-muted-foreground">
-                    Rate: {OFFICIAL_RATES} / %
-                  </span>
-                </Label>
-                <Input id="amount" type="text" required />
-              </div>
+                  <FormField
+                    control={form.control}
+                    name="coinType"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal">Coin Type</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-full bg-transparent">
+                              <SelectValue placeholder="Select coin name" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectGroup>
+                              <SelectItem value="bitcoin">Bitcoin</SelectItem>
+                              <SelectItem value="ethereum">Ethereum</SelectItem>
+                              <SelectItem value="usdt">USDT</SelectItem>
+                              <SelectItem value="dodge">Dodge</SelectItem>
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="amount"
+                    render={({ field }) => (
+                      <FormItem className="space-y-4">
+                        <FormLabel className="font-normal flex justify-between">
+                          <span>Amount</span>{" "}
+                          <span className="text-muted-foreground">
+                            Rate: {OFFICIAL_RATES} / %
+                          </span>
+                        </FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormDescription className="flex justify-between">
+                          <span className="font-normal text-primary">
+                            Amount: 0.0
+                          </span>
+                          <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
+                            Set by Naira{" "}
+                            <ArrowSwapHorizontal className="ml-2 w-4 h-4" />
+                          </span>
+                        </FormDescription>
+                      </FormItem>
+                    )}
+                  />
+                </form>
+              </Form>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="Sell Crypto">
+          <Card className="bg-transparent border-none shadow-none">
+            <CardContent className="py-2">
+              <Form {...form}>
+                <form
+                  className="space-y-12"
+                  onSubmit={form.handleSubmit(onSubmit)}
+                >
+                  <FormField
+                    control={form.control}
+                    name="coinType"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal">Coin Type</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-full bg-transparent">
+                              <SelectValue placeholder="Select coin name" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectGroup>
+                              <SelectItem value="bitcoin">Bitcoin</SelectItem>
+                              <SelectItem value="ethereum">Ethereum</SelectItem>
+                              <SelectItem value="usdt">USDT</SelectItem>
+                              <SelectItem value="dodge">Dodge</SelectItem>
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="amount"
+                    render={({ field }) => (
+                      <FormItem className="space-y-4">
+                        <FormLabel className="font-normal flex justify-between">
+                          <span>Amount</span>{" "}
+                          <span className="text-muted-foreground">
+                            Rate: {OFFICIAL_RATES} / %
+                          </span>
+                        </FormLabel>
+                        <Input {...field} />
+                        <FormDescription className="flex justify-between">
+                          <span className="font-normal text-primary">
+                            Amount: 0.0
+                          </span>
+                          <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
+                            Set by Naira{" "}
+                            <ArrowSwapHorizontal className="ml-2 w-4 h-4" />
+                          </span>
+                        </FormDescription>
+                      </FormItem>
+                    )}
+                  />
+                </form>
+              </Form>
             </CardContent>
           </Card>
         </TabsContent>
