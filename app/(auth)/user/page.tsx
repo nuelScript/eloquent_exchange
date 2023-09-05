@@ -22,23 +22,29 @@ import { Revalia } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { FcGoogle } from "react-icons/fc";
 
-const formSchema = z.object({
-  name: z.string().min(3, {
-    message: "Name must be at least 3 characters long",
-  }),
-  email: z
-    .string()
-    .min(3, {
-      message: "Enter a valid mail!",
-    })
-    .email(),
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters long",
-  }),
-  terms: z.boolean({
-    required_error: "Please agree to the terms and policy",
-  }),
-});
+const formSchema = z
+  .object({
+    name: z.string().min(3, {
+      message: "Name must be at least 3 characters long",
+    }),
+    email: z
+      .string()
+      .min(3, {
+        message: "Enter a valid mail!",
+      })
+      .email(),
+    password: z.string().min(4, {
+      message: "Password must be at least 8 characters long",
+    }),
+    confirmPassword: z.string().min(4),
+    terms: z.boolean({
+      required_error: "Please agree to the terms and policy",
+    }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
 
 const font = Revalia({ subsets: ["latin"], weight: ["400"] });
 

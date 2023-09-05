@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Form,
@@ -8,6 +9,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,16 +24,20 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { OFFICIAL_RATES } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowSwapHorizontal } from "iconsax-react";
+import { ArrowSwapHorizontal, BitcoinRefresh } from "iconsax-react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 const formSchema = z.object({
-  coinType: z.string().min(1),
+  coinType: z.string().min(1, {
+    message: "Coin type is required",
+  }),
   amount: z.coerce.number().min(0),
 });
 
 const BuyandSellPage = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,6 +48,14 @@ const BuyandSellPage = () => {
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
+  };
+
+  const buyRoute = () => {
+    router.push("/dashboard/transactions/buy&sell/buy");
+  };
+
+  const sellRoute = () => {
+    router.push("/dashboard/transactions/buy&sell/sell");
   };
   return (
     <div className="flex w-full justify-center items-center pt-10 ">
@@ -92,6 +106,7 @@ const BuyandSellPage = () => {
                             </SelectGroup>
                           </SelectContent>
                         </Select>
+                        <FormMessage />
                       </FormItem>
                     )}
                   />
@@ -107,7 +122,11 @@ const BuyandSellPage = () => {
                           </span>
                         </FormLabel>
                         <FormControl>
-                          <Input {...field} />
+                          <Input
+                            className="bg-transparent"
+                            type="number"
+                            {...field}
+                          />
                         </FormControl>
                         <FormDescription className="flex justify-between">
                           <span className="font-normal text-primary">
@@ -115,12 +134,20 @@ const BuyandSellPage = () => {
                           </span>
                           <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
                             Set by Naira{" "}
-                            <ArrowSwapHorizontal className="ml-2 w-4 h-4" />
+                            <ArrowSwapHorizontal className="ml-2 w-6 h-6" />
                           </span>
                         </FormDescription>
                       </FormItem>
                     )}
                   />
+                  <Button
+                    type="submit"
+                    variant="custom"
+                    className="w-full"
+                    onSubmit={buyRoute}
+                  >
+                    Buy Crypto <BitcoinRefresh className="ml-2" />
+                  </Button>
                 </form>
               </Form>
             </CardContent>
@@ -172,19 +199,31 @@ const BuyandSellPage = () => {
                             Rate: {OFFICIAL_RATES} / %
                           </span>
                         </FormLabel>
-                        <Input {...field} />
+                        <Input
+                          className="bg-transparent"
+                          type="number"
+                          {...field}
+                        />
                         <FormDescription className="flex justify-between">
                           <span className="font-normal text-primary">
                             Amount: 0.0
                           </span>
                           <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
                             Set by Naira{" "}
-                            <ArrowSwapHorizontal className="ml-2 w-4 h-4" />
+                            <ArrowSwapHorizontal className="ml-2 w-6 h-6" />
                           </span>
                         </FormDescription>
                       </FormItem>
                     )}
                   />
+                  <Button
+                    type="submit"
+                    variant="custom"
+                    className="w-full"
+                    onSubmit={sellRoute}
+                  >
+                    Buy Crypto <BitcoinRefresh className="ml-2" />
+                  </Button>
                 </form>
               </Form>
             </CardContent>

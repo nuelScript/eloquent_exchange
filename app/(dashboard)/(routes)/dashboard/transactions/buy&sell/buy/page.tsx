@@ -1,12 +1,14 @@
 "use client";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
@@ -18,16 +20,30 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { BitcoinRefresh } from "iconsax-react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { TbCurrencyNaira } from "react-icons/tb";
 import * as z from "zod";
 
 const formSchema = z.object({
   network: z.string().min(1),
-  walletAddress: z.string().min(1),
+  walletAddress: z
+    .string({
+      required_error: "Please provide your wallet address",
+    })
+    .min(1),
 });
 
+const onPaste = () => {
+  navigator.clipboard.readText().then((text) => {
+    if (text) {
+      formSchema.parse(text);
+    }
+  });
+};
+
 const Buypage = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,6 +53,8 @@ const Buypage = () => {
   });
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
+    router.push("/dashboard/transactions/checkout");
+    router.refresh();
   };
   return (
     <div className="flex justify-center flex-col space-y-8 items-center pt-12">
@@ -64,8 +82,11 @@ const Buypage = () => {
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger className="w-full bg-transparent">
-                          <SelectValue placeholder="Select coin network" />
+                        <SelectTrigger className="w-full bg-transparent dark:border-primary">
+                          <SelectValue
+                            className="text-primary"
+                            placeholder="Select coin network"
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -91,6 +112,31 @@ const Buypage = () => {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="walletAddress"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-normal text-primary text-base">
+                      Wallet Address
+                    </FormLabel>
+                    <Input
+                      placeholder="Paste"
+                      className="text-primary text-right font-medium dark:border-primary bg-transparent"
+                      {...field}
+                    />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button
+                type="submit"
+                variant="custom"
+                className="w-full"
+                onSubmit={() => router.push("/dashboard/transactions/checkout")}
+              >
+                Continue <BitcoinRefresh className="ml-2" />
+              </Button>
             </form>
           </Form>
         </CardContent>

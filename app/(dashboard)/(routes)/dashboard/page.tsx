@@ -50,7 +50,7 @@ const DashboardPage = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-5xl font-normal">Welcome back, nd3r4a</h1>
         <div className="flex flex-col gap-y-4">
-          <Link href="/buy">
+          <Link href="/dashboard/transactions/buy&sell">
             <Button
               variant="outline"
               className="border border-[#4168B7] dark:border-[#A77700] items-center justify-center text-base font-normal text-primary dark:text-muted-foreground px-8 text-center py-5"
@@ -58,7 +58,7 @@ const DashboardPage = () => {
               Buy Crypto
             </Button>
           </Link>
-          <Link href="/sell">
+          <Link href="/dashboard/transactions/buy&sell">
             <Button
               variant="outline"
               className="border border-black dark:border-white items-center justify-center text-base font-normal text-primary dark:text-muted-foreground px-8 text-center py-5"
