@@ -28,11 +28,14 @@ import {
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const formSchema = z
   .object({
     name: z.string().min(3, { message: "Please enter your name" }),
-    dob: z.date().refine(
+    date_of_birth: z.date().refine(
       (date) => {
         const currentDate = new Date();
         return currentDate.getFullYear() - date.getFullYear() >= 18;
@@ -43,14 +46,14 @@ const formSchema = z
     password: z.string().min(8, {
       message: "Password must be at least 8 characters long",
     }),
-    confirmPassword: z
+    re_password: z
       .string()
       .min(8, { message: "Password must be at least 8 characters long" }),
-    terms: z.boolean({
-      required_error: "Please agree to the terms and policy",
-    }),
+    // terms: z.boolean({
+    //   required_error: "Please agree to the terms and policy",
+    // }),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine((data) => data.password === data.re_password, {
     message: "Passwords do not match",
     path: ["confirmPassword"],
   });
@@ -62,15 +65,42 @@ const SignOutPage = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      dob: new Date(),
+      date_of_birth: new Date(),
       email: "",
       password: "",
-      confirmPassword: "",
+      re_password: "",
     },
   });
 
+  const router = useRouter();
+
+  const url = "http://127.0.0.1:8000/auth/users/";
+
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+    const formattedDob = format(data.date_of_birth, "yyyy-MM-dd");
+
+    const newData = {
+      ...data,
+      date_of_birth: formattedDob,
+    };
+
+    try {
+      const res = await axios.post(url, newData);
+      toast.success("Account created successfully");
+      form.reset();
+    } catch (err: any) {
+      if (err.response) {
+        console.error("Server responded with status:", err.response.status);
+        console.error("Response data:", err.response.data);
+      } else if (err.request) {
+        console.error("No response received from the server");
+      } else {
+        console.error("Error:", err.message);
+      }
+      toast.error("Something went wrong");
+    } finally {
+      router.refresh();
+    }
   };
 
   const isLoading = form.formState.isSubmitting;
@@ -129,7 +159,7 @@ const SignOutPage = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="dob"
+                  name="date_of_birth"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
                       <Popover>
@@ -206,7 +236,7 @@ const SignOutPage = () => {
               />
               <FormField
                 control={form.control}
-                name="confirmPassword"
+                name="re_password"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
@@ -223,7 +253,7 @@ const SignOutPage = () => {
                 )}
               />
               <div className="flex items-center w-full justify-end">
-                <FormField
+                {/* <FormField
                   name="terms"
                   control={form.control}
                   render={({ field }) => (
@@ -245,7 +275,7 @@ const SignOutPage = () => {
                       <FormMessage />
                     </FormItem>
                   )}
-                />
+                /> */}
               </div>
               <Button
                 className="w-full text-white bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary hover:text-white dark:hover:text-black"

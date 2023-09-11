@@ -18,6 +18,9 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import * as z from "zod";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -37,8 +40,20 @@ const SignInPage = () => {
     },
   });
 
+  const router = useRouter();
+
+  const url = "http://localhost:8000/auth/jwt/create/";
+
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+    try {
+      const res = await axios.post(url, data);
+      toast.success("Login Success");
+      form.reset();
+    } catch (error: any) {
+      toast.error("Login Failed");
+    } finally {
+      router.refresh();
+    }
   };
 
   const isLoading = form.formState.isSubmitting;

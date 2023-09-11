@@ -44,10 +44,12 @@ const LandingNavbar = () => {
         </div>
       </div>
       <div className="flex gap-x-4">
-        <Button className="bg-[#4168B7] dark:hover:bg-primary text-white dark:bg-[#A77700] active:text-primary hover:text-white dark:hover:text-black active:bg-secondary dark:active:bg-primary text-base font-normal group transition">
-          Get Started
-          <Crown1 className="h-6 w-6 text-white ml-2 dark:group-hover:text-black transition" />
-        </Button>
+        <Link href="/sign-up">
+          <Button className="bg-[#4168B7] dark:hover:bg-primary text-white dark:bg-[#A77700] active:text-primary hover:text-white dark:hover:text-black active:bg-secondary dark:active:bg-primary text-base font-normal group transition">
+            Get Started
+            <Crown1 className="h-6 w-6 text-white ml-2 dark:group-hover:text-black transition" />
+          </Button>
+        </Link>
         <ModeToggle />
       </div>
     </div>
