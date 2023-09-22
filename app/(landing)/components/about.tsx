@@ -15,15 +15,15 @@ const AboutSection = () => {
         <Image
           src={resolvedTheme === "dark" ? "/about-dark.svg" : "/about.svg"}
           alt="about-image"
-          width={500}
-          height={500}
-          className="object-cover object-center w-auto h-auto"
+          width={450}
+          height={450}
+          className="object-cover object-center"
         />
-        <div className="flex flex-col space-y-2 justify-center items-end">
-          <p className="text-lg font-normal text-primary">
+        <div className="flex flex-col space-y-6 justify-center items-end">
+          <p className="text-xl font-normal text-primary">
             Join our crypto exchange
           </p>
-          <h3 className="text-3xl font-semibold text-primary">
+          <h3 className="text-5xl font-medium text-primary leading-normal">
             Best way to buy and sell{" "}
             <span className="text-[#4168B7] dark:text-[#A77700]">crypto.</span>
           </h3>

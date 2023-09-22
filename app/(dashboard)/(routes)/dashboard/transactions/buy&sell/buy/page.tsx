@@ -26,12 +26,11 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 const formSchema = z.object({
-  network: z.string().min(1),
+  network: z.string().min(1, { message: "Select a network" }),
   walletAddress: z
-    .string({
-      required_error: "Please provide your wallet address",
-    })
-    .min(1),
+    .string()
+    .min(24, { message: "Enter a valid wallet address" })
+    .max(62, { message: "Enter a valid wallet address" }),
 });
 
 const onPaste = () => {
@@ -53,8 +52,8 @@ const Buypage = () => {
   });
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
-    router.push("/dashboard/transactions/checkout");
-    router.refresh();
+    // router.push("/dashboard/transactions/checkout");
+    // router.refresh();
   };
   return (
     <div className="flex justify-center flex-col space-y-8 items-center pt-12">
@@ -109,6 +108,7 @@ const Buypage = () => {
                         </SelectGroup>
                       </SelectContent>
                     </Select>
+                    <FormMessage />
                   </FormItem>
                 )}
               />

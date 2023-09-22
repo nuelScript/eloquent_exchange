@@ -18,30 +18,16 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Apple, DirectRight } from "iconsax-react";
-import { cn } from "@/lib/utils";
+import { absoluteUrl, cn } from "@/lib/utils";
 import { FcGoogle } from "react-icons/fc";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 const formSchema = z
   .object({
-    name: z.string().min(3, { message: "Please enter your name" }),
-    date_of_birth: z.date().refine(
-      (date) => {
-        const currentDate = new Date();
-        return currentDate.getFullYear() - date.getFullYear() >= 18;
-      },
-      { message: "You must be at least 18 years old." }
-    ),
+    first_name: z.string().min(3, { message: "Please enter your first name" }),
+    last_name: z.string().min(3, { message: "Please enter your last name" }),
     email: z.string().email(),
     password: z.string().min(8, {
       message: "Password must be at least 8 characters long",
@@ -60,12 +46,12 @@ const formSchema = z
 
 const font = Revalia({ subsets: ["latin"], weight: ["400"] });
 
-const SignOutPage = () => {
+const SignUpPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      date_of_birth: new Date(),
+      first_name: "",
+      last_name: "",
       email: "",
       password: "",
       re_password: "",
@@ -74,30 +60,27 @@ const SignOutPage = () => {
 
   const router = useRouter();
 
-  const url = "http://127.0.0.1:8000/auth/users/";
+  const signupUrl = absoluteUrl("/auth/users/");
+  const googleOAuthUrl = absoluteUrl(
+    "/auth/o/google-oauth2/?redirect_uri=http://localhost:3000/dashboard"
+  );
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    const formattedDob = format(data.date_of_birth, "yyyy-MM-dd");
-
-    const newData = {
-      ...data,
-      date_of_birth: formattedDob,
-    };
-
     try {
-      const res = await axios.post(url, newData);
+      const res = await axios.post(signupUrl, data).then((res) => res.data);
+      router.push(res);
       toast.success("Account created successfully");
       form.reset();
     } catch (err: any) {
-      if (err.response) {
-        console.error("Server responded with status:", err.response.status);
-        console.error("Response data:", err.response.data);
-      } else if (err.request) {
+      if (err?.response?.status === 400) {
+        toast.error("Email already exists.");
+      } else if (err?.response?.status === 500) {
+        toast.error("Something went wrong");
+      } else if (err?.request) {
         console.error("No response received from the server");
       } else {
         console.error("Error:", err.message);
       }
-      toast.error("Something went wrong");
     } finally {
       router.refresh();
     }
@@ -142,13 +125,13 @@ const SignOutPage = () => {
               <div className="flex space-x-8">
                 <FormField
                   control={form.control}
-                  name="name"
+                  name="first_name"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
                         <Input
                           disabled={isLoading}
-                          placeholder="Full name"
+                          placeholder="First name"
                           className="border-t-0 font-medium text-primary rounded-none border-x-0 dark:border-b-[#A77700] border-b-[#F7931A80] border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent focus-visible:ring-offset-0"
                           {...field}
                         />
@@ -159,40 +142,17 @@ const SignOutPage = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="date_of_birth"
+                  name="last_name"
                   render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant="outline"
-                              className={cn(
-                                "w-[240px] text-left font-medium bg-transparent rounded-none border-t-0 border-x-0 border-b-2 dark:border-b-[#A77700] border-b-[#F7931A80]",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "PPP")
-                              ) : (
-                                <span>Date of Birth</span>
-                              )}
-                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            disabled={(date) =>
-                              date > new Date() || date < new Date("1900-01-01")
-                            }
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          disabled={isLoading}
+                          placeholder="Last name"
+                          className="border-t-0 font-medium text-primary rounded-none border-x-0 dark:border-b-[#A77700] border-b-[#F7931A80] border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent focus-visible:ring-offset-0"
+                          {...field}
+                        />
+                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -297,7 +257,9 @@ const SignOutPage = () => {
         </p>
         <div className="flex gap-x-8 justify-center">
           <div
-            onClick={() => {}}
+            onClick={() => {
+              router.push(googleOAuthUrl);
+            }}
             className="w-10 h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
           >
             <FcGoogle className="w-6 h-6 group-hover:scale-110" />
@@ -314,4 +276,4 @@ const SignOutPage = () => {
   );
 };
 
-export default SignOutPage;
+export default SignUpPage;

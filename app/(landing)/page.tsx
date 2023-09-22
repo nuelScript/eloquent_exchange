@@ -1,6 +1,8 @@
 import AboutSection from "./components/about";
+import AcademySection from "./components/academy";
 import Seperation from "./components/border";
 import ContactSection from "./components/contact";
+import Footer from "./components/footer";
 import HomeSection from "./components/home";
 
 const LandingPage = () => {
@@ -10,7 +12,10 @@ const LandingPage = () => {
       <Seperation />
       <AboutSection />
       <Seperation />
+      <AcademySection />
+      <Seperation />
       <ContactSection />
+      <Footer />
     </div>
   );
 };

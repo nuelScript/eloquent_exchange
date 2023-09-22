@@ -9,7 +9,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
+import { absoluteUrl, cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Apple, DirectRight } from "iconsax-react";
 import { Revalia } from "next/font/google";
@@ -42,14 +42,22 @@ const SignInPage = () => {
 
   const router = useRouter();
 
-  const url = "http://localhost:8000/auth/jwt/create/";
+  const signinUrl = absoluteUrl("/auth/jwt/create/");
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const res = await axios.post(url, data);
+      const req = await axios.post(signinUrl, data);
       toast.success("Login Success");
       form.reset();
-    } catch (error: any) {
+    } catch (err: any) {
+      if (err.response) {
+        console.error("Server responded with status:", err.response.status);
+        console.error("Response data:", err.response.data);
+      } else if (err.request) {
+        console.error("No response received from the server");
+      } else {
+        console.error("Error:", err.message);
+      }
       toast.error("Login Failed");
     } finally {
       router.refresh();

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
+import { absoluteUrl, cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { Data } from "iconsax-react";
@@ -27,9 +27,11 @@ const font = PT_Sans({
 });
 
 const formSchema = z.object({
-  name: z.string({ required_error: "Enter your name" }).min(3),
-  email: z.string({ required_error: "Enter your email" }).email(),
-  message: z.string({ required_error: "Enter your message" }).min(1),
+  name: z.string().min(3, { message: "Enter your name" }),
+  email: z
+    .string({ required_error: "Enter your email" })
+    .email({ message: "Enter your email address" }),
+  message: z.string().min(1, { message: "Enter your message" }),
 });
 
 const ContactForm = () => {
@@ -44,11 +46,11 @@ const ContactForm = () => {
 
   const router = useRouter();
 
-  const url = "http://127.0.0.1:8000/send-email/";
+  const contactUrl = absoluteUrl("/send-email/");
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const res = await axios.post(url, data);
+      const res = await axios.post(contactUrl, data);
       toast.success("Message sent successfully");
       form.reset();
     } catch (err: any) {
@@ -106,7 +108,7 @@ const ContactForm = () => {
                 <FormControl>
                   <Input
                     disabled={isLoading}
-                    placeholder="Name"
+                    placeholder="Email"
                     className="bg-gradient-to-b from-[#4168B7] dark:from-[#A77700] border-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 placeholder:text-primary"
                     {...field}
                   />
@@ -121,11 +123,13 @@ const ContactForm = () => {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Your message</FormLabel>
+              <FormLabel className="text-primary font-normal text-sm">
+                Your message
+              </FormLabel>
               <FormControl>
                 <Textarea
                   disabled={isLoading}
-                  placeholder="Tell us a little bit about yourself"
+                  placeholder="Message"
                   className="resize-none bg-gradient-to-b from-[#4168B7] dark:from-[#A77700] placeholder:text-primary border-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
                   rows={10}
                   {...field}

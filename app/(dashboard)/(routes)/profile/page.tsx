@@ -74,7 +74,7 @@ const ProfilePage = () => {
                   </FormItem>
                 )}
               />
-              <Link href={""}>
+              <Link href={"/profile/reset-password"}>
                 <p className="text-right text-xs text-[#4168B7] dark:text-[#A77700] hover:underline hover:text-primary dark:hover:text-primary">
                   Change Password
                 </p>

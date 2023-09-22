@@ -33,7 +33,7 @@ const formSchema = z.object({
   coinType: z.string().min(1, {
     message: "Coin type is required",
   }),
-  amount: z.coerce.number().min(0),
+  amount: z.coerce.number().min(0, { message: "Amount cannot be negative" }),
 });
 
 const BuyandSellPage = () => {
@@ -222,7 +222,7 @@ const BuyandSellPage = () => {
                     className="w-full"
                     onSubmit={sellRoute}
                   >
-                    Buy Crypto <BitcoinRefresh className="ml-2" />
+                    Sell Crypto <BitcoinRefresh className="ml-2" />
                   </Button>
                 </form>
               </Form>

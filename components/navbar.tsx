@@ -43,7 +43,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const { resolvedTheme } = useTheme();
   return (
-    <div className="w-full flex justify-between items-center px-4 min-[912px]:px-8 py-4">
+    <div className="w-full flex justify-between items-center px-4 min-[915px]:px-8 py-4">
       <Link href="/dashboard">
         <div className="">
           <Image
@@ -51,7 +51,7 @@ const Navbar = () => {
             width={200}
             height={200}
             alt="Logo"
-            className="object-contain bg-"
+            className="object-cover"
           />
         </div>
       </Link>
