@@ -15,7 +15,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+// import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Apple, DirectRight } from "iconsax-react";
 import { absoluteUrl, cn } from "@/lib/utils";
@@ -23,6 +23,7 @@ import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const formSchema = z
   .object({
@@ -47,6 +48,7 @@ const formSchema = z
 const font = Revalia({ subsets: ["latin"], weight: ["400"] });
 
 const SignUpPage = () => {
+  const { resolvedTheme } = useTheme();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -67,8 +69,7 @@ const SignUpPage = () => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const res = await axios.post(signupUrl, data).then((res) => res.data);
-      router.push(res);
+      const res = await axios.post(signupUrl, data);
       toast.success("Account created successfully");
       form.reset();
     } catch (err: any) {
@@ -89,8 +90,8 @@ const SignUpPage = () => {
   const isLoading = form.formState.isSubmitting;
 
   return (
-    <div className="flex justify-between pt-12 px-10 relative min-h-screen bg-[url('/rockets.svg')] bg-center bg-no-repeat bg-contain bg-fixed">
-      <div className="flex flex-col items-start gap-y-8">
+    <div className="flex min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen bg-[url('/rockets.svg')] bg-center bg-no-repeat bg-contain bg-fixed">
+      <div className="flex-col items-start gap-y-8 min-[1000px]:flex hidden">
         <Image
           src="/coin.svg"
           alt="LiteCoin"
@@ -112,15 +113,30 @@ const SignUpPage = () => {
         </p>
       </div>
       <div className="flex flex-col space-y-8 w-[500px]">
-        <h1 className="text-4xl font-semibold text-primary">Create Account</h1>
-        <p className="text-muted-foreground">
+        <div className="flex justify-center">
+          <Image
+            src={
+              resolvedTheme === "dark"
+                ? "/signup-dark.svg"
+                : "/signup-light.svg"
+            }
+            width={120}
+            height={120}
+            alt="signup_logo"
+            className="min-[1000px]:hidden block"
+          />
+        </div>
+        <h1 className="text-4xl font-semibold text-primary min-[1000px]:block hidden">
+          Create Account
+        </h1>
+        <p className="text-muted-foreground min-[1000px]:block hidden">
           Enter your credentials to create an account.
         </p>
         <div>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col space-y-8"
+              className="flex flex-col space-y-8 min-[1000px]:p-0 px-4"
             >
               <div className="flex space-x-8">
                 <FormField
@@ -255,20 +271,14 @@ const SignUpPage = () => {
         >
           - or continue with
         </p>
-        <div className="flex gap-x-8 justify-center">
+        <div className="flex justify-center">
           <div
             onClick={() => {
-              router.push(googleOAuthUrl);
+              router.push(signupUrl);
             }}
-            className="w-10 h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
+            className="w-full h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
           >
             <FcGoogle className="w-6 h-6 group-hover:scale-110" />
-          </div>
-          <div
-            onClick={() => {}}
-            className="w-10 h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group "
-          >
-            <Apple variant="Bold" className="w-6 h-6 group-hover:scale-110" />
           </div>
         </div>
       </div>

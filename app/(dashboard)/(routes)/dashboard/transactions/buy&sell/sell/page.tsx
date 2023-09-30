@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -19,22 +20,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { OFFICIAL_RATES } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { BitcoinRefresh } from "iconsax-react";
+import { ArrowSwapHorizontal, BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 const formSchema = z.object({
-  coinType: z.string().min(1),
-  bankName: z
-    .string({
-      required_error: "Please provide your bank name",
-    })
-    .min(1),
+  bankName: z.string().min(1, { message: "Please provide your bank name" }),
   accountNumber: z
-    .string({ required_error: "Please provide your account number" })
-    .min(1),
+    .string()
+    .min(1, { message: "Please provide your account number" }),
+  coinType: z.string().min(1, {
+    message: "Coin type is required",
+  }),
+  amount: z.coerce.number().min(0, { message: "Amount cannot be negative" }),
 });
 
 const onPaste = () => {
@@ -53,24 +54,22 @@ const Sellpage = () => {
       coinType: "",
       bankName: "",
       accountNumber: "",
+      amount: 0,
     },
   });
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
-  };
+  const onSubmit = (data: z.infer<typeof formSchema>) => {};
   return (
-    <div className="flex justify-center flex-col space-y-8 items-center pt-12">
-      <p className="text-primary font-medium text-lg">
-        Selling <span className="font-semibold">$10000</span> worth of Litecoin
-        at <span className="font-semibold">₦84600000.00</span>
-      </p>
-      <p className="text-primary font-medium">
-        Kindly provide your wallet address
+    <div className="flex justify-center flex-col space-y-8 items-center py-12">
+      <p className="text-primary font-medium min-[450px]:text-left text-center ">
+        Kindly provide your bank number and account number
       </p>
       <Card className="bg-transparent border-none shadow-none w-[400px]">
         <CardContent className="py-2">
           <Form {...form}>
-            <form className="space-y-12" onSubmit={form.handleSubmit(onSubmit)}>
+            <form
+              className="space-y-10 min-[450px]:p-0 px-6"
+              onSubmit={form.handleSubmit(onSubmit)}
+            >
               <FormField
                 control={form.control}
                 name="coinType"
@@ -93,24 +92,45 @@ const Sellpage = () => {
                       </FormControl>
                       <SelectContent>
                         <SelectGroup>
-                          <SelectItem value="mtn mobile money">
-                            MTN Mobile Money
-                          </SelectItem>
-                          <SelectItem value="skrill">Skrill</SelectItem>
-                          <SelectItem value="orange mobile money">
-                            Orange Mobile Money
-                          </SelectItem>
-                          <SelectItem value="neteller">NETELLER</SelectItem>
-                          <SelectItem value="airtel mobile money">
-                            Airtel Mobile Money
-                          </SelectItem>
-                          <SelectItem value="bank transfer">
-                            Bank Transfer
-                          </SelectItem>
-                          <SelectItem value="wise">Wise</SelectItem>
+                          <SelectItem value="bitcoin">Bitcoin</SelectItem>
+                          <SelectItem value="ethereum">Ethereum</SelectItem>
+                          <SelectItem value="usdt">USDT</SelectItem>
+                          <SelectItem value="dodge">Dodge</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="amount"
+                render={({ field }) => (
+                  <FormItem className="space-y-4">
+                    <FormLabel className="font-normal flex justify-between">
+                      <span>Amount</span>{" "}
+                      <span className="text-muted-foreground">
+                        Rate: {OFFICIAL_RATES} / %
+                      </span>
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="bg-transparent border border-white"
+                        type="number"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormDescription className="flex justify-between">
+                      <span className="font-normal text-primary">
+                        Amount: 0.0
+                      </span>
+                      <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
+                        Set by Naira{" "}
+                        <ArrowSwapHorizontal className="ml-2 w-6 h-6" />
+                      </span>
+                    </FormDescription>
+                    <FormMessage />
                   </FormItem>
                 )}
               />

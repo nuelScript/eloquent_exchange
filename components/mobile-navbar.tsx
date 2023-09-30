@@ -1,12 +1,12 @@
 "use client";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Firstline } from "iconsax-react";
+import { Firstline, LogoutCurve } from "iconsax-react";
 import { Button } from "./ui/button";
 import { routes } from "./navbar";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
@@ -14,6 +14,7 @@ import { useTheme } from "next-themes";
 const MobileSidebar = () => {
   const pathname = usePathname();
   const { resolvedTheme } = useTheme();
+  const router = useRouter();
 
   const [isMounted, setIsMounted] = useState(false);
 
@@ -30,7 +31,7 @@ const MobileSidebar = () => {
           <Firstline variant="Outline" className="w-5 h-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="p-0" side="left">
+      <SheetContent className="p-0" side="right">
         <div className="flex items-center justify-start pt-16 px-8">
           <Link href="/dashboard">
             <Image
@@ -45,7 +46,6 @@ const MobileSidebar = () => {
           {routes.map((route) => (
             <Link
               href={route.href}
-              onClick={route.onclick}
               key={route.href}
               className="text-base font-medium cursor-pointer"
             >
@@ -55,16 +55,28 @@ const MobileSidebar = () => {
                   className={cn(
                     "w-6 h-6 mr-2",
                     pathname.startsWith(route.href)
-                      ? "text-[#4168B7] dark:text-[#FFCC66]"
+                      ? "text-[#4168B7] dark:text-[#A77700]"
                       : "text-primary"
                   )}
                 />
-                <div className="hover:text-[#4168B7] dark:hover:text-[#FFCC66] transition">
+                <div className="hover:text-[#4168B7] dark:hover:text-[#A77700] transition">
                   {route.label}
                 </div>
               </div>
             </Link>
           ))}
+          <div
+            className="flex-1 items-center hover:cursor-pointer text-base min-[912px]:hidden flex font-medium"
+            onClick={() => router.push("/")}
+          >
+            <LogoutCurve
+              variant="Outline"
+              className="w-6 h-6 mr-2 text-primary"
+            />
+            <div className="hover:text-[#4168B7] dark:hover:text-[#A77700] transition">
+              Sign out
+            </div>
+          </div>
         </div>
       </SheetContent>
     </Sheet>
