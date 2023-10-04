@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 const ContactSection = () => {
   const { resolvedTheme } = useTheme();
   return (
-    <div className="flex flex-col space-y-12 px-10">
+    <div id="contact" className="flex flex-col space-y-12 px-10">
       <div className="flex justify-between items-center">
         <div className="flex flex-col space-y-2 text-primary">
           <h3 className="font-semibold text-3xl">

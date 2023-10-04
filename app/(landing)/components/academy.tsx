@@ -17,7 +17,7 @@ const AcademySection = () => {
   const { theme } = useTheme();
 
   return (
-    <div className="flex flex-col space-y-32 px-10 mb-20">
+    <div id="academy" className="flex flex-col space-y-32 px-10 mb-20">
       <div className="flex flex-row-reverse justify-between items-center">
         <Image
           src={theme === "dark" ? "/academy-dark.svg" : "/academy-light.png"}

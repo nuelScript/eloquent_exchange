@@ -18,9 +18,9 @@ const font = Revalia({
 const HomeSection = () => {
   const { resolvedTheme } = useTheme();
   return (
-    <div id="#home" className="flex flex-col space-y-8 px-10 pt-10">
-      <div className="flex justify-between items-center">
-        <div className="flex flex-col gap-y-4">
+    <div id="home" className="flex flex-col space-y-8 px-10 pt-10">
+      <div className="flex min-[912px]:flex-row flex-col min-[912px]:text-left text-center justify-between items-center">
+        <div className="flex flex-col gap-y-6">
           <h3 className="font-medium text-primary text-3xl leading-snug">
             <TypewriterComponent
               options={{
@@ -47,7 +47,16 @@ const HomeSection = () => {
               />
             </span>
           </h3>
-          <p className="text-primary font-normal">
+          <div className="flex min-[912px]:hidden min-[912px]:justify-start justify-center">
+            <Image
+              src={resolvedTheme === "dark" ? "/home-dark.svg" : "/home.svg"}
+              width={300}
+              height={300}
+              alt="Image"
+              className="object-cover object-center"
+            />
+          </div>
+          <p className="text-primary font-normal min-[912px]:text-2xl text-sm">
             Join the world&apos;s biggest and trusted exchange. Trade in
             Bitcoin, Etherum, dodge and many more currencies.
           </p>
@@ -66,10 +75,15 @@ const HomeSection = () => {
           width={300}
           height={300}
           alt="Image"
-          className="object-cover object-center"
+          className="object-cover object-center min-[912px]:flex hidden"
         />
       </div>
-      <div className={cn("text-center text-primary", font.className)}>
+      <div
+        className={cn(
+          "text-center text-primary min-[912px]:block hidden",
+          font.className
+        )}
+      >
         <TypewriterComponent
           options={{
             strings:
@@ -92,9 +106,9 @@ const HomeSection = () => {
         ))}
       </div>
       <div className="flex flex-col space-y-8 pt-20">
-        <div className="flex justify-between">
+        <div className="flex min-[912px]:flex-row flex-col min-[912px]:text-left text-center justify-between space-y-8 min-[912px]:space-y-0">
           <div className="flex flex-col space-y-8">
-            <h3 className="font-semibold text-2xl">
+            <h3 className="min-[912px]:font-semibold text-2xl font-normal">
               Start Trading with Eloquent <br /> Exchange in a few steps
             </h3>
             <div>
@@ -114,25 +128,27 @@ const HomeSection = () => {
             alt="rocket"
             className="object-cover object-center"
           /> */}
-          <div className="flex p-8 items-center border border-primary rounded-br-none rounded-tl-none rounded-tr-2xl rounded-bl-2xl">
-            <UserOctagon className="h-10 w-10 mr-4" />
-            <div className="flex flex-col space-y-2 text-primary">
-              <h2 className="font-semibold text-lg">Create Account</h2>
-              <p className="font-normal text-sm">
-                Sign up with your{" "}
-                <span className="text-[#4168B7] dark:text-[#A77700]">
-                  email
-                </span>{" "}
-                within <br /> minutes, and{" "}
-                <span className="text-[#4168B7] dark:text-[#A77700]">
-                  verify identity.
-                </span>
-              </p>
+          <div className="flex min-[912px]:justify-start justify-center items-center">
+            <div className="flex w-[380px] p-8 items-center border border-primary rounded-br-none rounded-tl-none rounded-tr-2xl rounded-bl-2xl">
+              <UserOctagon className="h-10 w-10 mr-4" />
+              <div className="flex flex-col space-y-2 text-primary text-left">
+                <h2 className="font-semibold text-lg">Create Account</h2>
+                <p className="font-normal text-sm">
+                  Sign up with your{" "}
+                  <span className="text-[#4168B7] dark:text-[#A77700]">
+                    email
+                  </span>{" "}
+                  within <br /> minutes, and{" "}
+                  <span className="text-[#4168B7] dark:text-[#A77700]">
+                    verify identity.
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <div className="flex p-8 items-center border border-primary rounded-br-none rounded-tl-none rounded-tr-2xl rounded-bl-2xl">
+          <div className="flex w-[380px] p-8 items-center border border-primary rounded-br-none rounded-tl-none rounded-tr-2xl rounded-bl-2xl">
             <Courthouse className="h-10 w-10 mr-4" />
             <div className="flex flex-col space-y-2 text-primary">
               <h2 className="font-semibold text-lg">Verify payment mode</h2>
@@ -146,8 +162,8 @@ const HomeSection = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-start items-center">
-          <div className="flex p-8 items-center border border-primary rounded-br-none rounded-tl-none rounded-tr-2xl rounded-bl-2xl">
+        <div className="flex min-[912px]:justify-start justify-center items-center">
+          <div className="flex w-[380px] p-8 items-center border border-primary rounded-br-none rounded-tl-none rounded-tr-2xl rounded-bl-2xl">
             <Chart className="h-10 w-10 mr-4" />
             <div className="flex flex-col space-y-2 text-primary">
               <h2 className="font-semibold text-lg">Start trading instantly</h2>

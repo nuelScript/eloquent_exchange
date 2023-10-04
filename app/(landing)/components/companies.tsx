@@ -7,7 +7,7 @@ export const companies = [
   {
     src: "/coinbase.svg",
     alt: "cryptocurrency",
-    className: "object-cover object-center",
+    className: "object-cover object-center min-[912px]:block hidden",
   },
   {
     src: "/bitcoin.svg",
@@ -22,6 +22,6 @@ export const companies = [
   {
     src: "/bitmex.svg",
     alt: "cryptocurrency",
-    className: "object-cover object-center",
+    className: "object-cover object-center min-[912px]:block hidden",
   },
 ];

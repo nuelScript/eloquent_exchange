@@ -10,7 +10,7 @@ import {
 const AboutSection = () => {
   const { resolvedTheme } = useTheme();
   return (
-    <div className="flex flex-col w-full space-y-8 px-10 mb-10">
+    <div id="about" className="flex flex-col w-full space-y-8 px-10 mb-10">
       <div className="flex justify-between mb-20">
         <Image
           src={resolvedTheme === "dark" ? "/about-dark.svg" : "/about.svg"}

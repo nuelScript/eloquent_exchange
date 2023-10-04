@@ -28,9 +28,7 @@ const font = PT_Sans({
 
 const formSchema = z.object({
   name: z.string().min(3, { message: "Enter your name" }),
-  email: z
-    .string({ required_error: "Enter your email" })
-    .email({ message: "Enter your email address" }),
+  email: z.string().email({ message: "Enter your email address" }),
   message: z.string().min(1, { message: "Enter your message" }),
 });
 
