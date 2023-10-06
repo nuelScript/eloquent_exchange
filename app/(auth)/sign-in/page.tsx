@@ -21,6 +21,7 @@ import * as z from "zod";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -32,6 +33,7 @@ const formSchema = z.object({
 const font = Revalia({ subsets: ["latin"], weight: ["400"] });
 
 const SignInPage = () => {
+  const { resolvedTheme } = useTheme();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -67,8 +69,8 @@ const SignInPage = () => {
   const isLoading = form.formState.isSubmitting;
 
   return (
-    <div className="flex justify-between pt-12 px-10 relative min-h-screen bg-[url('/rockets.svg')] bg-center bg-no-repeat bg-contain bg-fixed">
-      <div className="flex flex-col items-start gap-y-8">
+    <div className="flex min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen bg-[url('/rockets.svg')] bg-center bg-no-repeat bg-contain bg-fixed">
+      <div className="flex-col items-start gap-y-8 min-[1000px]:flex hidden">
         <Image
           src="/coin.svg"
           alt="LiteCoin"
@@ -90,6 +92,19 @@ const SignInPage = () => {
         </p>
       </div>
       <div className="flex flex-col space-y-8 w-[500px]">
+        <div className="flex justify-center">
+          <Image
+            src={
+              resolvedTheme === "dark"
+                ? "/signup-dark.svg"
+                : "/signup-light.svg"
+            }
+            width={120}
+            height={120}
+            alt="signup_logo"
+            className="min-[1000px]:hidden block"
+          />
+        </div>
         <h1 className="text-4xl font-semibold text-primary">Welcome Back!</h1>
         <p className="text-muted-foreground">
           Enter your credentials to access your account.
@@ -160,18 +175,12 @@ const SignInPage = () => {
         >
           - or continue with
         </p>
-        <div className="flex gap-x-8 justify-center">
+        <div className="flex justify-center">
           <div
             onClick={() => {}}
-            className="w-10 h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
+            className="w-full h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
           >
             <FcGoogle className="w-6 h-6 group-hover:scale-110" />
-          </div>
-          <div
-            onClick={() => {}}
-            className="w-10 h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group "
-          >
-            <Apple variant="Bold" className="w-6 h-6 group-hover:scale-110" />
           </div>
         </div>
       </div>

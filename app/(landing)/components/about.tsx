@@ -11,80 +11,87 @@ const AboutSection = () => {
   const { resolvedTheme } = useTheme();
   return (
     <div id="about" className="flex flex-col w-full space-y-8 px-10 mb-10">
-      <div className="flex justify-between mb-20">
+      <div className="flex min-[912px]:flex-row flex-col-reverse justify-between min-[912px]:space-y-0 space-y-8 mb-20">
         <Image
           src={resolvedTheme === "dark" ? "/about-dark.svg" : "/about.svg"}
           alt="about-image"
           width={450}
           height={450}
-          className="object-cover object-center"
+          className="object-cover object-center  min-[912px]:flex hidden"
         />
-        <div className="flex flex-col space-y-6 justify-center items-end">
-          <p className="text-xl font-normal text-primary">
+        <div className="flex flex-col space-y-6 justify-center min-[912px]:items-end items-center">
+          <p className="min-[912px]:text-xl text-base font-normal text-primary">
             Join our crypto exchange
           </p>
-          <h3 className="text-5xl font-medium text-primary leading-normal">
+          <h3 className="min-[912px]:text-5xl text-2xl min-[912px]:font-medium font-normal min-[912px]:text-left text-center text-primary leading-normal">
             Best way to buy and sell{" "}
             <span className="text-[#4168B7] dark:text-[#A77700]">crypto.</span>
           </h3>
-          <p className="text-xl text-right font-normal w-2/5">
+          <Image
+            src={resolvedTheme === "dark" ? "/about-dark.svg" : "/about.svg"}
+            alt="about-image"
+            width={450}
+            height={450}
+            className="object-scale-down object-center  min-[912px]:hidden block"
+          />
+          <p className="min-[912px]:text-xl text-sm min-[912px]:text-right text-center font-normal min-[912px]:w-2/5 w-full">
             Eloquent exchange is the community-run technology powering the
             cryptocurrency, and thousands of decentralized applications.
           </p>
         </div>
       </div>
-      <div className="flex flex-col space-y-12 items-center">
-        <div className="flex space-x-4">
-          <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-4 rounded-3xl space-y-6 w-[500px]">
-            <ShieldTick className="w-10 h-10" />
-            <div className="flex flex-col space-y-4">
-              <h3 className="text-primary text-xl font-semibold">
+      <div className="flex flex-col min-[912px]:space-y-12 space-y-4 items-center">
+        <div className="flex min-[912px]:flex-row flex-col min-[912px]:space-x-4 min-[912px]:space-y-0 space-x-0 space-y-4">
+          <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-4 rounded-3xl space-y-6 min-[912px]:w-[500px] w-full">
+            <div className="flex min-[912px]:flex-col flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
+              <ShieldTick className="min-[912px]:w-10 w-8 min-[912px]:h-10 h-8" />
+              <h3 className="text-primary text-xl min-[912px]:font-semibold font-normal">
                 Safe and Secure
               </h3>
-              <p className="text-primary text-base font-normal">
-                Your data is safe and secured with us. None of your data is
-                shared with a third party company.
-              </p>
             </div>
+            <p className="text-primary text-base font-normal">
+              Your data is safe and secured with us. None of your data is shared
+              with a third party company.
+            </p>
           </div>
-          <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-4 rounded-3xl space-y-6 w-[500px]">
-            <MonitorMobbile className="w-10 h-10" />
-            <div className="flex flex-col space-y-4">
-              <h3 className="text-primary text-xl font-semibold">
+          <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-4 rounded-3xl space-y-6 min-[912px]:w-[500px] w-full">
+            <div className="flex min-[912px]:flex-col flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
+              <MonitorMobbile className="min-[912px]:w-10 w-8 min-[912px]:h-10 h-8" />
+              <h3 className="text-primary text-xl min-[912px]:font-semibold font-normal">
                 User-friendly interface
               </h3>
-              <p className="text-primary text-base font-normal">
-                The platform is designed to be as simple as possible so our
-                users can trade with ease.
-              </p>
             </div>
+            <p className="text-primary text-base font-normal">
+              The platform is designed to be as simple as possible so our users
+              can trade with ease.
+            </p>
           </div>
         </div>
-        <div className="flex space-x-4">
-          <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-4 rounded-3xl space-y-6 w-[500px]">
-            <MoneySend className="w-10 h-10" />
-            <div className="flex flex-col space-y-4">
-              <h3 className="text-primary text-xl font-semibold">
+        <div className="flex min-[912px]:flex-row flex-col min-[912px]:space-x-4 min-[912px]:space-y-0 space-x-0 space-y-4">
+          <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-4 rounded-3xl space-y-6 min-[912px]:w-[500px] w-full">
+            <div className="flex min-[912px]:flex-col flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
+              <MoneySend className="min-[912px]:w-10 w-8 min-[912px]:h-10 h-8" />
+              <h3 className="text-primary text-xl min-[912px]:font-semibold font-normal">
                 Friendly rates
               </h3>
-              <p className="text-primary text-base font-normal">
-                Whenever you buy or sell on Eloquent exchange you receive best
-                market rates.
-              </p>
             </div>
+            <p className="text-primary text-base font-normal">
+              Whenever you buy or sell on Eloquent exchange you receive best
+              market rates.
+            </p>
           </div>
-          <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-4 rounded-3xl space-y-6 w-[500px]">
-            <I24Support className="w-10 h-10" />
-            <div className="flex flex-col space-y-4">
-              <h3 className="text-primary text-xl font-semibold">
+          <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-4 rounded-3xl space-y-6 min-[912px]:w-[500px] w-full">
+            <div className="flex min-[912px]:flex-col flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
+              <I24Support className="min-[912px]:w-10 w-8 min-[912px]:h-10 h-8" />
+              <h3 className="text-primary text-xl min-[912px]:font-semibold font-normal">
                 {" "}
                 24/7 Customer Service
               </h3>
-              <p className="text-primary text-base font-normal">
-                Our customer service representatives are always available to
-                attend to your needs.
-              </p>
             </div>
+            <p className="text-primary text-base font-normal">
+              Our customer service representatives are always available to
+              attend to your needs.
+            </p>
           </div>
         </div>
       </div>

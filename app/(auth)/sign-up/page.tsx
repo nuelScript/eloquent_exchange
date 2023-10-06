@@ -24,6 +24,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
+import { authRoute } from "@/app/routes/route";
 
 const formSchema = z
   .object({
@@ -36,9 +37,6 @@ const formSchema = z
     re_password: z
       .string()
       .min(8, { message: "Password must be at least 8 characters long" }),
-    // terms: z.boolean({
-    //   required_error: "Please agree to the terms and policy",
-    // }),
   })
   .refine((data) => data.password === data.re_password, {
     message: "Passwords do not match",
@@ -62,14 +60,13 @@ const SignUpPage = () => {
 
   const router = useRouter();
 
-  const signupUrl = absoluteUrl("/auth/users/");
   const googleOAuthUrl = absoluteUrl(
     "/auth/o/google-oauth2/?redirect_uri=http://localhost:3000/dashboard"
   );
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const res = await axios.post(signupUrl, data);
+      const res = await axios.post(authRoute, data);
       toast.success("Account created successfully");
       form.reset();
     } catch (err: any) {
@@ -228,31 +225,7 @@ const SignUpPage = () => {
                   </FormItem>
                 )}
               />
-              <div className="flex items-center w-full justify-end">
-                {/* <FormField
-                  name="terms"
-                  control={form.control}
-                  render={({ field }) => (
-                    <FormItem className="flex flex-col items-center space-x-3 space-y-0">
-                      <div className="flex items-center space-x-3">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                          />
-                        </FormControl>
-                        <FormLabel className="text-muted-foreground text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                          I agree to the{" "}
-                          <Link href="/terms" className="underline">
-                            terms & policy
-                          </Link>
-                        </FormLabel>
-                      </div>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                /> */}
-              </div>
+              <div className="flex items-center w-full justify-end"></div>
               <Button
                 className="w-full text-white bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary hover:text-white dark:hover:text-black"
                 variant="default"
@@ -274,7 +247,7 @@ const SignUpPage = () => {
         <div className="flex justify-center">
           <div
             onClick={() => {
-              router.push(signupUrl);
+              router.push();
             }}
             className="w-full h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
           >

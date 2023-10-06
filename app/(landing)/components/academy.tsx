@@ -18,22 +18,29 @@ const AcademySection = () => {
 
   return (
     <div id="academy" className="flex flex-col space-y-32 px-10 mb-20">
-      <div className="flex flex-row-reverse justify-between items-center">
+      <div className="flex min-[912px]:flex-row-reverse flex-col-reverse justify-between items-center">
         <Image
           src={theme === "dark" ? "/academy-dark.svg" : "/academy-light.png"}
           width={300}
           height={300}
           alt="images"
-          className="w-auto h-auto object-cover object-center"
+          className="w-auto h-auto object-cover object-center min-[912px]:block hidden"
         />
-        <div className="flex flex-col space-y-2">
-          <h3 className="text-primary text-3xl font-semibold leading-snug w-1/4">
+        <div className="flex flex-col min-[912px]:space-y-2 space-y-6 min-[912px]:items-start items-center">
+          <h3 className="text-primary min-[912px]:text-3xl text-2xl min-[912px]:font-semibold font-normal leading-snug min-[912px]:w-1/4 w-3/4 min-[912px]:text-left text-center">
             Eloquent{" "}
             <span className="text-[#4168B7] dark:text-[#A77700]">
               Trading Academy.
             </span>
           </h3>
-          <p className="text-primary text-sm font-normal w-2/4">
+          <Image
+            src={theme === "dark" ? "/academy-dark.svg" : "/academy-light.png"}
+            width={300}
+            height={300}
+            alt="images"
+            className="object-cover object-center min-[912px]:hidden block"
+          />
+          <p className="text-primary text-sm font-normal min-[912px]:w-2/4 w-full min-[912px]:text-left text-center">
             Unlock the secrets of successful trading at our cutting-edge Trading
             Academy! Join our community of skilled traders, master market
             trends, and elevate your financial potential to new heights.
