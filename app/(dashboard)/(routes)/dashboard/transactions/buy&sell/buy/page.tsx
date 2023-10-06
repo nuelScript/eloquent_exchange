@@ -1,5 +1,6 @@
 "use client";
 
+import { buyRoute } from "@/routes/route";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -22,9 +23,11 @@ import {
 } from "@/components/ui/select";
 import { OFFICIAL_RATES } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import { ArrowSwapHorizontal, BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+// import toast from "react-hot-toast";
 import * as z from "zod";
 
 interface BuyProps {}
@@ -60,10 +63,8 @@ const Buypage = () => {
       amount: 0,
     },
   });
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
-    // router.push("/dashboard/transactions/checkout");
-    // router.refresh();
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    await axios.post(buyRoute, data);
   };
   return (
     <div className="flex justify-center flex-col space-y-8 items-center py-12">

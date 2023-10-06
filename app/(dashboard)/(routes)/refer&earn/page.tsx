@@ -1,6 +1,6 @@
 "use client";
 
-import { getRefferalRoute } from "@/app/routes/route";
+import { getRefferalRoute } from "@/routes/route";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
@@ -37,7 +37,7 @@ const ReferPage = () => {
           <Input
             readOnly
             value={referralId || ""}
-            className="bg-transparent text-center"
+            className="bg-transparent text-center "
           />
         </div>
         <div className="flex flex-col items-start space-y-4">
