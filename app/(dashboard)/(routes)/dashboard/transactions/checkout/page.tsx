@@ -10,13 +10,13 @@ const CheckoutPage = () => {
           Kindly pay the above amount to the payment details below:
         </div>
         <div className="flex justify-between text-lg font-medium">
-          <span>Bank Name</span> <span>KudaMFB</span>
+          <span>Bank Name:</span> <span>KudaMFB</span>
         </div>
         <div className="flex justify-between text-lg font-medium">
-          <span>Account Number</span> <span>2002750082</span>
+          <span>Account Number:</span> <span>2002750082</span>
         </div>
         <div className="flex justify-between text-lg font-medium">
-          <span>Account Name</span> <span>Eloquent Exchange</span>
+          <span>Account Name:</span> <span>Eloquent Exchange</span>
         </div>
         <Button variant="custom">
           Proceed <BitcoinRefresh className="ml-2" />

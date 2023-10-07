@@ -22,6 +22,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
+import { signInRoute } from "@/routes/route";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -44,11 +45,9 @@ const SignInPage = () => {
 
   const router = useRouter();
 
-  const signinUrl = absoluteUrl("/auth/jwt/create/");
-
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const req = await axios.post(signinUrl, data);
+      const req = await axios.post(signInRoute, data);
       toast.success("Login Success");
       form.reset();
     } catch (err: any) {

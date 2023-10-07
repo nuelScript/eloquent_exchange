@@ -19,8 +19,8 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 const formSchema = z.object({
-  checked: z.boolean({
-    required_error: "Please agree to the instructions above",
+  checked: z.literal(true, {
+    errorMap: () => ({ message: "Please check the box" }),
   }),
 });
 
@@ -28,6 +28,9 @@ const CheckoutInstructionsPage = () => {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      checked: true,
+    },
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {

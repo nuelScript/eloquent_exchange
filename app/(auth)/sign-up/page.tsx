@@ -24,7 +24,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { authRoute } from "@/app/routes/route";
+import { authRoute } from "@/routes/route";
 
 const formSchema = z
   .object({
@@ -247,7 +247,7 @@ const SignUpPage = () => {
         <div className="flex justify-center">
           <div
             onClick={() => {
-              router.push();
+              router.push(googleOAuthUrl);
             }}
             className="w-full h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
           >
