@@ -152,7 +152,7 @@ const AcademySection = () => {
           <Button
             variant="custom"
             className={cn(
-              "rounded-tl-none rounded-br-none opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out min-[912px]:hidden flex",
+              "rounded-tl-none rounded-br-none opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out min-[912px]:flex hidden",
               font.className
             )}
           >
@@ -188,7 +188,10 @@ const AcademySection = () => {
           </p>
         </div>
         <div className="flex flex-col space-y-8 relative items-center">
-          <h3 className="text-2xl font-normal z-10">Community legend</h3>
+          <div className="flex space-x-4">
+            <h3 className="min-[912px]:hidden block text-3xl font-normal">3</h3>
+            <h3 className="text-2xl font-normal z-10">Community legend</h3>
+          </div>
           <div className="min-[912px]:absolute hidden bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text font-bold text-6xl z-0">
             3
           </div>
@@ -197,6 +200,15 @@ const AcademySection = () => {
             community on the Trade Floor
           </p>
         </div>
+        <Button
+          variant="custom"
+          className={cn(
+            "rounded-tl-none rounded-br-none opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out min-[912px]:hidden flex",
+            font.className
+          )}
+        >
+          Enroll <Data className="ml-2 h-4 w-4" />
+        </Button>
       </div>
       <div className="flex justify-center items-center">
         <Image
@@ -207,7 +219,7 @@ const AcademySection = () => {
           className="w-auto h-auto object-cover object-center"
         />
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex min-[912px]:flex-row flex-col min-[912px]:space-y-0 space-y-8 justify-between items-center">
         <div className="flex flex-col space-y-6 p-8 border-4 border-b-0 rounded-3xl items-center border-white bg-transparent bg-gradient-to-b from-white dark:from-black">
           <Image
             src={
