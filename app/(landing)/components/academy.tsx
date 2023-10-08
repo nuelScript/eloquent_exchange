@@ -48,7 +48,7 @@ const AcademySection = () => {
           </p>
         </div>
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex min-[912px]:flex-row flex-col justify-between items-center">
         <Image
           src={theme === "dark" ? "/teaching-dark.svg" : "/teaching-light.png"}
           width={300}
@@ -56,8 +56,8 @@ const AcademySection = () => {
           alt="images"
           className="w-auto h-auto object-cover object-center"
         />
-        <div className="flex flex-col space-y-2 items-end">
-          <h3 className="text-primary text-3xl font-semibold leading-snug uppercase w-2/3 text-right">
+        <div className="flex flex-col space-y-2 min-[912px]:items-end items-center">
+          <h3 className="text-primary min-[912px]:text-3xl text-2xl font-semibold leading-snug uppercase min-[912px]:w-2/3 w-full min-[912px]:text-right text-left">
             <span className="text-[#4168B7] dark:text-[#A77700]">200+</span>{" "}
             Students trust us
           </h3>
@@ -66,12 +66,14 @@ const AcademySection = () => {
           </p>
         </div>
       </div>
-      <div className="flex space-x-10 justify-center">
-        <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-6 rounded-3xl space-y-6 w-[300px]">
-          <StatusUp className="w-10 h-10" />
-          <div className="flex flex-col space-y-4">
+      <div className="flex min-[912px]:flex-row flex-col min-[912px]:space-x-10 min-[912px]:space-y-0 space-y-8 justify-center items-center">
+        <div className="flex flex-col h-[240px] border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-6 rounded-3xl space-y-6 w-[300px]">
+          <div className="flex min-[912px]:flex-col flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
+            <StatusUp className="w-10 h-10" />
             <h3 className="text-primary text-xl font-semibold">Defi Trading</h3>
-            <div className="w-[40px] border border-[#4168B7] dark:border-[#A77700]"></div>
+            <div className="w-[40px] min-[912px]:block hidden border border-[#4168B7] dark:border-[#A77700]"></div>
+          </div>
+          <div className="flex flex-col space-y-4">
             <p className="text-primary text-base font-normal">
               Your data is safe and secured with us. None of your data is shared
               with a third party company.
@@ -79,10 +81,12 @@ const AcademySection = () => {
           </div>
         </div>
         <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-6 rounded-3xl space-y-6 w-[300px]">
-          <Chart className="w-10 h-10" />
-          <div className="flex flex-col space-y-4">
+          <div className="flex min-[912px]:flex-col flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
+            <Chart className="w-10 h-10" />
             <h3 className="text-primary text-xl font-semibold">P2P Trading</h3>
-            <div className="w-[40px] border border-[#4168B7] dark:border-[#A77700]"></div>
+            <div className="w-[40px] min-[912px]:block hidden border border-[#4168B7] dark:border-[#A77700]"></div>
+          </div>
+          <div className="flex flex-col space-y-4">
             <p className="text-primary text-base font-normal">
               The platform is designed to be as simple as possible so our users
               can trade with ease.
@@ -90,12 +94,14 @@ const AcademySection = () => {
           </div>
         </div>
         <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-6 rounded-3xl space-y-6 w-[300px]">
-          <Diagram className="w-10 h-10" />
-          <div className="flex flex-col space-y-4">
+          <div className="flex min-[912px]:flex-col flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
+            <Diagram className="w-10 h-10" />
             <h3 className="text-primary text-xl font-semibold">
               Futures Trading
             </h3>
-            <div className="w-[40px] border border-[#4168B7] dark:border-[#A77700]"></div>
+            <div className="w-[40px] min-[912px]:block hidden border border-[#4168B7] dark:border-[#A77700]"></div>
+          </div>
+          <div className="flex flex-col space-y-4">
             <p className="text-primary text-base font-normal">
               The platform is designed to be as simple as possible so our users
               can trade with ease.
@@ -104,16 +110,23 @@ const AcademySection = () => {
         </div>
       </div>
       <div className="flex flex-col space-y-8">
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col space-y-8">
-            <h3 className="font-semibold text-xl">
+        <div className="flex min-[912px]:flex-row flex-col justify-between items-center">
+          <div className="flex flex-col space-y-8 min-[912px]:items-start items-center">
+            <h3 className="font-medium min-[912px]:text-5xl text-xl min-[912px]:w-7/12 w-full leading-normal min-[912px]:text-left text-center">
               Become a{" "}
               <span className="text-[#4168B7] dark:text-[#A77700]">
                 certified trader
               </span>{" "}
               with eloquent exchange.
             </h3>
-            <p className="font-normal text-sm">
+            <Image
+              src="/certificate.png"
+              alt="certificate"
+              width={300}
+              height={300}
+              className="w-auto h-auto object-cover object-center min-[912px]:hidden block"
+            />
+            <p className="font-normal text-xl min-[912px]:w-[55%] w-full min-[912px]:text-left text-center">
               Get details about Eloquent Exchange&apos;s next session of classes
               and enroll.
             </p>
@@ -121,7 +134,7 @@ const AcademySection = () => {
               <Button
                 variant="custom"
                 className={cn(
-                  "rounded-tl-none rounded-br-none opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out",
+                  "rounded-tl-none rounded-br-none opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out min-[912px]:flex hidden",
                   font.className
                 )}
               >
@@ -134,14 +147,26 @@ const AcademySection = () => {
             alt="certificate"
             width={300}
             height={300}
-            className="w-auto h-auto object-cover object-center"
+            className="w-auto h-auto object-cover object-center min-[912px]:flex hidden"
           />
+          <Button
+            variant="custom"
+            className={cn(
+              "rounded-tl-none rounded-br-none opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out min-[912px]:hidden flex",
+              font.className
+            )}
+          >
+            Enroll <Data className="ml-2 h-4 w-4" />
+          </Button>
         </div>
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex min-[912px]:flex-row flex-col min-[9122px]:space-y-0 space-y-10 justify-between items-center">
         <div className="flex flex-col space-y-8 relative items-center">
-          <h3 className="text-2xl font-normal z-10">Become a member</h3>
-          <div className="absolute bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text font-bold text-6xl z-0">
+          <div className="flex space-x-4">
+            <h3 className="min-[912px]:hidden block text-3xl font-normal">1</h3>
+            <h3 className="text-2xl font-normal z-10">Become a member</h3>
+          </div>{" "}
+          <div className="min-[912px]:absolute hidden bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text font-bold text-6xl z-0">
             1
           </div>
           <p className="font-normal text-sm lg:w-1/2 text-center">
@@ -150,8 +175,11 @@ const AcademySection = () => {
           </p>
         </div>
         <div className="flex flex-col space-y-8 relative items-center">
-          <h3 className="text-2xl font-normal z-10">Watch the lesson</h3>
-          <div className="absolute bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text font-bold text-6xl z-0">
+          <div className="flex space-x-4">
+            <h3 className="min-[912px]:hidden block text-3xl font-normal">2</h3>
+            <h3 className="text-2xl font-normal z-10">Watch the lesson</h3>
+          </div>
+          <div className="min-[912px]:absolute hidden bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text font-bold text-6xl z-0">
             2
           </div>
           <p className="font-normal text-sm lg:w-1/2 text-center">
@@ -161,7 +189,7 @@ const AcademySection = () => {
         </div>
         <div className="flex flex-col space-y-8 relative items-center">
           <h3 className="text-2xl font-normal z-10">Community legend</h3>
-          <div className="absolute bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text font-bold text-6xl z-0">
+          <div className="min-[912px]:absolute hidden bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text font-bold text-6xl z-0">
             3
           </div>
           <p className="font-normal text-sm lg:w-1/2 text-center">

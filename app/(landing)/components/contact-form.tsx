@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { sendEmailRoute } from "@/routes/route";
+import { sendEmailRoute } from "@/lib/helpers";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { Data } from "iconsax-react";

@@ -8,13 +8,13 @@ const ContactSection = () => {
   const { resolvedTheme } = useTheme();
   return (
     <div id="contact" className="flex flex-col space-y-12 px-10">
-      <div className="flex justify-between items-center">
-        <div className="flex flex-col space-y-2 text-primary">
+      <div className="flex min-[912px]:flex-row flex-col min-[912px]:justify-between items-center min-[912px]:space-y-0 space-y-8">
+        <div className="flex flex-col min-[912px]:items-start items-center space-y-2 text-primary min-[912px]:text-left text-center">
           <h3 className="font-semibold text-3xl">
             Get in touch with{" "}
             <span className="text-[#4168B7] dark:text-[#A77700]">Us.</span>
           </h3>
-          <p className="font-light text-sm">
+          <p className="font-light text-sm min-[912px]:w-full w-3/4 leading-normal">
             Effective communication fosters understanding, cooperation, and
             positive outcomes for all.
           </p>
