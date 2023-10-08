@@ -9,7 +9,7 @@ import { useTheme } from "next-themes";
 import MobileSidebar from "./mobile-navbar";
 import MobileLandingNavbar from "./landing-mobile-navbar";
 
-export const routes = [
+const routes = [
   {
     name: "Home",
     href: "#home",
@@ -79,7 +79,7 @@ const LandingNavbar = () => {
           </Button>
         </Link>
         <ModeToggle />
-        <MobileSidebar />
+        <MobileLandingNavbar />
       </div>
     </div>
   );
