@@ -9,9 +9,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { absoluteUrl, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Apple, DirectRight } from "iconsax-react";
+import { DirectRight } from "iconsax-react";
 import { Revalia } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +22,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { signInRoute } from "@/routes/route";
+import { signInRoute } from "@/lib/helpers";
 
 const formSchema = z.object({
   email: z.string().email(),
