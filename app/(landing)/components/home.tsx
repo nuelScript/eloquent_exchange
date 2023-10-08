@@ -9,6 +9,7 @@ import { Revalia } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { companies } from "./companies";
+import { useRouter } from "next/navigation";
 
 const font = Revalia({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ const font = Revalia({
 
 const HomeSection = () => {
   const { resolvedTheme } = useTheme();
+  const router = useRouter();
   return (
     <div id="home" className="flex flex-col space-y-8 px-10 pt-10">
       <div className="flex min-[912px]:flex-row flex-col min-[912px]:text-left text-center justify-between items-center">
@@ -64,6 +66,7 @@ const HomeSection = () => {
             <Button
               variant="custom"
               className="rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg"
+              onClick={() => router.push("/dashboard/buy&sell/")}
             >
               Trade Crypto
               <Bitcoin className="h-6 w-6 ml-2 rotate-45" />
@@ -115,7 +118,7 @@ const HomeSection = () => {
               <Button
                 variant="custom"
                 className="rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg"
-                disabled
+                onClick={() => router.push("/dashboard/buy&sell/")}
               >
                 Trade Crypto <Bitcoin className="h-6 w-6 ml-2 rotate-45" />
               </Button>

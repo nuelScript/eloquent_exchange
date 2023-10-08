@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Data } from "iconsax-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const ReferralSection = () => {
   const { resolvedTheme } = useTheme();
+  const router = useRouter();
   return (
     <div className="flex flex-col space-y-10 px-10 pt-5">
       <div className="flex min-[912px]:flex-row flex-col justify-between items-center">
@@ -36,6 +38,7 @@ const ReferralSection = () => {
             <Button
               variant="custom"
               className="rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg"
+              onClick={() => router.push("/refer&earn")}
             >
               Refer Now <Data className="ml-2 w-4 h-4" />
             </Button>

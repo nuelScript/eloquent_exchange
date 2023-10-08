@@ -7,8 +7,9 @@ import { ModeToggle } from "./mode-toggle";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import MobileSidebar from "./mobile-navbar";
+import MobileLandingNavbar from "./landing-mobile-navbar";
 
-const routes = [
+export const routes = [
   {
     name: "Home",
     href: "#home",

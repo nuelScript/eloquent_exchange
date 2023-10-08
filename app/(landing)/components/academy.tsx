@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { PT_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const font = PT_Sans({
   subsets: ["latin", "latin-ext"],
@@ -15,6 +16,7 @@ const font = PT_Sans({
 
 const AcademySection = () => {
   const { theme } = useTheme();
+  const router = useRouter();
 
   return (
     <div id="academy" className="flex flex-col space-y-32 px-10 mb-20">
@@ -137,6 +139,7 @@ const AcademySection = () => {
                   "rounded-tl-none rounded-br-none opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out min-[912px]:flex hidden",
                   font.className
                 )}
+                onClick={() => router.push("/dashboard/buy&sell/")}
               >
                 Enroll <Data className="ml-2 h-4 w-4" />
               </Button>
@@ -319,6 +322,7 @@ const AcademySection = () => {
               "rounded-tl-none rounded-br-none opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out",
               font.className
             )}
+            onClick={() => router.push("/dashboard/buy&sell/")}
           >
             Start Now <Data className="h-4 w-4 ml-2" />
           </Button>

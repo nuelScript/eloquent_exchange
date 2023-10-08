@@ -50,6 +50,7 @@ const SignInPage = () => {
       const req = await axios.post(signInRoute, data);
       toast.success("Login Success");
       form.reset();
+      router.push("/dashboard");
     } catch (err: any) {
       if (err.response) {
         console.error("Server responded with status:", err.response.status);
