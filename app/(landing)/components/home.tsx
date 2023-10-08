@@ -66,7 +66,7 @@ const HomeSection = () => {
             <Button
               variant="custom"
               className="rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg"
-              onClick={() => router.push("/dashboard/buy&sell/")}
+              onClick={() => router.push("/dashboard/transactions/buy&sell/")}
             >
               Trade Crypto
               <Bitcoin className="h-6 w-6 ml-2 rotate-45" />
@@ -118,7 +118,7 @@ const HomeSection = () => {
               <Button
                 variant="custom"
                 className="rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg"
-                onClick={() => router.push("/dashboard/buy&sell/")}
+                onClick={() => router.push("/dashboard/transactions/buy&sell/")}
               >
                 Trade Crypto <Bitcoin className="h-6 w-6 ml-2 rotate-45" />
               </Button>
