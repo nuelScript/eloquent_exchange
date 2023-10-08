@@ -149,15 +149,6 @@ const AcademySection = () => {
             height={300}
             className="w-auto h-auto object-cover object-center min-[912px]:flex hidden"
           />
-          <Button
-            variant="custom"
-            className={cn(
-              "rounded-tl-none rounded-br-none opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out min-[912px]:flex hidden",
-              font.className
-            )}
-          >
-            Enroll <Data className="ml-2 h-4 w-4" />
-          </Button>
         </div>
       </div>
       <div className="flex min-[912px]:flex-row flex-col min-[9122px]:space-y-0 space-y-10 justify-between items-center">
@@ -174,7 +165,7 @@ const AcademySection = () => {
             dashboard and begin your lessons.{" "}
           </p>
         </div>
-        <div className="flex flex-col space-y-8 relative items-center">
+        <div className="flex flex-col space-y-8 min-[912px]:relative items-center">
           <div className="flex space-x-4">
             <h3 className="min-[912px]:hidden block text-3xl font-normal">2</h3>
             <h3 className="text-2xl font-normal z-10">Watch the lesson</h3>
