@@ -17,14 +17,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 // import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { Apple, DirectRight } from "iconsax-react";
+import { DirectRight } from "iconsax-react";
 import { absoluteUrl, cn } from "@/lib/utils";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { authRoute } from "@/routes/route";
+import { signUpRoute } from "@/lib/helpers";
 
 const formSchema = z
   .object({
@@ -66,7 +66,7 @@ const SignUpPage = () => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const res = await axios.post(authRoute, data);
+      const res = await axios.post(signUpRoute, data);
       toast.success("Account created successfully");
       form.reset();
     } catch (err: any) {
