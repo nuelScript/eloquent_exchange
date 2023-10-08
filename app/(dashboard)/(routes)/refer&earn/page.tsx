@@ -1,6 +1,6 @@
 "use client";
 
-import { getRefferalRoute } from "@/routes/route";
+import { getRefferalRoute } from "@/lib/helpers";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
