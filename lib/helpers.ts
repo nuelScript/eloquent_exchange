@@ -1,4 +1,4 @@
-import { absoluteUrl } from "@/lib/utils";
+import { absoluteUrl } from "./utils";
 
 // A list of all the routes available from the backend
 
