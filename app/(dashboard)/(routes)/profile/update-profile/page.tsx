@@ -1,6 +1,6 @@
 "use client";
 
-import { resetEmailRoute } from "@/routes/route";
+import { resetEmailRoute } from "@/lib/helpers";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
