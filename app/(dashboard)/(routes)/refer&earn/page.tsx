@@ -9,10 +9,23 @@ import { useEffect, useState } from "react";
 const ReferPage = () => {
   const [referralId, setReferralId] = useState<string | null>();
 
+  const getCookie = (name: any) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(";").shift();
+  };
+
+  const access_token = getCookie("access_token");
+
   useEffect(() => {
     const fetchdata = async () => {
+      const authHeaders = {
+        Authorization: `Bearer ${access_token}`,
+      };
       try {
-        const response = await axios.get(getRefferalRoute);
+        const response = await axios.get(getRefferalRoute, {
+          headers: authHeaders,
+        });
         const responseData = response.data;
         const referralCodes = responseData.referral_codes;
         if (referralCodes && referralCodes.length > 0) {
@@ -23,7 +36,7 @@ const ReferPage = () => {
       }
     };
     fetchdata();
-  }, []);
+  }, [access_token]);
 
   return (
     <main className="flex flex-col space-y-8 items-center pt-12">

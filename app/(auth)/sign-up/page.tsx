@@ -67,7 +67,9 @@ const SignUpPage = () => {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const res = await axios.post(signUpRoute, data);
-      toast.success("Account created successfully");
+      toast.success(
+        "Account created successfully, Please check your mail for further details."
+      );
       form.reset();
     } catch (err: any) {
       if (err?.response?.status === 400) {

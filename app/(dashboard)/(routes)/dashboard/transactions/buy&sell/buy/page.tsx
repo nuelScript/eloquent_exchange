@@ -1,6 +1,6 @@
 "use client";
 
-import { buyRoute } from "@/lib/helpers";
+import { buyRoute, getWalletListRoute } from "@/lib/helpers";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -29,6 +29,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 // import toast from "react-hot-toast";
 import * as z from "zod";
+import { useEffect, useState } from "react";
 
 interface BuyProps {}
 
@@ -44,15 +45,56 @@ const formSchema = z.object({
   amount: z.coerce.number().min(0, { message: "Amount cannot be negative" }),
 });
 
-const onPaste = () => {
-  navigator.clipboard.readText().then((text) => {
-    if (text) {
-      formSchema.parse(text);
-    }
-  });
-};
+// const onPaste = () => {
+//   navigator.clipboard.readText().then((text) => {
+//     if (text) {
+//       formSchema.parse(text);
+//     }
+//   });
+// };
 
 const Buypage = () => {
+  const [coinType, setCoinType] = useState<any[] | null>();
+  const [network, setNetwork] = useState<any[] | null>();
+
+  const getCookie = (name: any) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(";").shift();
+  };
+
+  const access_token = getCookie("access_token");
+  console.log(access_token);
+
+  useEffect(() => {
+    const fetchdata = async () => {
+      const authHeaders = {
+        Authorization: `Bearer ${access_token}`,
+      };
+      try {
+        const response = await axios.get(getWalletListRoute, {
+          headers: authHeaders,
+          withCredentials: true,
+        });
+        const responseData = response.data;
+        const coinTypes: string[] = responseData.coin;
+        const networks: string[] = responseData.network;
+
+        console.log("coinTypes", coinTypes);
+
+        if (coinTypes && coinTypes.length > 0) {
+          setCoinType(coinTypes);
+        }
+        if (networks && networks.length > 0) {
+          setNetwork(networks);
+        }
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+    fetchdata();
+  }, [access_token]);
+
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -104,10 +146,11 @@ const Buypage = () => {
                       </FormControl>
                       <SelectContent>
                         <SelectGroup>
-                          <SelectItem value="bitcoin">Bitcoin</SelectItem>
-                          <SelectItem value="ethereum">Ethereum</SelectItem>
-                          <SelectItem value="usdt">USDT</SelectItem>
-                          <SelectItem value="dodge">Dodge</SelectItem>
+                          {coinType?.map((coin) => (
+                            <SelectItem key={coin?.id} value={coin?.title}>
+                              {coin}
+                            </SelectItem>
+                          ))}
                         </SelectGroup>
                       </SelectContent>
                     </Select>

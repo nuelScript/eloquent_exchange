@@ -3,10 +3,11 @@ import { absoluteUrl } from "./utils";
 // A list of all the routes available from the backend
 
 export const signInRoute = absoluteUrl("/auth/jwt/create/");
+export const refreshRoute = absoluteUrl("/auth/jwt/refresh/");
 export const signUpRoute = absoluteUrl("/auth/users/");
 export const buyRoute = absoluteUrl("/buy/");
 export const sellRoute = absoluteUrl("/sell/");
-export const getRefferalRoute = absoluteUrl("/get-referral-codes/");
+export const getRefferalRoute = absoluteUrl("/referral_code/");
 export const walletRoute = absoluteUrl("/wallet/");
 export const resetEmailRoute = absoluteUrl("/auth/users/set_email/");
 export const resetPasswordRoute = absoluteUrl("/auth/users/set_password/");

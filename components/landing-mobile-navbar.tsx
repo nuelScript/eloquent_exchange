@@ -2,10 +2,10 @@ import { Crown1, Firstline } from "iconsax-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import Image from "next/image";
-import { ModeToggle } from "./mode-toggle";
-import MobileSidebar from "./mobile-navbar";
+// import { useTheme } from "next-themes";
+// import Image from "next/image";
+// import { ModeToggle } from "./mode-toggle";
+// import MobileSidebar from "./mobile-navbar";
 
 const routes = [
   {
