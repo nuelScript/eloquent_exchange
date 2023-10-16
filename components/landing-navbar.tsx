@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import MobileSidebar from "./mobile-navbar";
 import MobileLandingNavbar from "./landing-mobile-navbar";
+import { useEffect, useState } from "react";
 
 const routes = [
   {
@@ -30,6 +31,15 @@ const routes = [
 
 const LandingNavbar = () => {
   const { resolvedTheme } = useTheme();
+  const [isMounted, setisMounted] = useState(false);
+
+  useEffect(() => {
+    setisMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();

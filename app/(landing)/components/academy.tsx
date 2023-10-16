@@ -8,15 +8,59 @@ import { PT_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { getPackageListRoute } from "@/lib/helpers";
 
 const font = PT_Sans({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "700"],
 });
 
+interface ProPackage {
+  name: string;
+  price: string;
+}
+
+interface BeginnerPackage {
+  name: string;
+  price: string;
+}
+
+interface IntermediatePackage {
+  name: string;
+  price: string;
+}
+
 const AcademySection = () => {
   const { theme } = useTheme();
   const router = useRouter();
+  const [beginner, setBeginner] = useState<BeginnerPackage | null>();
+  const [intermediate, setIntermediate] =
+    useState<IntermediatePackage | null>();
+  const [pro, setPro] = useState<ProPackage | null>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(getPackageListRoute);
+        const responseData = response.data;
+        const packageArray = responseData;
+        if (packageArray && packageArray.length > 0) {
+          setBeginner(packageArray[0]);
+        }
+        if (packageArray && packageArray.length > 0) {
+          setIntermediate(packageArray[1]);
+        }
+        if (packageArray && packageArray.length > 0) {
+          setPro(packageArray[2]);
+        }
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div id="academy" className="flex flex-col space-y-32 px-10 mb-20">
@@ -243,8 +287,8 @@ const AcademySection = () => {
             <li>Billed Annually</li>
           </ul>
           <p className="flex flex-col items-center">
-            <span className="font-bold text-xl">Pro Package</span>
-            <span className="font-bold text-lg">$300</span>
+            <span className="font-bold text-xl">{pro?.name} Package</span>
+            <span className="font-bold text-lg">${pro?.price}</span>
           </p>
         </div>
         <div className="flex flex-col space-y-6 p-8 border-4 border-b-0 rounded-3xl items-center border-white bg-transparent bg-gradient-to-b from-white dark:from-black">
@@ -276,8 +320,10 @@ const AcademySection = () => {
             <li>Billed Annually</li>
           </ul>
           <p className="flex flex-col items-center">
-            <span className="font-bold text-xl">Intermediate Package</span>
-            <span className="font-bold text-lg">$270</span>
+            <span className="font-bold text-xl">
+              {intermediate?.name} Package
+            </span>
+            <span className="font-bold text-lg">${intermediate?.price}</span>
           </p>
         </div>
         <div className="flex flex-col space-y-6 p-8 border-4 border-b-0 rounded-3xl items-center border-white bg-transparent bg-gradient-to-b from-white dark:from-black">
@@ -309,8 +355,8 @@ const AcademySection = () => {
             <li>Billed Annually</li>
           </ul>
           <p className="flex flex-col items-center">
-            <span className="font-bold text-xl">Beginners Package</span>
-            <span className="font-bold text-lg">$150</span>
+            <span className="font-bold text-xl">{beginner?.name} Package</span>
+            <span className="font-bold text-lg">${beginner?.price}</span>
           </p>
         </div>
       </div>

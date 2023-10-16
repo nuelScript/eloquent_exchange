@@ -9,7 +9,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
+import { cn, setCookie } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DirectRight } from "iconsax-react";
 import { Revalia } from "next/font/google";
@@ -45,24 +45,12 @@ const SignInPage = () => {
 
   const router = useRouter();
 
-  const getCookie = (name: any) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(";").shift();
-  };
-
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const response = await axios.post(signInRoute, data);
       toast.success("Login Success");
       const { refresh, access } = response.data;
-      document.cookie = `access_token=${encodeURIComponent(
-        access
-      )}; path=/; secure; SameSite=Strict`;
-      document.cookie = `refresh_token="${encodeURIComponent(
-        refresh
-      )}; path=/; secure; SameSite=Strict`;
-      const access_token = getCookie("access_token");
+      setCookie("access_token", access, 7);
       form.reset();
       router.push("/dashboard");
     } catch (err: any) {

@@ -15,3 +15,6 @@ export const getWalletListRoute = absoluteUrl("/wallet/");
 export const getPackageListRoute = absoluteUrl("/package/");
 export const initiatePaymentRoute = absoluteUrl("/initiate-payment/");
 export const sendEmailRoute = absoluteUrl("/send-email/");
+export const googleOAuth = absoluteUrl(
+  "/auth/o/google-oauth2/?redirect_uri=https://eloquentexchange.org/dashboard"
+);

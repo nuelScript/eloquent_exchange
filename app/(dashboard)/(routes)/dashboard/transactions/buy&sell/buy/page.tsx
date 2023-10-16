@@ -45,14 +45,6 @@ const formSchema = z.object({
   amount: z.coerce.number().min(0, { message: "Amount cannot be negative" }),
 });
 
-// const onPaste = () => {
-//   navigator.clipboard.readText().then((text) => {
-//     if (text) {
-//       formSchema.parse(text);
-//     }
-//   });
-// };
-
 const Buypage = () => {
   const [coinType, setCoinType] = useState<any[] | null>();
   const [network, setNetwork] = useState<any[] | null>();
@@ -110,10 +102,6 @@ const Buypage = () => {
   };
   return (
     <div className="flex justify-center flex-col space-y-8 items-center py-12">
-      <p className="text-primary font-medium text-lg min-[454px]:text-left text-center">
-        Buying <span className="font-semibold">$10000</span> worth of Litecoin
-        at <span className="font-semibold">₦84600000.00</span>
-      </p>
       <p className="text-primary font-medium">
         Kindly provide your wallet address
       </p>
@@ -146,11 +134,10 @@ const Buypage = () => {
                       </FormControl>
                       <SelectContent>
                         <SelectGroup>
-                          {coinType?.map((coin) => (
-                            <SelectItem key={coin?.id} value={coin?.title}>
-                              {coin}
-                            </SelectItem>
-                          ))}
+                          <SelectItem value="bitcoin">Bitcoin</SelectItem>
+                          <SelectItem value="ethereum">Ethereum</SelectItem>
+                          <SelectItem value="dogecoin">DogeCoin</SelectItem>
+                          <SelectItem value=""></SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>

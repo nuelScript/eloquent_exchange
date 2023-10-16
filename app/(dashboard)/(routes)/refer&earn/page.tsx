@@ -5,38 +5,37 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { getCookie } from "@/lib/utils";
 
 const ReferPage = () => {
   const [referralId, setReferralId] = useState<string | null>();
-
-  const getCookie = (name: any) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(";").shift();
-  };
-
-  const access_token = getCookie("access_token");
-
   useEffect(() => {
     const fetchdata = async () => {
-      const authHeaders = {
-        Authorization: `Bearer ${access_token}`,
-      };
-      try {
-        const response = await axios.get(getRefferalRoute, {
-          headers: authHeaders,
-        });
-        const responseData = response.data;
-        const referralCodes = responseData.referral_codes;
-        if (referralCodes && referralCodes.length > 0) {
-          setReferralId(referralCodes[0]);
+      const accessToken = getCookie("access_token");
+      console.log("Access Token: ", accessToken);
+
+      if (accessToken) {
+        try {
+          const response = await axios.get(getRefferalRoute, {
+            headers: {
+              Authorization: `JWT ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+          console.log("Response: ", response.data);
+          const responseData = response.data;
+          const referralCode = responseData;
+          if (referralCode) {
+            setReferralId(referralCode);
+          }
+        } catch (error) {
+          console.error("Error", error);
         }
-      } catch (error) {
-        console.error("Error", error);
       }
     };
+
     fetchdata();
-  }, [access_token]);
+  }, []);
 
   return (
     <main className="flex flex-col space-y-8 items-center pt-12">

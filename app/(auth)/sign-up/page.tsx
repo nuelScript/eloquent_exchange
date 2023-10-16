@@ -15,10 +15,9 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
-// import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { DirectRight } from "iconsax-react";
-import { absoluteUrl, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -59,10 +58,6 @@ const SignUpPage = () => {
   });
 
   const router = useRouter();
-
-  const googleOAuthUrl = absoluteUrl(
-    "/auth/o/google-oauth2/?redirect_uri=http://localhost:3000/dashboard"
-  );
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
@@ -247,12 +242,7 @@ const SignUpPage = () => {
           - or continue with
         </p>
         <div className="flex justify-center">
-          <div
-            onClick={() => {
-              router.push(googleOAuthUrl);
-            }}
-            className="w-full h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
-          >
+          <div className="w-full h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group">
             <FcGoogle className="w-6 h-6 group-hover:scale-110" />
           </div>
         </div>

@@ -6,35 +6,35 @@ import { Button } from "@/components/ui/button";
 function getData(): Payment[] {
   return [
     {
-      order_id: "728ed52f",
+      id: "728ed52f",
       date: "2021-08-01",
       amount: 100,
       status: "Pending",
       transaction_type: "Bought",
     },
     {
-      order_id: "728ed52f",
+      id: "728ed52f",
       date: "2021-08-01",
       amount: 100,
       status: "Rejected",
       transaction_type: "Bought",
     },
     {
-      order_id: "728ed52f",
+      id: "728ed52f",
       date: "2021-08-01",
       amount: 100,
       status: "Success",
       transaction_type: "Bought",
     },
     {
-      order_id: "728ed52f",
+      id: "728ed52f",
       date: "2021-08-01",
       amount: 100,
       status: "Success",
       transaction_type: "Bought",
     },
     {
-      order_id: "728ed52f",
+      id: "728ed52f",
       date: "2021-08-01",
       amount: 100,
       status: "Success",
@@ -47,9 +47,11 @@ const DashboardPage = () => {
   const data = getData();
   return (
     <div className="w-full h-screen flex flex-col gap-y-20 px-10 py-8">
-      <div className="flex justify-between items-center">
-        <h1 className="text-5xl font-normal">Welcome back, nd3r4a</h1>
-        <div className="flex flex-col gap-y-4">
+      <div className="flex min-[912px]:flex-row min-[912px]:space-y-0 space-y-8 flex-col justify-between items-center">
+        <h1 className="text-2xl font-normal min-[912px]:text-5xl">
+          Welcome back, nd3r4a
+        </h1>
+        <div className="flex min-[912px]:flex-col flex-row min-[912px]:gap-y-4 gap-x-4">
           <Link href="/dashboard/transactions/buy&sell">
             <Button
               variant="outline"
@@ -69,8 +71,8 @@ const DashboardPage = () => {
         </div>
       </div>
       <div className="container mx-auto py-10 space-y-10">
-        <div className="flex justify-between items-center">
-          <p className="text-primary text-lg font-medium">
+        <div className="flex min-[912px]:flex-row flex-col justify-between min-[912px]:items-center items-start min-[912px]:space-y-0 space-y-4">
+          <p className="text-primary text-lg min-[912px]:text-lg font-medium text-start">
             Transaction History
           </p>
           <div className="flex gap-x-4">
