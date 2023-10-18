@@ -30,6 +30,7 @@ import { useForm } from "react-hook-form";
 // import toast from "react-hot-toast";
 import * as z from "zod";
 import { useEffect, useState } from "react";
+import { getCookie } from "@/lib/utils";
 
 interface BuyProps {}
 
@@ -49,19 +50,13 @@ const Buypage = () => {
   const [coinType, setCoinType] = useState<any[] | null>();
   const [network, setNetwork] = useState<any[] | null>();
 
-  const getCookie = (name: any) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(";").shift();
-  };
-
   const access_token = getCookie("access_token");
   console.log(access_token);
 
   useEffect(() => {
     const fetchdata = async () => {
       const authHeaders = {
-        Authorization: `Bearer ${access_token}`,
+        Authorization: `JWT ${access_token}`,
       };
       try {
         const response = await axios.get(getWalletListRoute, {
@@ -136,8 +131,8 @@ const Buypage = () => {
                         <SelectGroup>
                           <SelectItem value="bitcoin">Bitcoin</SelectItem>
                           <SelectItem value="ethereum">Ethereum</SelectItem>
-                          <SelectItem value="dogecoin">DogeCoin</SelectItem>
-                          <SelectItem value=""></SelectItem>
+                          <SelectItem value="usdt">USDT</SelectItem>
+                          <SelectItem value="dodge">Dodge</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>

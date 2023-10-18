@@ -6,35 +6,35 @@ import { Button } from "@/components/ui/button";
 function getData(): Payment[] {
   return [
     {
-      id: "728ed52f",
+      order_id: "728ed52f",
       date: "2021-08-01",
       amount: 100,
       status: "Pending",
       transaction_type: "Bought",
     },
     {
-      id: "728ed52f",
+      order_id: "728ed52f",
       date: "2021-08-01",
       amount: 100,
       status: "Rejected",
       transaction_type: "Bought",
     },
     {
-      id: "728ed52f",
+      order_id: "728ed52f",
       date: "2021-08-01",
       amount: 100,
       status: "Success",
       transaction_type: "Bought",
     },
     {
-      id: "728ed52f",
+      order_id: "728ed52f",
       date: "2021-08-01",
       amount: 100,
       status: "Success",
       transaction_type: "Bought",
     },
     {
-      id: "728ed52f",
+      order_id: "728ed52f",
       date: "2021-08-01",
       amount: 100,
       status: "Success",
@@ -52,7 +52,7 @@ const DashboardPage = () => {
           Welcome back, nd3r4a
         </h1>
         <div className="flex min-[912px]:flex-col flex-row min-[912px]:gap-y-4 gap-x-4">
-          <Link href="/dashboard/transactions/buy&sell">
+          <Link href="/dashboard/transactions/buy&sell/buy">
             <Button
               variant="outline"
               className="border border-[#4168B7] dark:border-[#A77700] items-center justify-center text-base font-normal text-primary dark:text-muted-foreground px-8 text-center py-5"
@@ -60,7 +60,7 @@ const DashboardPage = () => {
               Buy Crypto
             </Button>
           </Link>
-          <Link href="/dashboard/transactions/buy&sell">
+          <Link href="/dashboard/transactions/buy&sell/sell">
             <Button
               variant="outline"
               className="border border-black dark:border-white items-center justify-center text-base font-normal text-primary dark:text-muted-foreground px-8 text-center py-5"

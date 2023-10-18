@@ -23,7 +23,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { signUpRoute } from "@/lib/helpers";
+import { googleOAuth, signUpRoute } from "@/lib/helpers";
+import { useEffect } from "react";
 
 const formSchema = z
   .object({
@@ -65,6 +66,7 @@ const SignUpPage = () => {
       toast.success(
         "Account created successfully, Please check your mail for further details."
       );
+      router.push("/sign-in");
       form.reset();
     } catch (err: any) {
       if (err?.response?.status === 400) {
@@ -82,6 +84,17 @@ const SignUpPage = () => {
   };
 
   const isLoading = form.formState.isSubmitting;
+
+  const googleCallback = async () => {
+    try {
+      const response = await axios.get(googleOAuth);
+      const googleResponse = response.data;
+      const authorizationUrl: string = googleResponse.authorization_url;
+      router.push(authorizationUrl);
+    } catch (error: any) {
+      toast.error("Unable to sign up. Please try Again");
+    }
+  };
 
   return (
     <div className="flex min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen bg-[url('/rockets.svg')] bg-center bg-no-repeat bg-contain bg-fixed">
@@ -242,7 +255,10 @@ const SignUpPage = () => {
           - or continue with
         </p>
         <div className="flex justify-center">
-          <div className="w-full h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group">
+          <div
+            onClick={() => googleCallback()}
+            className="w-full h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
+          >
             <FcGoogle className="w-6 h-6 group-hover:scale-110" />
           </div>
         </div>

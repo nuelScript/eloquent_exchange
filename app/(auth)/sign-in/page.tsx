@@ -22,7 +22,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { signInRoute } from "@/lib/helpers";
+import { googleOAuth, signInRoute } from "@/lib/helpers";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -69,6 +69,17 @@ const SignInPage = () => {
   };
 
   const isLoading = form.formState.isSubmitting;
+
+  const googleCallback = async () => {
+    try {
+      const response = await axios.get(googleOAuth);
+      const googleResponse = response.data;
+      const authorizationUrl: string = googleResponse.authorization_url;
+      router.push(authorizationUrl);
+    } catch (error: any) {
+      toast.error("Unable to sign in. Try Again");
+    }
+  };
 
   return (
     <div className="flex min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen bg-[url('/rockets.svg')] bg-center bg-no-repeat bg-contain bg-fixed">
@@ -179,7 +190,7 @@ const SignInPage = () => {
         </p>
         <div className="flex justify-center">
           <div
-            onClick={() => {}}
+            onClick={() => googleCallback()}
             className="w-full h-10 rounded-lg border-[#A77700] border flex items-center justify-center cursor-pointer group"
           >
             <FcGoogle className="w-6 h-6 group-hover:scale-110" />

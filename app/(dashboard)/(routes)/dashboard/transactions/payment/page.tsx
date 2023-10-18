@@ -40,7 +40,8 @@ const PaymentPage = () => {
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+    try {
+    } catch (error) {}
   };
   return (
     <div className="flex justify-center items-center pt-12">
