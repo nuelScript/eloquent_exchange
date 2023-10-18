@@ -27,7 +27,6 @@ import axios from "axios";
 import { ArrowSwapHorizontal, BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-// import toast from "react-hot-toast";
 import * as z from "zod";
 import { useEffect, useState } from "react";
 import { getCookie } from "@/lib/utils";
@@ -47,41 +46,6 @@ const formSchema = z.object({
 });
 
 const Buypage = () => {
-  const [coinType, setCoinType] = useState<any[] | null>();
-  const [network, setNetwork] = useState<any[] | null>();
-
-  const access_token = getCookie("access_token");
-  console.log(access_token);
-
-  useEffect(() => {
-    const fetchdata = async () => {
-      const authHeaders = {
-        Authorization: `JWT ${access_token}`,
-      };
-      try {
-        const response = await axios.get(getWalletListRoute, {
-          headers: authHeaders,
-          withCredentials: true,
-        });
-        const responseData = response.data;
-        const coinTypes: string[] = responseData.coin;
-        const networks: string[] = responseData.network;
-
-        console.log("coinTypes", coinTypes);
-
-        if (coinTypes && coinTypes.length > 0) {
-          setCoinType(coinTypes);
-        }
-        if (networks && networks.length > 0) {
-          setNetwork(networks);
-        }
-      } catch (error) {
-        console.error("Error", error);
-      }
-    };
-    fetchdata();
-  }, [access_token]);
-
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
