@@ -28,6 +28,7 @@ import { ArrowSwapHorizontal, BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import isAuth from "@/components/isAuth";
 
 const formSchema = z.object({
   coinType: z.string().min(1, {
@@ -234,4 +235,4 @@ const BuyandSellPage = () => {
   );
 };
 
-export default BuyandSellPage;
+export default isAuth(BuyandSellPage);

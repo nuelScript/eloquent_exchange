@@ -4,6 +4,7 @@ import { absoluteUrl } from "./utils";
 
 export const signInRoute = absoluteUrl("/auth/jwt/create/");
 export const refreshRoute = absoluteUrl("/auth/jwt/refresh/");
+export const verifyRoute = absoluteUrl("/auth/jwt/verify/");
 export const signUpRoute = absoluteUrl("/auth/users/");
 export const buyRoute = absoluteUrl("/buy/");
 export const sellRoute = absoluteUrl("/sell/");
@@ -18,3 +19,6 @@ export const sendEmailRoute = absoluteUrl("/send-email/");
 export const googleOAuth = absoluteUrl(
   "/auth/o/google-oauth2/?redirect_uri=https://eloquentexchange.org/dashboard"
 );
+export const getUsers = absoluteUrl("/auth/users/");
+export const getBoughtCrypto = absoluteUrl("/crypto-transactions/bought/");
+export const getSoldCrypto = absoluteUrl("/crypto-transactions/sold/");

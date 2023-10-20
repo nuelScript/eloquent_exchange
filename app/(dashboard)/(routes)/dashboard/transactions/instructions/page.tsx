@@ -17,6 +17,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import isAuth from "@/components/isAuth";
 
 const formSchema = z.object({
   checked: z.literal(true, {
@@ -109,4 +110,4 @@ const CheckoutInstructionsPage = () => {
   );
 };
 
-export default CheckoutInstructionsPage;
+export default isAuth(CheckoutInstructionsPage);

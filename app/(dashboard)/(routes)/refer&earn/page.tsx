@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { getCookie } from "@/lib/utils";
+import isAuth from "@/components/isAuth";
 
 const ReferPage = () => {
   const [referralId, setReferralId] = useState<string | null>();
@@ -22,7 +23,6 @@ const ReferPage = () => {
               "Content-Type": "application/json",
             },
           });
-          console.log("Response: ", response.data);
           const responseData = response.data;
           const referralCode = responseData;
           if (referralCode) {
@@ -69,4 +69,4 @@ const ReferPage = () => {
   );
 };
 
-export default ReferPage;
+export default isAuth(ReferPage);

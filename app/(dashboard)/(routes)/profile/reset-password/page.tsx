@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Form,
   FormControl,
@@ -20,6 +21,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import isAuth from "@/components/isAuth";
 
 const ResetPasswordPage = () => {
   const [visible, setVisible] = useState(false);
@@ -112,4 +114,4 @@ const ResetPasswordPage = () => {
   );
 };
 
-export default ResetPasswordPage;
+export default isAuth(ResetPasswordPage);

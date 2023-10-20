@@ -1,7 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { BitcoinRefresh } from "iconsax-react";
+import { isAuthenticated } from "@/components/isAuth";
+import { redirect } from "next/navigation";
 
 const CheckoutPage = () => {
+  const isAuth = isAuthenticated;
+
+  if (!isAuth) {
+    redirect("/sign-in");
+  }
   return (
     <div className="flex flex-col space-y-8 items-center pt-12">
       <h1 className="text-5xl font-semibold text-primary">$300.00</h1>

@@ -176,7 +176,7 @@ const AcademySection = () => {
               Get details about Eloquent Exchange&apos;s next session of classes
               and enroll.
             </p>
-            <div>
+            {/* <div>
               <Button
                 variant="custom"
                 className={cn(
@@ -184,10 +184,11 @@ const AcademySection = () => {
                   font.className
                 )}
                 onClick={() => router.push("/dashboard/buy&sell/")}
+                disabled
               >
                 Enroll <Data className="ml-2 h-4 w-4" />
               </Button>
-            </div>
+            </div> */}
           </div>
           <Image
             src="/certificate.png"

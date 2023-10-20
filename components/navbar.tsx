@@ -10,7 +10,7 @@ import {
 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import { ModeToggle } from "@/components/mode-toggle";
 import MobileSidebar from "@/components/mobile-navbar";
 import { useTheme } from "next-themes";
@@ -99,7 +99,7 @@ const Navbar = () => {
         ))}
         <div
           className="flex-1 items-center hover:cursor-pointer text-base min-[912px]:flex hidden font-medium"
-          onClick={() => router.push("/")}
+          onClick={() => redirect("/")}
         >
           <LogoutCurve
             variant="Outline"

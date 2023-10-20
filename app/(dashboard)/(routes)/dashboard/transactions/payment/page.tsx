@@ -27,6 +27,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { BitcoinRefresh } from "iconsax-react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import isAuth from "@/components/isAuth";
 
 const formSchema = z.object({
   paymentMethod: z.string({
@@ -110,4 +111,4 @@ const PaymentPage = () => {
   );
 };
 
-export default PaymentPage;
+export default isAuth(PaymentPage);

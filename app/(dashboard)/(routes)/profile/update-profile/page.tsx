@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import * as z from "zod";
+import isAuth from "@/components/isAuth";
 
 const formSchema = z.object({
   current_password: z.string().min(8, {
@@ -118,4 +119,4 @@ const UpdateProfile = () => {
   );
 };
 
-export default UpdateProfile;
+export default isAuth(UpdateProfile);

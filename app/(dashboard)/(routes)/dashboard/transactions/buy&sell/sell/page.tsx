@@ -26,6 +26,7 @@ import { ArrowSwapHorizontal, BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import isAuth from "@/components/isAuth";
 
 const formSchema = z.object({
   bankName: z.string().min(1, { message: "Please provide your bank name" }),
@@ -177,4 +178,4 @@ const Sellpage = () => {
   );
 };
 
-export default Sellpage;
+export default isAuth(Sellpage);

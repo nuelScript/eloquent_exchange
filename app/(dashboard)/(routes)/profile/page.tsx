@@ -16,6 +16,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import isAuth from "@/components/isAuth";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { getUsers } from "@/lib/helpers";
+import { getCookie } from "@/lib/utils";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -23,10 +28,42 @@ const formSchema = z.object({
 });
 
 const ProfilePage = () => {
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
+
+  useEffect(() => {
+    const fetchdata = async () => {
+      const accessToken = getCookie("access_token");
+      if (accessToken) {
+        try {
+          const response = await axios.get(getUsers, {
+            headers: {
+              Authorization: `JWT ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+          const responseData = response.data;
+          const userEmail = responseData[0].email;
+          const userFirstName = responseData[0].first_name;
+          const userLastName = responseData[0].last_name;
+          if (userEmail) {
+            setEmail(userEmail);
+          }
+          if (userFirstName && userLastName) {
+            setFullName(userLastName + " " + userFirstName);
+          }
+        } catch (error) {
+          console.error("Error", error);
+        }
+      }
+    };
+
+    fetchdata();
+  }, []);
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
@@ -52,7 +89,7 @@ const ProfilePage = () => {
                       <Input
                         className="bg-transparent"
                         readOnly
-                        value="eloquentexchange.ioa.co.wxa.zzyzk"
+                        value={email}
                       />
                     </FormControl>
                   </FormItem>
@@ -70,7 +107,7 @@ const ProfilePage = () => {
                       <Input
                         className="bg-transparent"
                         readOnly
-                        value="Idan of the crypto exchange world"
+                        value={fullName}
                       />
                     </FormControl>
                   </FormItem>
@@ -95,4 +132,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default isAuth(ProfilePage);

@@ -1,7 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { Payment, columns } from "./components/columns";
 import { DataTable } from "./components/data-table.";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { getCookie } from "@/lib/utils";
+import axios from "axios";
+import { getUsers } from "@/lib/helpers";
+import isAuth from "@/components/isAuth";
 
 function getData(): Payment[] {
   return [
@@ -44,12 +51,38 @@ function getData(): Payment[] {
 }
 
 const DashboardPage = () => {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const fetchdata = async () => {
+      const accessToken = getCookie("access_token");
+      if (accessToken) {
+        try {
+          const response = await axios.get(getUsers, {
+            headers: {
+              Authorization: `JWT ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+          const responseData = response.data;
+          const userName = responseData[0].first_name;
+          if (userName) {
+            setName(userName);
+          }
+        } catch (error) {
+          console.error("Error", error);
+        }
+      }
+    };
+
+    fetchdata();
+  }, []);
   const data = getData();
   return (
     <div className="w-full h-screen flex flex-col gap-y-20 px-10 py-8">
       <div className="flex min-[912px]:flex-row min-[912px]:space-y-0 space-y-8 flex-col justify-between items-center">
         <h1 className="text-2xl font-normal min-[912px]:text-5xl">
-          Welcome back, nd3r4a
+          Welcome back, {name}
         </h1>
         <div className="flex min-[912px]:flex-col flex-row min-[912px]:gap-y-4 gap-x-4">
           <Link href="/dashboard/transactions/buy&sell/buy">
@@ -102,4 +135,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default isAuth(DashboardPage);
