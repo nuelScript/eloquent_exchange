@@ -36,11 +36,13 @@ export const deleteExpiredCookie = (name: string) => {
 };
 
 export const getCookie = (name: string): string | null => {
-  const cookies: string[] = document.cookie.split("; ");
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].split("=");
-    if (cookie[0] === name) {
-      return cookie[1];
+  if (typeof document !== "undefined") {
+    const cookies: string[] = document.cookie.split("; ");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].split("=");
+      if (cookie[0] === name) {
+        return cookie[1];
+      }
     }
   }
   return null;
