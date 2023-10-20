@@ -99,7 +99,7 @@ const Navbar = () => {
         ))}
         <div
           className="flex-1 items-center hover:cursor-pointer text-base min-[912px]:flex hidden font-medium"
-          onClick={() => redirect("/")}
+          onClick={() => router.push("/")}
         >
           <LogoutCurve
             variant="Outline"
