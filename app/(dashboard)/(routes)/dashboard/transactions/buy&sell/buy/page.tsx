@@ -31,6 +31,7 @@ import * as z from "zod";
 // import { useEffect, useState } from "react";
 // import { getCookie } from "@/lib/utils";
 import isAuth from "@/components/isAuth";
+import { useState } from "react";
 
 interface BuyProps {}
 
@@ -48,6 +49,9 @@ const formSchema = z.object({
 
 const Buypage = () => {
   const router = useRouter();
+  const [enteredAmount, setEnteredAmount] = useState<number | undefined>(
+    undefined
+  );
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -59,6 +63,7 @@ const Buypage = () => {
   });
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     await axios.post(buyRoute, data);
+    setEnteredAmount(data.amount);
   };
   return (
     <div className="flex justify-center flex-col space-y-8 items-center py-12">

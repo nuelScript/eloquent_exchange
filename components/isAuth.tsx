@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
-import { getCookie } from "@/lib/utils";
 import axios from "axios";
+
 import { verifyRoute } from "@/lib/helpers";
+import { getCookie } from "@/lib/utils";
 
 export let isAuthenticated = false;
 

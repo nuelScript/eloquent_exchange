@@ -1,57 +1,63 @@
 "use client";
 
 import Link from "next/link";
-import { Payment, columns } from "./components/columns";
+import { Transactions, columns } from "./components/columns";
 import { DataTable } from "./components/data-table.";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { getCookie } from "@/lib/utils";
 import axios from "axios";
-import { getUsers } from "@/lib/helpers";
+import {
+  getBoughtCrypto,
+  getCrypto,
+  getSoldCrypto,
+  getUsers,
+} from "@/lib/helpers";
 import isAuth from "@/components/isAuth";
 
-function getData(): Payment[] {
-  return [
-    {
-      order_id: "728ed52f",
-      date: "2021-08-01",
-      amount: 100,
-      status: "Pending",
-      transaction_type: "Bought",
-    },
-    {
-      order_id: "728ed52f",
-      date: "2021-08-01",
-      amount: 100,
-      status: "Rejected",
-      transaction_type: "Bought",
-    },
-    {
-      order_id: "728ed52f",
-      date: "2021-08-01",
-      amount: 100,
-      status: "Success",
-      transaction_type: "Bought",
-    },
-    {
-      order_id: "728ed52f",
-      date: "2021-08-01",
-      amount: 100,
-      status: "Success",
-      transaction_type: "Bought",
-    },
-    {
-      order_id: "728ed52f",
-      date: "2021-08-01",
-      amount: 100,
-      status: "Success",
-      transaction_type: "Bought",
-    },
-  ];
-}
+// function getData(): Transactions[] {
+//   return [
+//     // {
+//     //   order_id: "728ed52f",
+//     //   date: "2021-08-01",
+//     //   amount: 100,
+//     //   status: "Pending",
+//     //   transaction_type: "Bought",
+//     // },
+//     // {
+//     //   order_id: "728ed52f",
+//     //   date: "2021-08-01",
+//     //   amount: 100,
+//     //   status: "Rejected",
+//     //   transaction_type: "Bought",
+//     // },
+//     // {
+//     //   order_id: "728ed52f",
+//     //   date: "2021-08-01",
+//     //   amount: 100,
+//     //   status: "Success",
+//     //   transaction_type: "Bought",
+//     // },
+//     // {
+//     //   order_id: "728ed52f",
+//     //   date: "2021-08-01",
+//     //   amount: 100,
+//     //   status: "Success",
+//     //   transaction_type: "Bought",
+//     // },
+//     // {
+//     //   order_id: "728ed52f",
+//     //   date: "2021-08-01",
+//     //   amount: 100,
+//     //   status: "Success",
+//     //   transaction_type: "Bought",
+//     // },
+//   ];
+// }
 
 const DashboardPage = () => {
   const [name, setName] = useState("");
+  const [data, setData] = useState<Transactions[]>([]);
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -77,7 +83,31 @@ const DashboardPage = () => {
 
     fetchdata();
   }, []);
-  const data = getData();
+
+  useEffect(() => {
+    const fetchCrypto = async () => {
+      const accessToken = getCookie("access_token");
+      if (accessToken) {
+        try {
+          const response = await axios.get(getSoldCrypto, {
+            headers: {
+              Authorization: `JWT ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+          const responseData: Transactions[] = response.data;
+          if (responseData) {
+            setData(responseData);
+          }
+        } catch (error) {
+          console.error("Error", error);
+        }
+      }
+    };
+
+    fetchCrypto();
+  }, []);
+  // const data = getData();
   return (
     <div className="w-full h-screen flex flex-col gap-y-20 px-10 py-8">
       <div className="flex min-[912px]:flex-row min-[912px]:space-y-0 space-y-8 flex-col justify-between items-center">

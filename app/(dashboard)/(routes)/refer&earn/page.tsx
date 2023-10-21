@@ -56,7 +56,7 @@ const ReferPage = () => {
           <Label htmlFor="total number of referrals">
             Total Number of Referrals
           </Label>
-          <Input readOnly value="$0" className="bg-transparent text-center" />
+          <Input readOnly value="0" className="bg-transparent text-center" />
         </div>
         <div className="flex flex-col items-start space-y-4">
           <Label htmlFor="balance and total earnings">
