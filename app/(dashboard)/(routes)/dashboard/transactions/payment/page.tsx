@@ -28,6 +28,7 @@ import { BitcoinRefresh } from "iconsax-react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import isAuth from "@/components/isAuth";
+import { redirect, useRouter } from "next/navigation";
 
 const formSchema = z.object({
   paymentMethod: z.string({
@@ -36,13 +37,15 @@ const formSchema = z.object({
 });
 
 const PaymentPage = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    try {
-    } catch (error) {}
+  const onSubmit = () => {
+    const paymentLink = localStorage.getItem("link");
+    const flutterwaveLink = paymentLink?.toString();
+    router.push(flutterwaveLink || "");
   };
   return (
     <div className="flex justify-center items-center pt-12">

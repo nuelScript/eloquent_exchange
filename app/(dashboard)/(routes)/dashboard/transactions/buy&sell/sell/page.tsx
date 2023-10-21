@@ -27,6 +27,10 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import isAuth from "@/components/isAuth";
+import axios from "axios";
+import { sellRoute } from "@/lib/helpers";
+import { getCookie } from "@/lib/utils";
+import { useState } from "react";
 
 const formSchema = z.object({
   bankName: z.string().min(1, { message: "Please provide your bank name" }),
@@ -39,16 +43,11 @@ const formSchema = z.object({
   amount: z.coerce.number().min(0, { message: "Amount cannot be negative" }),
 });
 
-const onPaste = () => {
-  navigator.clipboard.readText().then((text) => {
-    if (text) {
-      formSchema.parse(text);
-    }
-  });
-};
-
 const Sellpage = () => {
   const router = useRouter();
+  const [enteredAmount, setEnteredAmount] = useState<number | undefined>(
+    undefined
+  );
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -58,7 +57,29 @@ const Sellpage = () => {
       amount: 0,
     },
   });
-  const onSubmit = (data: z.infer<typeof formSchema>) => {};
+
+  const accessToken = getCookie("access_token");
+
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    try {
+      await axios
+        .post(sellRoute, data, {
+          headers: {
+            Authorization: `JWT ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          const responseData = response.data;
+          const paymentLink = responseData.data.link;
+          localStorage.setItem("link", paymentLink);
+        })
+        .then(() => router.push("/dashboard/transactions/payment"));
+      setEnteredAmount(data.amount);
+    } catch (error) {
+      console.error("Error making POST request:", error);
+    }
+  };
   return (
     <div className="flex justify-center flex-col space-y-8 items-center py-12">
       <p className="text-primary font-medium min-[450px]:text-left text-center ">

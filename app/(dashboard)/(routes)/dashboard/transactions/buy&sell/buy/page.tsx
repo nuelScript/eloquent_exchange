@@ -31,17 +31,16 @@ import * as z from "zod";
 // import { useEffect, useState } from "react";
 // import { getCookie } from "@/lib/utils";
 import isAuth from "@/components/isAuth";
-import { useState } from "react";
-
-interface BuyProps {}
+import { useEffect, useState } from "react";
+import { getCookie } from "@/lib/utils";
 
 const formSchema = z.object({
   network: z.string().min(1, { message: "Select a network" }),
-  walletAddress: z
+  wallet_address: z
     .string()
     .min(24, { message: "Enter a valid wallet address" })
     .max(62, { message: "Enter a valid wallet address" }),
-  coinType: z.string().min(1, {
+  coin_type: z.string().min(1, {
     message: "Coin type is required",
   }),
   amount: z.coerce.number().min(0, { message: "Amount cannot be negative" }),
@@ -56,14 +55,44 @@ const Buypage = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       network: "",
-      walletAddress: "",
-      coinType: "",
+      wallet_address: "",
+      coin_type: "",
       amount: 0,
     },
   });
+  const accessToken = getCookie("access_token");
+
+  // useEffect(() => {
+  //   const PostData = async () => {
+  //     const request = await axios.post(buyRoute, form, {
+  //       headers: {
+  //         Authorization: `JWT ${accessToken}`,
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //   };
+
+  //   PostData();
+  // });
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    await axios.post(buyRoute, data);
-    setEnteredAmount(data.amount);
+    try {
+      await axios
+        .post(buyRoute, data, {
+          headers: {
+            Authorization: `JWT ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          const responseData = response.data;
+          const paymentLink = responseData.data.link;
+          localStorage.setItem("link", paymentLink);
+        })
+        .then(() => router.push("/dashboard/transactions/payment"));
+      setEnteredAmount(data.amount);
+    } catch (error) {
+      console.error("Error making POST request:", error);
+    }
   };
   return (
     <div className="flex justify-center flex-col space-y-8 items-center py-12">
@@ -79,7 +108,7 @@ const Buypage = () => {
             >
               <FormField
                 control={form.control}
-                name="coinType"
+                name="coin_type"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="font-normal text-primary text-base">
@@ -187,7 +216,7 @@ const Buypage = () => {
               />
               <FormField
                 control={form.control}
-                name="walletAddress"
+                name="wallet_address"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="font-normal text-primary text-base">
