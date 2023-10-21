@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Transactions, columns } from "./components/columns";
+import { Payment, columns } from "./components/columns";
 import { DataTable } from "./components/data-table.";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
@@ -57,7 +57,7 @@ import isAuth from "@/components/isAuth";
 
 const DashboardPage = () => {
   const [name, setName] = useState("");
-  const [data, setData] = useState<Transactions[]>([]);
+  const [data, setData] = useState<Payment[]>([]);
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -95,7 +95,7 @@ const DashboardPage = () => {
               "Content-Type": "application/json",
             },
           });
-          const responseData: Transactions[] = response.data;
+          const responseData: Payment[] = response.data;
           if (responseData) {
             setData(responseData);
           }
@@ -107,6 +107,7 @@ const DashboardPage = () => {
 
     fetchCrypto();
   }, []);
+
   // const data = getData();
   return (
     <div className="w-full h-screen flex flex-col gap-y-20 px-10 py-8">
