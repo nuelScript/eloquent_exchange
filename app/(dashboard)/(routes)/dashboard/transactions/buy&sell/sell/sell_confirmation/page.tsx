@@ -2,14 +2,15 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import isAuth from "@/components/isAuth";
 
 const SellConfirmation = () => {
   return (
     <Card className="flex flex-col items-center justify-center bg-transparent border-none">
-      <CardHeader className="text-4xl">
+      <CardHeader className="text-4xl text-center min-[912px]:text-center">
         Kindly pay into the following wallet addresses
       </CardHeader>
-      <CardContent className="flex flex-col w-[500px] space-y-8">
+      <CardContent className="flex flex-col min-[912px]:w-[500px] w-full space-y-8">
         <div className="flex flex-col w-full max-w-sm items-start gap-4">
           <Label htmlFor="email" className="text-base font-semibold">
             Bitcoin Address
@@ -102,4 +103,4 @@ const SellConfirmation = () => {
   );
 };
 
-export default SellConfirmation;
+export default isAuth(SellConfirmation);
