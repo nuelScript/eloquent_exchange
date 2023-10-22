@@ -146,7 +146,7 @@ const Sellpage = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="font-normal text-primary text-base">
-                      Bank Name
+                      Payment Name
                     </FormLabel>
                     <Input
                       className="text-primary text-left font-medium dark:border-primary bg-transparent"
