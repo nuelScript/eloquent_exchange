@@ -12,7 +12,7 @@ const SellConfirmation = () => {
       <CardHeader className="text-4xl text-center min-[912px]:text-center">
         Kindly pay into the following wallet addresses
       </CardHeader>
-      <CardContent className="flex flex-col min-[912px]:w-[500px] w-full space-y-8">
+      <CardContent className="flex flex-col min-[912px]:items-start items-center min-[912px]:w-[500px] w-full space-y-8">
         <div className="flex flex-col w-full max-w-sm items-start gap-4">
           <Label htmlFor="email" className="text-base font-semibold">
             Bitcoin Address
