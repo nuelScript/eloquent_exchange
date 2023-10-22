@@ -118,6 +118,7 @@ const Sellpage = () => {
                           <SelectItem value="ethereum">Ethereum</SelectItem>
                           <SelectItem value="usdt">USDT</SelectItem>
                           <SelectItem value="dodge">Dodge</SelectItem>
+                          <SelectItem value="bnb">BNB</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
