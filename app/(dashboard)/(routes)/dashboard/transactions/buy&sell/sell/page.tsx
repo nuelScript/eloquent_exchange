@@ -61,24 +61,7 @@ const Sellpage = () => {
   const accessToken = getCookie("access_token");
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    try {
-      await axios
-        .post(sellRoute, data, {
-          headers: {
-            Authorization: `JWT ${accessToken}`,
-            "Content-Type": "application/json",
-          },
-        })
-        .then((response) => {
-          const responseData = response.data;
-          const paymentLink = responseData.data.link;
-          localStorage.setItem("link", paymentLink);
-        })
-        .then(() => router.push("/dashboard/transactions/payment"));
-      setEnteredAmount(data.amount);
-    } catch (error) {
-      console.error("Error making POST request:", error);
-    }
+    router.push("/dashboard/transactions/buy&sell/sell/sell_confirmation");
   };
   return (
     <div className="flex justify-center flex-col space-y-8 items-center py-12">
