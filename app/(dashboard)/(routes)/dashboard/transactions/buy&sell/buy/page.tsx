@@ -182,20 +182,16 @@ const Buypage = () => {
                       <SelectContent>
                         <SelectGroup>
                           <SelectItem value="mtn mobile money">
-                            MTN Mobile Money
+                            Trc20
                           </SelectItem>
-                          <SelectItem value="skrill">Skrill</SelectItem>
+                          <SelectItem value="skrill">Eth(ERC20)</SelectItem>
                           <SelectItem value="orange mobile money">
-                            Orange Mobile Money
+                            Bitcoin (BTC)
                           </SelectItem>
-                          <SelectItem value="neteller">NETELLER</SelectItem>
+                          <SelectItem value="neteller">BNB (BEP20)</SelectItem>
                           <SelectItem value="airtel mobile money">
-                            Airtel Mobile Money
+                            Doge
                           </SelectItem>
-                          <SelectItem value="bank transfer">
-                            Bank Transfer
-                          </SelectItem>
-                          <SelectItem value="wise">Wise</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
