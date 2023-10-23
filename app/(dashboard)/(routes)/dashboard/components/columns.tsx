@@ -3,17 +3,17 @@
 import { ColumnDef } from "@tanstack/react-table";
 
 export type Payment = {
-  order_id: string;
+  id: number;
   date: string;
-  amount: number;
+  amount: string;
   status: "Success" | "Pending" | "Rejected";
   transaction_type: "Bought" | "Sold";
 };
 
 export const columns: ColumnDef<Payment>[] = [
   {
-    accessorKey: "order_id",
-    header: "Order ID",
+    accessorKey: "id",
+    header: "ID",
   },
   {
     accessorKey: "date",

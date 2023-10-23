@@ -62,18 +62,6 @@ const Buypage = () => {
   });
   const accessToken = getCookie("access_token");
 
-  // useEffect(() => {
-  //   const PostData = async () => {
-  //     const request = await axios.post(buyRoute, form, {
-  //       headers: {
-  //         Authorization: `JWT ${accessToken}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //   };
-
-  //   PostData();
-  // });
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       await axios
@@ -132,6 +120,7 @@ const Buypage = () => {
                           <SelectItem value="ethereum">Ethereum</SelectItem>
                           <SelectItem value="usdt">USDT</SelectItem>
                           <SelectItem value="dodge">Dodge</SelectItem>
+                          <SelectItem value="bnb">BNB</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>

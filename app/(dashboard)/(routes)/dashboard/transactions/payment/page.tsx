@@ -28,7 +28,7 @@ import { BitcoinRefresh } from "iconsax-react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import isAuth from "@/components/isAuth";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   paymentMethod: z.string({
@@ -45,7 +45,14 @@ const PaymentPage = () => {
   const onSubmit = () => {
     const paymentLink = localStorage.getItem("link");
     const flutterwaveLink = paymentLink?.toString();
-    router.push(flutterwaveLink || "");
+
+    const paymentMethod = form.getValues("paymentMethod");
+
+    if (paymentMethod === "card") {
+      router.push(flutterwaveLink || "");
+    } else {
+      router.push("/dashboard/transactions/payment/mobile_money");
+    }
   };
   return (
     <div className="flex justify-center items-center pt-12">
@@ -81,21 +88,10 @@ const PaymentPage = () => {
                       </FormControl>
                       <SelectContent>
                         <SelectGroup>
-                          <SelectItem value="mtn mobile money">
-                            MTN Mobile Money
-                          </SelectItem>
-                          <SelectItem value="skrill">Skrill</SelectItem>
-                          <SelectItem value="orange mobile money">
-                            Orange Mobile Money
-                          </SelectItem>
-                          <SelectItem value="neteller">NETELLER</SelectItem>
-                          <SelectItem value="airtel mobile money">
-                            Airtel Mobile Money
-                          </SelectItem>
+                          <SelectItem value="card">Card</SelectItem>
                           <SelectItem value="bank transfer">
-                            Bank Transfer
+                            Mobile Money (Bank Transfer)
                           </SelectItem>
-                          <SelectItem value="wise">Wise</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
