@@ -22,3 +22,5 @@ export const getPackageListRoute = absoluteUrl("/package/");
 export const buyRoute = absoluteUrl("/buy/");
 export const sellRoute = absoluteUrl("/sell/");
 export const initiatePaymentRoute = absoluteUrl("/initiate-payment/");
+export const getCoinList = absoluteUrl("/coin/");
+export const getCoin = absoluteUrl("/coin/{id}/");

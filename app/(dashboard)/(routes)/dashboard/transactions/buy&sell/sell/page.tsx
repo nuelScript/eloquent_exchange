@@ -28,9 +28,10 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import isAuth from "@/components/isAuth";
 import axios from "axios";
-import { sellRoute } from "@/lib/helpers";
+import { getCoinList, sellRoute } from "@/lib/helpers";
 import { getCookie } from "@/lib/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const formSchema = z.object({
   bankName: z.string().min(1, { message: "Please provide your bank name" }),
@@ -48,6 +49,7 @@ const Sellpage = () => {
   const [enteredAmount, setEnteredAmount] = useState<number | undefined>(
     undefined
   );
+  const [coinlist, setCoinList] = useState<any[]>([]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -59,6 +61,20 @@ const Sellpage = () => {
   });
 
   const accessToken = getCookie("access_token");
+
+  useEffect(() => {
+    const fetchCoinData = async () => {
+      try {
+        const response = await axios.get(getCoinList);
+        const coinList = response.data;
+        setCoinList(coinList);
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+
+    fetchCoinData();
+  }, [form]);
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     router.push("/dashboard/transactions/buy&sell/sell/sell_confirmation");
@@ -116,8 +132,20 @@ const Sellpage = () => {
                   <FormItem className="space-y-4">
                     <FormLabel className="font-normal flex justify-between">
                       <span>Amount</span>{" "}
-                      <span className="text-muted-foreground">
-                        Rate: {OFFICIAL_RATES} / %
+                      <span className="text-primary font-semibold ">
+                        <ScrollArea className="w-36 h-5 items-center whitespace-nowrap rounded-md">
+                          <div className="w-fit space-x-8 p-0">
+                            {coinlist.map((coin) => (
+                              <span
+                                key={coin.id}
+                                className="flex-1 text-muted-foreground overflow-hidden "
+                              >
+                                {coin.name} : {coin.sell_rate}
+                              </span>
+                            ))}
+                          </div>
+                          <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
                       </span>
                     </FormLabel>
                     <FormControl>
