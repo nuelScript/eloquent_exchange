@@ -28,8 +28,6 @@ import { ArrowSwapHorizontal, BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-// import { useEffect, useState } from "react";
-// import { getCookie } from "@/lib/utils";
 import isAuth from "@/components/isAuth";
 import { useEffect, useState } from "react";
 import { getCookie } from "@/lib/utils";

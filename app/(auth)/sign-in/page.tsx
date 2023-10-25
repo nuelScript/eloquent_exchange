@@ -17,12 +17,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import * as z from "zod";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { googleOAuth, signInRoute } from "@/lib/helpers";
+import * as z from "zod";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -104,7 +104,7 @@ const SignInPage = () => {
           </Link>
         </p>
       </div>
-      <div className="flex flex-col space-y-8 w-[500px]">
+      <div className="flex flex-col space-y-8 min-[912px]:w-[500px] w-full">
         <div className="flex justify-center">
           <Image
             src={
@@ -118,10 +118,12 @@ const SignInPage = () => {
             className="min-[1000px]:hidden block"
           />
         </div>
-        <h1 className="text-4xl font-semibold text-primary">Welcome Back!</h1>
-        <p className="text-muted-foreground">
-          Enter your credentials to access your account.
-        </p>
+        <div className="flex flex-col space-y-8 min-[912px]:items-start items-center">
+          <h1 className="text-4xl font-semibold text-primary">Welcome Back!</h1>
+          <p className="text-muted-foreground">
+            Enter your credentials to access your account.
+          </p>
+        </div>
         <div>
           <Form {...form}>
             <form

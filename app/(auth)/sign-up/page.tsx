@@ -119,7 +119,7 @@ const SignUpPage = () => {
           </Link>
         </p>
       </div>
-      <div className="flex flex-col space-y-8 w-[500px]">
+      <div className="flex flex-col space-y-8 min-[912px]:w-[500px] w-full">
         <div className="flex justify-center">
           <Image
             src={
@@ -145,7 +145,7 @@ const SignUpPage = () => {
               onSubmit={form.handleSubmit(onSubmit)}
               className="flex flex-col space-y-8 min-[1000px]:p-0 px-4"
             >
-              <div className="flex space-x-8">
+              <div className="flex min-[912px]:flex-row flex-col min-[912px]:space-x-8 min-[912px]:space-y-0 space-y-8">
                 <FormField
                   control={form.control}
                   name="first_name"
