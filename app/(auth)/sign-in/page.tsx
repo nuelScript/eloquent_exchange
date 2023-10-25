@@ -82,7 +82,7 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="flex  min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen bg-[url('/rockets.svg')] bg-center bg-no-repeat bg-contain bg-fixed">
+    <div className="flex  min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen min-[912px]:bg-[url('/rockets.svg')] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
       <div className="flex-col items-start gap-y-8 min-[1000px]:flex hidden">
         <Image
           src="/coin.svg"
@@ -119,8 +119,10 @@ const SignInPage = () => {
           />
         </div>
         <div className="flex flex-col space-y-8 min-[912px]:items-start items-center">
-          <h1 className="text-4xl font-semibold text-primary">Welcome Back!</h1>
-          <p className="text-muted-foreground">
+          <h1 className="min-[912px]:text-4xl text-3xl font-semibold text-primary">
+            Welcome Back!
+          </h1>
+          <p className="min-[912px]:text-muted-foreground text-primary">
             Enter your credentials to access your account.
           </p>
         </div>
