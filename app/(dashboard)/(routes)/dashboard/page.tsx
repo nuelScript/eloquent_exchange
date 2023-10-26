@@ -83,6 +83,7 @@ const DashboardPage = () => {
                 console.log(responseData);
                 const accessToken = responseData.access_token;
                 const refreshToken = responseData.refresh_token;
+                console.log(accessToken);
                 if (accessToken) {
                   setCookie("access_token", accessToken, 7);
                   setCookie("refresh_token", refreshToken, 7);
