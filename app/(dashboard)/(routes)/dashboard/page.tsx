@@ -13,6 +13,7 @@ import {
   getSoldCrypto,
   getUsers,
   googleOAuth,
+  postGoogleOAuth,
 } from "@/lib/helpers";
 import isAuth from "@/components/isAuth";
 
@@ -73,7 +74,7 @@ const DashboardPage = () => {
         const fetchAccessToken = async () => {
           try {
             await axios
-              .post(googleOAuth, {
+              .post(postGoogleOAuth, {
                 state: state,
                 code: code,
               })

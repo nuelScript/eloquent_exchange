@@ -11,6 +11,7 @@ export const resetPasswordRoute = absoluteUrl("/auth/users/set_password/");
 export const googleOAuth = absoluteUrl(
   "/auth/o/google-oauth2/?redirect_uri=https://eloquentexchange.org/dashboard"
 );
+export const postGoogleOAuth = absoluteUrl("/auth/o/google-oauth2/");
 export const getUsers = absoluteUrl("/auth/users/");
 export const getRefferalRoute = absoluteUrl("/referral_code/");
 export const sendEmailRoute = absoluteUrl("/send-email/");
