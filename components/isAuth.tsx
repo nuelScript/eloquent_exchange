@@ -6,7 +6,6 @@ import axios from "axios";
 
 import { verifyRoute } from "@/lib/helpers";
 import { getCookie } from "@/lib/utils";
-import toast from "react-hot-toast";
 
 export let isAuthenticated = false;
 
@@ -42,7 +41,6 @@ export default function isAuth(Component: any) {
 
     useEffect(() => {
       if (!isAuthenticated || !accessToken || !isValidToken) {
-        // setInterval(toast.loading("Loading..."), 3);
         return redirect("/sign-in");
       }
     }, [accessToken, isValidToken]);

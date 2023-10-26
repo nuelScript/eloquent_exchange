@@ -7,55 +7,8 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { getCookie, setCookie } from "@/lib/utils";
 import axios from "axios";
-import {
-  getBoughtCrypto,
-  getCrypto,
-  getSoldCrypto,
-  getUsers,
-  googleOAuth,
-  postGoogleOAuth,
-} from "@/lib/helpers";
+import { getSoldCrypto, getUsers, postGoogleOAuth } from "@/lib/helpers";
 import isAuth from "@/components/isAuth";
-
-// function getData(): Transactions[] {
-//   return [
-//     // {
-//     //   order_id: "728ed52f",
-//     //   date: "2021-08-01",
-//     //   amount: 100,
-//     //   status: "Pending",
-//     //   transaction_type: "Bought",
-//     // },
-//     // {
-//     //   order_id: "728ed52f",
-//     //   date: "2021-08-01",
-//     //   amount: 100,
-//     //   status: "Rejected",
-//     //   transaction_type: "Bought",
-//     // },
-//     // {
-//     //   order_id: "728ed52f",
-//     //   date: "2021-08-01",
-//     //   amount: 100,
-//     //   status: "Success",
-//     //   transaction_type: "Bought",
-//     // },
-//     // {
-//     //   order_id: "728ed52f",
-//     //   date: "2021-08-01",
-//     //   amount: 100,
-//     //   status: "Success",
-//     //   transaction_type: "Bought",
-//     // },
-//     // {
-//     //   order_id: "728ed52f",
-//     //   date: "2021-08-01",
-//     //   amount: 100,
-//     //   status: "Success",
-//     //   transaction_type: "Bought",
-//     // },
-//   ];
-// }
 
 const DashboardPage = () => {
   const [name, setName] = useState("");
