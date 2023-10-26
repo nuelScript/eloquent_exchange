@@ -5,13 +5,14 @@ import { Payment, columns } from "./components/columns";
 import { DataTable } from "./components/data-table.";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { getCookie } from "@/lib/utils";
+import { getCookie, setCookie } from "@/lib/utils";
 import axios from "axios";
 import {
   getBoughtCrypto,
   getCrypto,
   getSoldCrypto,
   getUsers,
+  googleOAuth,
 } from "@/lib/helpers";
 import isAuth from "@/components/isAuth";
 
@@ -58,6 +59,42 @@ import isAuth from "@/components/isAuth";
 const DashboardPage = () => {
   const [name, setName] = useState("");
   const [data, setData] = useState<Payment[]>([]);
+
+  useEffect(() => {
+    const fetchCallBackUrl = () => {
+      const url = window.location.href;
+      const urlParams = new URLSearchParams(url);
+      console.log(urlParams);
+      const code = urlParams.get("code");
+      const state = urlParams.get("state");
+      if (code && state) {
+        const fetchAccessToken = async () => {
+          try {
+            await axios
+              .post(googleOAuth, {
+                code: code,
+                state: state,
+              })
+              .then((response) => {
+                const responseData = response.data;
+                const accessToken = responseData.access_token;
+                const refreshToken = responseData.refresh_token;
+                if (accessToken) {
+                  setCookie("access_token", accessToken, 7);
+                  setCookie("refresh_token", refreshToken, 7);
+                }
+              });
+          } catch (error) {
+            console.error("Error", error);
+          }
+        };
+
+        fetchAccessToken();
+      }
+    };
+
+    fetchCallBackUrl();
+  }, []);
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -166,4 +203,4 @@ const DashboardPage = () => {
   );
 };
 
-export default isAuth(DashboardPage);
+export default DashboardPage;
