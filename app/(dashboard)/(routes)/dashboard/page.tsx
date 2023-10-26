@@ -7,12 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { getCookie, setCookie } from "@/lib/utils";
 import axios from "axios";
-import {
-  getSoldCrypto,
-  getUsers,
-  googleOAuth,
-  postGoogleOAuth,
-} from "@/lib/helpers";
+import { getSoldCrypto, getUsers, postGoogleOAuth } from "@/lib/helpers";
 import isAuth from "@/components/isAuth";
 
 const DashboardPage = () => {
@@ -30,7 +25,7 @@ const DashboardPage = () => {
           try {
             await axios
               .post(
-                googleOAuth,
+                postGoogleOAuth,
                 {
                   code: code,
                 },
