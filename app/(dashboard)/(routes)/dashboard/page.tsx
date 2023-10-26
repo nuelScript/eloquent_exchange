@@ -67,7 +67,7 @@ const DashboardPage = () => {
       console.log(urlParams);
       const code = urlParams.get("code");
       console.log(code);
-      const state = urlParams.get("state");
+      const state = localStorage.getItem("state");
       console.log(state);
       if (code && state) {
         const fetchAccessToken = async () => {
