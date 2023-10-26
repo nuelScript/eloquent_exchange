@@ -7,7 +7,12 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { getCookie, setCookie } from "@/lib/utils";
 import axios from "axios";
-import { getSoldCrypto, getUsers, postGoogleOAuth } from "@/lib/helpers";
+import {
+  getSoldCrypto,
+  getUsers,
+  googleOAuth,
+  postGoogleOAuth,
+} from "@/lib/helpers";
 import isAuth from "@/components/isAuth";
 
 const DashboardPage = () => {
@@ -25,7 +30,7 @@ const DashboardPage = () => {
           try {
             await axios
               .post(
-                postGoogleOAuth,
+                googleOAuth,
                 {
                   code: code,
                 },
@@ -107,7 +112,6 @@ const DashboardPage = () => {
     fetchCrypto();
   }, []);
 
-  // const data = getData();
   return (
     <div className="w-full h-screen flex flex-col gap-y-20 px-10 py-8">
       <div className="flex min-[912px]:flex-row min-[912px]:space-y-0 space-y-8 flex-col justify-between items-center">
