@@ -64,8 +64,11 @@ const DashboardPage = () => {
     const fetchCallBackUrl = () => {
       const url = window.location.href;
       const urlParams = new URLSearchParams(url);
+      console.log(urlParams);
       const code = urlParams.get("code");
+      console.log(code);
       const state = urlParams.get("state");
+      console.log(state);
       if (code && state) {
         const fetchAccessToken = async () => {
           try {
