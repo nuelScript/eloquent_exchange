@@ -90,6 +90,9 @@ const SignUpPage = () => {
       const response = await axios.get(googleOAuth);
       const googleResponse = response.data;
       const authorizationUrl: string = googleResponse.authorization_url;
+      const urlParams = new URLSearchParams(authorizationUrl);
+      const state = urlParams.get("state");
+      localStorage.setItem("state", state || "");
       router.push(authorizationUrl);
     } catch (error: any) {
       toast.error("Unable to sign up. Please try Again");
