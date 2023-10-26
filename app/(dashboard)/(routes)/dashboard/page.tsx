@@ -74,8 +74,8 @@ const DashboardPage = () => {
           try {
             await axios
               .post(googleOAuth, {
-                code: code,
                 state: state,
+                code: code,
               })
               .then((response) => {
                 const responseData = response.data;
