@@ -18,19 +18,23 @@ const DashboardPage = () => {
     const fetchCallBackUrl = () => {
       const url = window.location.href;
       const urlParams = new URLSearchParams(url);
-      console.log(urlParams);
       const code = urlParams.get("code");
-      console.log(code);
       const state = localStorage.getItem("state");
-      console.log(state);
-      if (code && state) {
+      if (code) {
         const fetchAccessToken = async () => {
           try {
             await axios
-              .post(postGoogleOAuth, {
-                state: state,
-                code: code,
-              })
+              .post(
+                postGoogleOAuth,
+                {
+                  code: code,
+                },
+                {
+                  params: {
+                    state: state,
+                  },
+                }
+              )
               .then((response) => {
                 const responseData = response.data;
                 console.log(responseData);
@@ -161,4 +165,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default isAuth(DashboardPage);
