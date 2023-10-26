@@ -77,6 +77,7 @@ const DashboardPage = () => {
               })
               .then((response) => {
                 const responseData = response.data;
+                console.log(responseData);
                 const accessToken = responseData.access_token;
                 const refreshToken = responseData.refresh_token;
                 if (accessToken) {
