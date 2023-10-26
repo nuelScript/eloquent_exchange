@@ -64,7 +64,6 @@ const DashboardPage = () => {
     const fetchCallBackUrl = () => {
       const url = window.location.href;
       const urlParams = new URLSearchParams(url);
-      console.log(urlParams);
       const code = urlParams.get("code");
       const state = urlParams.get("state");
       if (code && state) {
