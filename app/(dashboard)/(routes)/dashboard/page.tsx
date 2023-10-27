@@ -28,7 +28,7 @@ const DashboardPage = () => {
         const fetchAccessToken = async () => {
           try {
             await axios
-              .post(postGoogleOAuth, urlParams, {
+              .post(postGoogleOAuth, data, {
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",
                 },
