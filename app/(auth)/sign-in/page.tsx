@@ -187,7 +187,7 @@ const SignInPage = () => {
             </form>
           </Form>
         </div>
-        <p
+        {/* <p
           className={cn(
             "text-lg font-medium uppercase text-center",
             font.className
@@ -202,7 +202,7 @@ const SignInPage = () => {
           >
             <FcGoogle className="w-6 h-6 group-hover:scale-110" />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
