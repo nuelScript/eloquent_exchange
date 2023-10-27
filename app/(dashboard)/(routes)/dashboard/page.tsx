@@ -19,7 +19,8 @@ const DashboardPage = () => {
       const url = window.location.href;
       const urlParams = new URLSearchParams(url);
       const code = urlParams.get("code");
-      const state = localStorage.getItem("state");
+      // const state = localStorage.getItem("state");
+      const state = "dDOyM3mDtcHYfxna81JXwjbdaVVZrSuU";
       const data = {
         code: code,
         state: state,
