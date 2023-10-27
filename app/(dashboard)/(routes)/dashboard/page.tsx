@@ -20,21 +20,19 @@ const DashboardPage = () => {
       const urlParams = new URLSearchParams(url);
       const code = urlParams.get("code");
       const state = localStorage.getItem("state");
+      const data = {
+        code: code,
+        state: state,
+      };
       if (code) {
         const fetchAccessToken = async () => {
           try {
             await axios
-              .post(
-                postGoogleOAuth,
-                {
-                  code: code,
+              .post(postGoogleOAuth, urlParams, {
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
                 },
-                {
-                  params: {
-                    state: state,
-                  },
-                }
-              )
+              })
               .then((response) => {
                 const responseData = response.data;
                 console.log(responseData);
