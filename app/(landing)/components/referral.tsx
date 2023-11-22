@@ -62,16 +62,17 @@ const ReferralSection = () => {
       </div>
       <div className="flex flex-col space-y-1">
         <div className="flex min-[912px]:flex-row flex-col min-[912px]:space-y-0 space-y-10 justify-between items-center">
-          <h3 className="min-[912px]:text-5xl text-xl min-[912px]:text-left text-center font-medium leading-normal">
+          <h3 className="min-[912px]:text-5xl mb-2 pb-1 text-xl min-[912px]:text-left text-center font-medium leading-normal">
             Here are some{" "}
             <span className="text-[#4168B7] dark:text-[#A77700]">
               acceptable
             </span>{" "}
-            <br className="min-[912px]:block hidden" /> payment method on{" "}
+            <br className="min-[912px]:block hidden" />
+            <span> payment method on </span>
             <br className="min-[912px]:block hidden" />{" "}
-            <span className="text-[#4168B7] dark:text-[#A77700]">
+            <p className="text-[#4168B7] mt-2 pt-1 dark:text-[#A77700]">
               Eloquent Exchange.
-            </span>
+            </p>
           </h3>
           <Image
             src="/credit_card_dark.png"

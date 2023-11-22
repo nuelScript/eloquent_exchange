@@ -86,7 +86,7 @@ const ContactForm = () => {
                   <Input
                     disabled={isLoading}
                     placeholder="Name"
-                    className="bg-gradient-to-b from-[#4168B7] dark:from-[#A77700] border-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 placeholder:text-primary"
+                    className="bg-gradient-to-b dark:placeholder-white from-[#4168B7] dark:from-[#A77700] border-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 placeholder:text-primary"
                     {...field}
                   />
                 </FormControl>
@@ -106,7 +106,7 @@ const ContactForm = () => {
                   <Input
                     disabled={isLoading}
                     placeholder="Email"
-                    className="bg-gradient-to-b from-[#4168B7] dark:from-[#A77700] border-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 placeholder:text-primary"
+                    className="bg-gradient-to-b dark:placeholder-white from-[#4168B7] dark:from-[#A77700] border-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 placeholder:text-primary"
                     {...field}
                   />
                 </FormControl>
@@ -127,7 +127,7 @@ const ContactForm = () => {
                 <Textarea
                   disabled={isLoading}
                   placeholder="Message"
-                  className="resize-none bg-gradient-to-b from-[#4168B7] dark:from-[#A77700] placeholder:text-primary border-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                  className="resize-none dark:placeholder-white bg-gradient-to-b from-[#4168B7] dark:from-[#A77700] placeholder:text-primary border-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
                   rows={10}
                   {...field}
                 />

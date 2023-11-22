@@ -73,9 +73,9 @@ const AcademySection = () => {
           className="w-auto h-auto object-cover object-center min-[912px]:block hidden"
         />
         <div className="flex flex-col min-[912px]:space-y-2 space-y-6 min-[912px]:items-start items-center">
-          <h3 className="text-primary min-[912px]:text-3xl text-2xl min-[912px]:font-semibold font-normal leading-snug min-[912px]:w-1/4 w-3/4 min-[912px]:text-left text-center">
+          <h3 className="text-primary min-[912px]:text-5xl text-3xl min-[912px]:font-semibold font-normal leading-snug  min-[912px]:text-left text-center">
             Eloquent{" "}
-            <span className="text-[#4168B7] dark:text-[#A77700]">
+            <span className="text-[#4168B7] flex flex-row dark:text-[#A77700]">
               Trading Academy.
             </span>
           </h3>
@@ -86,7 +86,7 @@ const AcademySection = () => {
             alt="images"
             className="object-cover object-center min-[912px]:hidden block"
           />
-          <p className="text-primary text-sm font-normal min-[912px]:w-2/4 w-full min-[912px]:text-left text-center">
+          <p className="text-primary text-md font-normal  min-[912px]:text-left text-center">
             Unlock the secrets of successful trading at our cutting-edge Trading
             Academy! Join our community of skilled traders, master market
             trends, and elevate your financial potential to new heights.
@@ -102,53 +102,57 @@ const AcademySection = () => {
           alt="images"
           className="w-auto h-auto object-cover object-center"
         />
-        <div className="flex flex-col space-y-2 min-[912px]:items-end items-center">
-          <h3 className="text-primary min-[912px]:text-3xl text-2xl font-semibold leading-snug uppercase min-[912px]:w-2/3 w-full min-[912px]:text-right text-left">
+        <div className="flex flex-col sm:mt-3 sm:pt-4 sm:text-center space-y-2 min-[912px]:items-end items-center">
+          <h3 className="text-primary  sm:mt-3 sm:pt-4 sm:text-center  min-[912px]:text-3xl text-2xl font-semibold leading-snug uppercase min-[912px]:w-2/3 w-full min-[912px]:text-right text-left">
             <span className="text-[#4168B7] dark:text-[#A77700]">200+</span>{" "}
             Students trust us
           </h3>
-          <p className="text-primary text-sm font-normal">
+          <p className="text-primary sm:text-center text-md font-normal">
             Be part of the next set of students Eloquent academy enrolls.
           </p>
         </div>
       </div>
-      <div className="flex min-[912px]:flex-row flex-col min-[912px]:space-x-10 min-[912px]:space-y-0 space-y-8 justify-center items-center">
-        <div className="flex flex-col h-[240px] border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-6 rounded-3xl space-y-6 w-[300px]">
-          <div className="flex min-[912px]:flex-col flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
+      <div className="flex min-[912px]:flex-row hover:bg-red  flex-col min-[912px]:space-x-10 min-[912px]:space-y-0 space-y-8 justify-center items-center">
+        <div className="flex flex-col h-[240px] hover:dark:bg-[#A77700] hover:dark:text-[#000000] hover:dark:border-[#A77700] border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF]   p-6 rounded-3xl space-y-6 w-[300px]">
+          <div className="flex min-[912px]:flex-col  flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
             <StatusUp className="w-10 h-10" />
-            <h3 className="text-primary text-xl font-semibold">Defi Trading</h3>
+            <h3 className="text-primary text-xl font-semibold hover:dark:text-[#000000]">
+              Defi Trading
+            </h3>
             <div className="w-[40px] min-[912px]:block hidden border border-[#4168B7] dark:border-[#A77700]"></div>
           </div>
           <div className="flex flex-col space-y-4">
-            <p className="text-primary text-base font-normal">
+            <p className="text-primary text-base hover:dark:text-[#000000] font-normal">
               Your data is safe and secured with us. None of your data is shared
               with a third party company.
             </p>{" "}
           </div>
         </div>
-        <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-6 rounded-3xl space-y-6 w-[300px]">
+        <div className="flex flex-col h-[240px] hover:dark:bg-[#A77700] hover:dark:text-[#000000] hover:dark:border-[#A77700] border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF]   p-6 rounded-3xl space-y-6 w-[300px]">
           <div className="flex min-[912px]:flex-col flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
             <Chart className="w-10 h-10" />
-            <h3 className="text-primary text-xl font-semibold">P2P Trading</h3>
+            <h3 className="text-primary text-xl font-semibold hover:dark:text-[#000000]">
+              P2P Trading
+            </h3>
             <div className="w-[40px] min-[912px]:block hidden border border-[#4168B7] dark:border-[#A77700]"></div>
           </div>
           <div className="flex flex-col space-y-4">
-            <p className="text-primary text-base font-normal">
+            <p className="text-primary text-base hover:dark:text-[#000000] font-normal">
               The platform is designed to be as simple as possible so our users
               can trade with ease.
             </p>
           </div>
         </div>
-        <div className="flex flex-col border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF] dark:from-[#000000] dark:to-[#FFFFFF] p-6 rounded-3xl space-y-6 w-[300px]">
+        <div className="flex flex-col h-[240px] hover:dark:bg-[#A77700] hover:dark:text-[#000000] hover:dark:border-[#A77700] border-2 border-white border-b-0 bg-gradient-to-b from-[#FFFFFF]   p-6 rounded-3xl space-y-6 w-[300px]">
           <div className="flex min-[912px]:flex-col flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
             <Diagram className="w-10 h-10" />
-            <h3 className="text-primary text-xl font-semibold">
+            <h3 className="text-primary text-xl hover:dark:text-[#000000] font-semibold">
               Futures Trading
             </h3>
             <div className="w-[40px] min-[912px]:block hidden border border-[#4168B7] dark:border-[#A77700]"></div>
           </div>
           <div className="flex flex-col space-y-4">
-            <p className="text-primary text-base font-normal">
+            <p className="text-primary hover:dark:text-[#000000] text-base font-normal">
               The platform is designed to be as simple as possible so our users
               can trade with ease.
             </p>
@@ -199,12 +203,15 @@ const AcademySection = () => {
           />
         </div>
       </div>
-      <div className="flex min-[912px]:flex-row flex-col min-[9122px]:space-y-0 space-y-10 justify-between items-center">
+      <div className="flex min-[912px]:flex-row flex-col min-[9122px]:space-y-0 space-y-10  justify-center items-center">
         <div className="flex flex-col space-y-8 relative items-center">
           <div className="flex space-x-4">
             <h3 className="min-[912px]:hidden block text-3xl font-normal">1</h3>
             <h3 className="text-2xl font-normal z-10">Become a member</h3>
           </div>{" "}
+          <p className="block bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text max-[912px]:hidden lg:text-4xl text-3xl mb-2 font-bold">
+            1
+          </p>
           <div className="min-[912px]:absolute hidden bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text font-bold text-6xl z-0">
             1
           </div>
@@ -218,6 +225,9 @@ const AcademySection = () => {
             <h3 className="min-[912px]:hidden block text-3xl font-normal">2</h3>
             <h3 className="text-2xl font-normal z-10">Watch the lesson</h3>
           </div>
+          <p className="block bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text max-[912px]:hidden lg:text-4xl text-3xl mb-2 font-bold">
+            2
+          </p>
           <div className="min-[912px]:absolute hidden bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text font-bold text-6xl z-0">
             2
           </div>
@@ -231,6 +241,9 @@ const AcademySection = () => {
             <h3 className="min-[912px]:hidden block text-3xl font-normal">3</h3>
             <h3 className="text-2xl font-normal z-10">Community legend</h3>
           </div>
+          <p className="block bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text max-[912px]:hidden lg:text-4xl text-3xl mb-2 font-bold">
+            3
+          </p>
           <div className="min-[912px]:absolute hidden bg-gradient-to-b from-black dark:from-white text-transparent bg-clip-text font-bold text-6xl z-0">
             3
           </div>
@@ -258,9 +271,22 @@ const AcademySection = () => {
           className="w-auto h-auto object-cover object-center"
         />
       </div>
-      <div className="flex min-[912px]:flex-row flex-col min-[912px]:space-y-0 space-y-8 justify-between items-center">
-        <div className="flex flex-col space-y-6 p-8 border-4 border-b-0 rounded-3xl items-center border-white bg-transparent bg-gradient-to-b from-white dark:from-black">
-          <Image
+      <div className="flex min-[912px]:flex-row flex-col min-[912px]:space-y-0 justify-center space-y-4 md:space-x-5 items-center">
+        <div className="flex hover:fill-black hover:text-black flex-col space-y-6 p-8 border-4 border-b-0 rounded-3xl items-center border-white bg-transparent bg-gradient-to-b from-white dark:from-black">
+          <svg
+            width="29"
+            height="30"
+            viewBox="0 0 29 30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              className="hover:fill-black"
+              d="M18.9552 23.4434C15.5756 21.6008 14.3299 17.3683 16.1736 13.9898C16.2966 13.7645 16.4305 13.5486 16.5743 13.342C15.6945 15.4743 15.9514 17.8469 17.1261 19.7109C16.6371 17.8672 17.4053 15.4473 20.405 14.8888C23.4887 14.3152 27.0308 16.1288 26.2802 17.8905C26.2802 17.8905 31.4574 14.6261 26.0768 12.2083C25.3537 11.8834 24.6286 11.5922 23.836 11.5746C22.5928 11.546 22.325 10.6724 20.6344 10.0719C20.6344 10.0719 23.3247 9.87464 24.6878 11.533C26.9234 9.59798 22.1288 6.02632 19.0066 5.27835C16.4855 4.67468 14.3138 4.76811 13.1049 4.72555C12.4415 4.70219 12.0818 4.45615 12.0818 4.45615C12.3834 5.91108 14.593 6.48465 14.593 6.48465C7.81409 6.79401 5.75964 13.4162 5.75964 13.4162C6.54913 12.4284 8.72556 11.6478 8.72556 11.6478C6.36642 14.2841 5.18815 16.9209 4.61459 19.0932C4.22062 17.8703 4.00677 16.5664 4.00677 15.2122C4.00677 8.23493 9.71074 2.54549 16.6911 2.56002C21.0953 2.56936 24.9706 4.82728 27.2306 8.24583C24.7656 3.75594 19.9918 0.712158 14.5058 0.712158C6.491 0.712158 -0.0330937 7.2622 0.000126304 15.2739C0.0255603 21.4295 3.88894 26.6793 9.32196 28.7581C7.06716 24.6773 6.97061 19.8489 8.81899 15.7691C7.43673 19.6356 7.96046 24.1001 10.6103 27.6302C11.1491 28.3475 11.7491 28.9907 12.3979 29.5596C13.0862 29.6597 13.79 29.7122 14.5058 29.7122C15.8253 29.7122 17.1032 29.5357 18.3178 29.2061C15.9275 26.6533 14.552 23.3194 14.4119 19.8645C14.8432 23.3677 16.7311 26.6336 19.7634 28.7301C22.9006 27.5098 25.5074 25.2311 27.1455 22.3316C25.0117 24.3996 21.7011 24.9409 18.9552 23.4434Z"
+              fill="#4168B7"
+            />
+          </svg>
+
+          {/* <Image
             src={
               theme === "dark"
                 ? "/small-logo-dark.svg"
@@ -270,7 +296,7 @@ const AcademySection = () => {
             width={100}
             height={100}
             className="w-auto h-auto object-cover object-center"
-          />
+          /> */}
           <ul className="list-disc space-y-4 text-sm font-normal text-primary">
             <li>The Zero To Funded Course</li>
             <li>The Eloquent Service</li>
@@ -292,18 +318,20 @@ const AcademySection = () => {
             <span className="font-bold text-lg">${pro?.price}</span>
           </p>
         </div>
-        <div className="flex flex-col space-y-6 p-8 border-4 border-b-0 rounded-3xl items-center border-white bg-transparent bg-gradient-to-b from-white dark:from-black">
-          <Image
-            src={
-              theme === "dark"
-                ? "/small-logo-dark.svg"
-                : "/small-logo-light.svg"
-            }
-            alt="logo"
-            width={100}
-            height={100}
-            className="w-auto h-auto object-cover object-center"
-          />
+        <div className="flex hover:fill-black hover:text-black flex-col space-y-6 p-8 border-4 border-b-0 rounded-3xl items-center border-white bg-transparent bg-gradient-to-b from-white dark:from-black">
+          <svg
+            width="29"
+            height="30"
+            viewBox="0 0 29 30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              className="hover:fill-black"
+              d="M18.9552 23.4434C15.5756 21.6008 14.3299 17.3683 16.1736 13.9898C16.2966 13.7645 16.4305 13.5486 16.5743 13.342C15.6945 15.4743 15.9514 17.8469 17.1261 19.7109C16.6371 17.8672 17.4053 15.4473 20.405 14.8888C23.4887 14.3152 27.0308 16.1288 26.2802 17.8905C26.2802 17.8905 31.4574 14.6261 26.0768 12.2083C25.3537 11.8834 24.6286 11.5922 23.836 11.5746C22.5928 11.546 22.325 10.6724 20.6344 10.0719C20.6344 10.0719 23.3247 9.87464 24.6878 11.533C26.9234 9.59798 22.1288 6.02632 19.0066 5.27835C16.4855 4.67468 14.3138 4.76811 13.1049 4.72555C12.4415 4.70219 12.0818 4.45615 12.0818 4.45615C12.3834 5.91108 14.593 6.48465 14.593 6.48465C7.81409 6.79401 5.75964 13.4162 5.75964 13.4162C6.54913 12.4284 8.72556 11.6478 8.72556 11.6478C6.36642 14.2841 5.18815 16.9209 4.61459 19.0932C4.22062 17.8703 4.00677 16.5664 4.00677 15.2122C4.00677 8.23493 9.71074 2.54549 16.6911 2.56002C21.0953 2.56936 24.9706 4.82728 27.2306 8.24583C24.7656 3.75594 19.9918 0.712158 14.5058 0.712158C6.491 0.712158 -0.0330937 7.2622 0.000126304 15.2739C0.0255603 21.4295 3.88894 26.6793 9.32196 28.7581C7.06716 24.6773 6.97061 19.8489 8.81899 15.7691C7.43673 19.6356 7.96046 24.1001 10.6103 27.6302C11.1491 28.3475 11.7491 28.9907 12.3979 29.5596C13.0862 29.6597 13.79 29.7122 14.5058 29.7122C15.8253 29.7122 17.1032 29.5357 18.3178 29.2061C15.9275 26.6533 14.552 23.3194 14.4119 19.8645C14.8432 23.3677 16.7311 26.6336 19.7634 28.7301C22.9006 27.5098 25.5074 25.2311 27.1455 22.3316C25.0117 24.3996 21.7011 24.9409 18.9552 23.4434Z"
+              fill="#4168B7"
+            />
+          </svg>
+
           <ul className="list-disc space-y-4 text-sm font-normal text-primary">
             <li>The Zero To Funded Course</li>
             <li>The Eloquent Service</li>
@@ -327,18 +355,20 @@ const AcademySection = () => {
             <span className="font-bold text-lg">${intermediate?.price}</span>
           </p>
         </div>
-        <div className="flex flex-col space-y-6 p-8 border-4 border-b-0 rounded-3xl items-center border-white bg-transparent bg-gradient-to-b from-white dark:from-black">
-          <Image
-            src={
-              theme === "dark"
-                ? "/small-logo-dark.svg"
-                : "/small-logo-light.svg"
-            }
-            alt="logo"
-            width={100}
-            height={100}
-            className="w-auto h-auto object-cover object-center"
-          />
+        <div className="flex hover:fill-black hover:text-black flex-col space-y-6 p-8 border-4 border-b-0 rounded-3xl items-center border-white bg-transparent bg-gradient-to-b from-white dark:from-black">
+          <svg
+            width="29"
+            height="30"
+            viewBox="0 0 29 30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              className="hover:fill-black"
+              d="M18.9552 23.4434C15.5756 21.6008 14.3299 17.3683 16.1736 13.9898C16.2966 13.7645 16.4305 13.5486 16.5743 13.342C15.6945 15.4743 15.9514 17.8469 17.1261 19.7109C16.6371 17.8672 17.4053 15.4473 20.405 14.8888C23.4887 14.3152 27.0308 16.1288 26.2802 17.8905C26.2802 17.8905 31.4574 14.6261 26.0768 12.2083C25.3537 11.8834 24.6286 11.5922 23.836 11.5746C22.5928 11.546 22.325 10.6724 20.6344 10.0719C20.6344 10.0719 23.3247 9.87464 24.6878 11.533C26.9234 9.59798 22.1288 6.02632 19.0066 5.27835C16.4855 4.67468 14.3138 4.76811 13.1049 4.72555C12.4415 4.70219 12.0818 4.45615 12.0818 4.45615C12.3834 5.91108 14.593 6.48465 14.593 6.48465C7.81409 6.79401 5.75964 13.4162 5.75964 13.4162C6.54913 12.4284 8.72556 11.6478 8.72556 11.6478C6.36642 14.2841 5.18815 16.9209 4.61459 19.0932C4.22062 17.8703 4.00677 16.5664 4.00677 15.2122C4.00677 8.23493 9.71074 2.54549 16.6911 2.56002C21.0953 2.56936 24.9706 4.82728 27.2306 8.24583C24.7656 3.75594 19.9918 0.712158 14.5058 0.712158C6.491 0.712158 -0.0330937 7.2622 0.000126304 15.2739C0.0255603 21.4295 3.88894 26.6793 9.32196 28.7581C7.06716 24.6773 6.97061 19.8489 8.81899 15.7691C7.43673 19.6356 7.96046 24.1001 10.6103 27.6302C11.1491 28.3475 11.7491 28.9907 12.3979 29.5596C13.0862 29.6597 13.79 29.7122 14.5058 29.7122C15.8253 29.7122 17.1032 29.5357 18.3178 29.2061C15.9275 26.6533 14.552 23.3194 14.4119 19.8645C14.8432 23.3677 16.7311 26.6336 19.7634 28.7301C22.9006 27.5098 25.5074 25.2311 27.1455 22.3316C25.0117 24.3996 21.7011 24.9409 18.9552 23.4434Z"
+              fill="#4168B7"
+            />
+          </svg>
+
           <ul className="list-disc space-y-4 text-sm font-normal text-primary">
             <li>The Zero To Funded Course</li>
             <li>The Eloquent Service</li>
