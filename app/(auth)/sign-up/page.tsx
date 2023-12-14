@@ -25,10 +25,7 @@ import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { googleOAuth, signUpRoute } from "@/lib/helpers";
 import { useEffect } from "react";
-<<<<<<< HEAD
 import React, { useRef, useState } from "react";
-=======
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
 
 const formSchema = z
   .object({
@@ -42,12 +39,8 @@ const formSchema = z
       .string()
       .min(8, { message: "Password must be at least 8 characters long" }),
   })
-<<<<<<< HEAD
 
   .refine((data: any) => data.password === data.re_password, {
-=======
-  .refine((data) => data.password === data.re_password, {
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
     message: "Passwords do not match",
     path: ["confirmPassword"],
   });
@@ -55,10 +48,7 @@ const formSchema = z
 const font = Revalia({ subsets: ["latin"], weight: ["400"] });
 
 const SignUpPage = () => {
-<<<<<<< HEAD
   const [buttonText, setButtonText] = useState("Create Account");
-=======
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
   const { resolvedTheme } = useTheme();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -73,13 +63,10 @@ const SignUpPage = () => {
 
   const router = useRouter();
 
-<<<<<<< HEAD
   function handleClick() {
     setButtonText("Autheticating...");
   }
 
-=======
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const res = await axios.post(signUpRoute, data);
@@ -88,7 +75,6 @@ const SignUpPage = () => {
       );
       router.push("/sign-in");
       form.reset();
-<<<<<<< HEAD
       setButtonText(" Create Account");
     } catch (err: any) {
       if (err?.response?.status === 400) {
@@ -103,17 +89,6 @@ const SignUpPage = () => {
       } else {
         console.error("Error:", err.message);
         setButtonText(" Create Account");
-=======
-    } catch (err: any) {
-      if (err?.response?.status === 400) {
-        toast.error("Email already exists.");
-      } else if (err?.response?.status === 500) {
-        toast.error("Something went wrong");
-      } else if (err?.request) {
-        console.error("No response received from the server");
-      } else {
-        console.error("Error:", err.message);
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
       }
     } finally {
       router.refresh();
@@ -131,24 +106,15 @@ const SignUpPage = () => {
       const state = urlParams.get("state");
       localStorage.setItem("state", state || "");
       router.push(authorizationUrl);
-<<<<<<< HEAD
       setButtonText(" Create Account");
     } catch (error: any) {
       toast.error("Unable to  Create Account. Please try Again");
       setButtonText(" Create Account");
-=======
-    } catch (error: any) {
-      toast.error("Unable to sign up. Please try Again");
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
     }
   };
 
   return (
-<<<<<<< HEAD
     <div className="flex min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen min-[912px]:bg-[url('/rockets.svg')]  bg-[length:260px_150px] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
-=======
-    <div className="flex min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen min-[912px]:bg-[url('/rockets.svg')] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
       <div className="flex-col items-start gap-y-8 min-[1000px]:flex hidden">
         <Image
           src="/coin.svg"
@@ -158,11 +124,7 @@ const SignUpPage = () => {
           className="ml-8 animate-pulse"
         />
         <h1 className="text-5xl font-medium text-primary leading-snug">
-<<<<<<< HEAD
           Create Account with <br /> Eloquent
-=======
-          Sign up with <br /> Eloquent
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
         </h1>
         <p className="font-medium text-base">
           Already have an account? click here to{" "}
@@ -175,11 +137,7 @@ const SignUpPage = () => {
         </p>
       </div>
       <div className="flex flex-col space-y-8 min-[912px]:w-[500px] w-full">
-<<<<<<< HEAD
         {/* <div className="flex justify-center">
-=======
-        <div className="flex justify-center">
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
           <Image
             src={
               resolvedTheme === "dark"
@@ -191,7 +149,6 @@ const SignUpPage = () => {
             alt="signup_logo"
             className="min-[1000px]:hidden block"
           />
-<<<<<<< HEAD
         </div> */}
         <div className="flex flex-col space-y-8 min-[912px]:items-start items-center">
           <h3 className="min-[912px]:text-2xl text-2xl font-semibold text-primary">
@@ -213,15 +170,6 @@ const SignUpPage = () => {
             Enter your credentials to create an account.
           </p>
         </div>
-=======
-        </div>
-        <h1 className="text-4xl font-semibold text-primary min-[1000px]:block hidden">
-          Create Account
-        </h1>
-        <p className="text-muted-foreground min-[1000px]:block hidden">
-          Enter your credentials to create an account.
-        </p>
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
         <div>
           <Form {...form}>
             <form
@@ -255,11 +203,7 @@ const SignUpPage = () => {
                         <Input
                           disabled={isLoading}
                           placeholder="Last name"
-<<<<<<< HEAD
                           className="border-t-0 font-medium text-primary rounded-none border-x-0 dark:border-b-[#A77700] border-b-[#F7931A80] w-full border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent focus-visible:ring-offset-0"
-=======
-                          className="border-t-0 font-medium text-primary rounded-none border-x-0 dark:border-b-[#A77700] border-b-[#F7931A80] border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent focus-visible:ring-offset-0"
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
                           {...field}
                         />
                       </FormControl>
@@ -324,7 +268,6 @@ const SignUpPage = () => {
               />
               <div className="flex items-center w-full justify-end"></div>
               <Button
-<<<<<<< HEAD
                 onClick={handleClick}
                 style={{ borderRadius: "30px" }}
                 className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
@@ -348,15 +291,6 @@ const SignUpPage = () => {
                 />
               </div>
             </div>
-=======
-                className="w-full text-white bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary hover:text-white dark:hover:text-black"
-                variant="default"
-              >
-                Create Account
-                <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
-              </Button>
-            </form>
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
           </Form>
         </div>
         {/* <p

@@ -14,7 +14,6 @@ const ReferralSection = () => {
       <div className="flex min-[912px]:flex-row flex-col justify-between items-center">
         <div className="flex flex-col min-[912px]:items-start items-center space-y-6">
           <Image
-<<<<<<< HEAD
             src={
               resolvedTheme === "dark" ? "/logo-and-text.png" : "eloq-light.svg"
             }
@@ -31,23 +30,13 @@ const ReferralSection = () => {
             width={200}
             height={200}
             className="min-[912px]:hidden block"
-=======
-            src="/logo-and-text.png"
-            alt="text-and-logo"
-            width={350}
-            height={350}
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
           />
           <h3 className="font-medium min-[912px]:text-5xl text-2xl min-[912px]:text-left text-center leading-normal">
             <span className="text-[#4168B7] dark:text-[#A77700]">Refer</span>{" "}
             and earn big <br /> rewards
           </h3>
           <Image
-<<<<<<< HEAD
             src={resolvedTheme === "dark" ? "/referral.png" : "referimg.svg"}
-=======
-            src="/referral.png"
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
             alt="referral"
             width={200}
             height={200}
@@ -68,11 +57,7 @@ const ReferralSection = () => {
           </div>
         </div>
         <Image
-<<<<<<< HEAD
           src={resolvedTheme === "dark" ? "/referral.png" : "referimg.svg"}
-=======
-          src="/referral.png"
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
           alt="referral"
           width={500}
           height={500}
@@ -102,15 +87,11 @@ const ReferralSection = () => {
             </p>
           </h3>
           <Image
-<<<<<<< HEAD
             src={
               resolvedTheme === "dark"
                 ? "/credit_card_dark.png"
                 : "referimg2.svg"
             }
-=======
-            src="/credit_card_dark.png"
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
             alt="credit_card_payment"
             width={500}
             height={500}
@@ -118,11 +99,7 @@ const ReferralSection = () => {
         </div>
         <div className="flex justify-center items-center">
           <Image
-<<<<<<< HEAD
             src="/demo_light.svg"
-=======
-            src="/demo_card_dark.svg"
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
             alt="demo_card"
             width={600}
             height={600}
