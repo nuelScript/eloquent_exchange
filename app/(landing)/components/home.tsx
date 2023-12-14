@@ -10,9 +10,12 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { companies } from "./companies";
 import { useRouter } from "next/navigation";
+<<<<<<< HEAD
 // import Ticker from "react-ticker";
 // import Ticker from "react-awesome-ticker";
 // import Marquee from "react-double-marquee";
+=======
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
 
 const font = Revalia({
   subsets: ["latin"],
@@ -25,6 +28,7 @@ const HomeSection = () => {
   return (
     <div id="home" className="flex flex-col space-y-8 px-10 pt-10">
       <div className="flex min-[912px]:flex-row md:my-4 flex-col min-[912px]:text-left text-center justify-between items-center">
+<<<<<<< HEAD
         <div className="flex flex-col md:my-4 md:mt-4 my-2 gap-y-6">
           <h3 className="font-medium space-y-3 my-auto mb-4  text-primary text-3xl my-3 sm:text-3xl md:text-6xl leading-snug">
             <TypewriterComponent
@@ -33,6 +37,17 @@ const HomeSection = () => {
                   "Start trading in crypto in an",
                   "Enjoy the best market rates with",
                   "Instant Trades: Secure Your",
+=======
+        <div className="flex flex-col my-2 gap-y-6">
+          <h3 className="font-medium text-primary text-3xl my-3 sm:text-3xl md:text-6xl leading-snug">
+            <TypewriterComponent
+              className="space-y-3 my-auto mb-3"
+              options={{
+                strings: [
+                  "Start trading in crypto in an \n instant.",
+                  "Enjoy the best market rates with \n Eloquent Exchange.",
+                  "Instant Trades: Secure Your \n Investments!",
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
                 ],
                 autoStart: true,
                 loop: true,
@@ -40,8 +55,13 @@ const HomeSection = () => {
                 deleteSpeed: 100,
               }}
             />
+<<<<<<< HEAD
             <span className="text-[#4168B7] mt-3 mb-2 dark:text-[#A77700]">
               <TypewriterComponent
+=======
+            <span className="text-[#4168B7] dark:text-[#A77700]">
+              {/* <TypewriterComponent
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
                 options={{
                   strings: ["instant.", "Eloquent Exchange.", "Investments !"],
                   autoStart: true,
@@ -49,11 +69,16 @@ const HomeSection = () => {
                   delay: 200,
                   deleteSpeed: 500,
                 }}
+<<<<<<< HEAD
               />
+=======
+              /> */}
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
             </span>
           </h3>
           <div className="flex min-[912px]:hidden min-[912px]:justify-start justify-center">
             <Image
+<<<<<<< HEAD
               src={resolvedTheme === "dark" ? "/homes-dark.svg" : "/homes.svg"}
               width={300}
               height={300}
@@ -62,6 +87,16 @@ const HomeSection = () => {
             />
           </div>
           <p className="text-primary w-3/4 font-normal min-[912px]:text-2xl text-sm">
+=======
+              src={resolvedTheme === "dark" ? "/home-dark.svg" : "/home.svg"}
+              width={300}
+              height={300}
+              alt="Image"
+              className="object-cover object-center"
+            />
+          </div>
+          <p className="text-primary font-normal min-[912px]:text-2xl text-sm">
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
             Join the world&apos;s biggest and trusted exchange. Trade in
             Bitcoin, Etherum, dodge and many more currencies.
           </p>
@@ -77,9 +112,15 @@ const HomeSection = () => {
           </div>
         </div>
         <Image
+<<<<<<< HEAD
           src={resolvedTheme === "dark" ? "/homes-dark.svg" : "/homes.svg"}
           width={500}
           height={500}
+=======
+          src={resolvedTheme === "dark" ? "/home-dark.svg" : "/home.svg"}
+          width={300}
+          height={300}
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
           alt="Image"
           className="object-cover object-center min-[912px]:flex hidden"
         />
@@ -90,6 +131,7 @@ const HomeSection = () => {
           font.className
         )}
       >
+<<<<<<< HEAD
         {/* <Ticker>This is the Headline of element</Ticker> */}
         {/* <Marquee>Some really really really really really long text</Marquee> */}
         <div className="marquee">
@@ -106,6 +148,12 @@ const HomeSection = () => {
             cryptocurrencies 🚀.
           </marque>
         </div> */}
+=======
+        <marquee className={cn("text-xl")}>
+          Welcome to Eloquent Exchange. Your one stop community for all
+          cryptocurrencies 🚀."
+        </marquee>
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
         {/* <TypewriterComponent
           options={{
             strings:

@@ -32,7 +32,11 @@ const ReviewSection = () => {
           </p>
         </div>
       </div>
+<<<<<<< HEAD
       <div className="flex min-w-2xl justify-center items-center min-[912px]:flex-row flex-col min-[912px]:items-start items-center min-[912px]:space-x-10 space-x-0 min-[912px]:space-y-0 space-y-20 justify-center">
+=======
+      <div className="flex min-[912px]:flex-row flex-col min-[912px]:items-start items-center min-[912px]:space-x-20 space-x-0 min-[912px]:space-y-0 space-y-20 justify-center">
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
         <Image src="/Rectangle_1.svg" alt="reviews" width={233} height={430} />
         <Image src="/Rectangle_2.svg" alt="reviews" width={242} height={430} />
         <Image src="/Rectangle_3.svg" alt="reviews" width={379} height={430} />

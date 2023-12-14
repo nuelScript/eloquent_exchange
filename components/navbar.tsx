@@ -28,16 +28,22 @@ export const routes = [
       "/dashboard/transactions/payment",
   },
   {
+<<<<<<< HEAD
     label: "News",
     icon: ArrowLeft2,
     href: "/news",
   },
   {
+=======
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
     label: "Refer and Earn",
     icon: Moneys,
     href: "/refer&earn",
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
   {
     label: "Profile",
     icon: UserTag,

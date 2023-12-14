@@ -13,6 +13,7 @@ body,
   height: 100%;
 }
 
+<<<<<<< HEAD
 .marquee {
   min-width: 100%;
   line-height: 50px;
@@ -35,6 +36,9 @@ body,
     transform: translate(-100%, 0);
   }
 }
+=======
+
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
 
 @layer base {
   :root {
@@ -110,4 +114,8 @@ body,
   body {
     @apply bg-background text-foreground;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
