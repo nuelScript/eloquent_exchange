@@ -37,51 +37,51 @@ const BuyPage = () => {
           </p>
         </div>
         <div>
-          <Form>
-            <form className="space-y-8 flex flex-col">
-              <div className="grid w-full h-full py-3 max-w-lg items-center gap-1.5">
-                <Label htmlFor="network">Network</Label>
-                <Input
-                  style={{ padding: "30px 10px" }}
-                  type="text"
-                  id="network"
-                  className="w-full rounded-lg p-2 py-2  mt-1"
-                  placeholder="Network"
-                />
-              </div>
+          {/* <Form> */}
+          <form className="space-y-8 flex flex-col">
+            <div className="grid w-full h-full py-3 max-w-lg items-center gap-1.5">
+              <Label htmlFor="network">Network</Label>
+              <Input
+                style={{ padding: "30px 10px" }}
+                type="text"
+                id="network"
+                className="w-full rounded-lg p-2 py-2  mt-1"
+                placeholder="Network"
+              />
+            </div>
 
-              <div className="grid w-full max-w-lg items-center gap-1.5">
-                <Label htmlFor="wallet">Wallet Address</Label>
-                <Input
-                  style={{ padding: "30px 10px" }}
-                  type="text"
-                  id="wallet"
-                  className="w-full rounded-lg p-2 py-2  mt-1"
-                  placeholder="Wallet"
-                />
-              </div>
-              {/* <Input
+            <div className="grid w-full max-w-lg items-center gap-1.5">
+              <Label htmlFor="wallet">Wallet Address</Label>
+              <Input
+                style={{ padding: "30px 10px" }}
+                type="text"
+                id="wallet"
+                className="w-full rounded-lg p-2 py-2  mt-1"
+                placeholder="Wallet"
+              />
+            </div>
+            {/* <Input
                 type="email"
                 placeholder="Email Address"
                 className="border-t-0 font-medium text-primary rounded-none border-x-0 dark:border-b-[#A77700] border-b-[#F7931A80] border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent focus-visible:ring-offset-0"
               /> */}
 
-              {/* <Input
+            {/* <Input
                 placeholder="Password"
                 type="password"
                 className="border-t-0 font-medium text-primary rounded-none border-x-0 dark:border-b-[#A77700] border-b-[#F7931A80] border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent focus-visible:ring-offset-0"
               /> */}
 
-              <Button
-                style={{ borderRadius: "30px" }}
-                className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
-                variant="default"
-              >
-                Continue
-                <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
-              </Button>
-            </form>
-          </Form>
+            <Button
+              style={{ borderRadius: "30px" }}
+              className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
+              variant="default"
+            >
+              Continue
+              <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
+            </Button>
+          </form>
+          {/* </Form> */}
         </div>
       </div>
     </div>

@@ -249,11 +249,8 @@ const PaymentPage = () => {
                   {" "}
                   Country{" "}
                 </Label>
-                <Select className="w-full" style={{ padding: "30px 10px" }}>
-                  <SelectTrigger
-                    className="w-full"
-                    style={{ padding: "30px 10px" }}
-                  >
+                <Select>
+                  <SelectTrigger style={{ padding: "30px 10px" }}>
                     <SelectValue placeholder="Select Your Country" />
                   </SelectTrigger>
                   <SelectContent>
