@@ -21,7 +21,7 @@ const NewsPage = () => {
           </p>
           <p className="text-md mt-5 text-center mx-auto px-auto w-full max-w-[1000px]">
             In the ever-evolving world of cryptocurrencies, staying ahead is not
-            just an advantage; it's the key to unlocking the vast potential of
+            just an advantage; its the key to unlocking the vast potential of
             digital asset.
           </p>
           <div className="flex my-5 pt-3 mx-auto px-auto w-full max-w-sm items-center space-x-2">
