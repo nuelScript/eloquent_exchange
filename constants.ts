@@ -1,0 +1,1 @@
+export const OFFICIAL_RATES = 1000;
