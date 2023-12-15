@@ -15,11 +15,7 @@ const Footer = () => {
   const { resolvedTheme } = useTheme();
 
   return (
-<<<<<<< HEAD
     <div className="relative w-50 h-50 my-0 mt-6 flex flex-col items-center space-y-20">
-=======
-    <div className="relative flex flex-col items-center space-y-20">
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
       <a href="eloquent.ior">
         {" "}
         <Image
@@ -28,7 +24,6 @@ const Footer = () => {
               ? "/contact-light.svg"
               : "/contact-dark.svg"
           }
-<<<<<<< HEAD
           width={450}
           height={450}
           alt="contact-image"
@@ -36,15 +31,6 @@ const Footer = () => {
         />
       </a>
       <div className="w-full text-center absolute border-[0.6px] rounded-lg bottom-[150px] border-primary"></div>
-=======
-          width={600}
-          height={600}
-          alt="contact-image"
-          className="object-cover object-center"
-        />
-      </a>
-      <div className="w-full text-center absolute border-[0.5px] rounded-lg bottom-[166px] border-primary"></div>
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
       <footer
         className={cn("text-lg mb-3 font-normal text-center", font.className)}
       >

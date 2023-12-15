@@ -68,15 +68,16 @@ const TermsPage = () => {
               </p>
             </div>
           </div>
-
-          <Button
-            style={{ borderRadius: "30px" }}
-            className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
-            variant="default"
-          >
-            Continue
-            <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
-          </Button>
+          <Link href="/dashboard">
+            <Button
+              style={{ borderRadius: "30px" }}
+              className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
+              variant="default"
+            >
+              Continue
+              <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

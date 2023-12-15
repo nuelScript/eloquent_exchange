@@ -6,7 +6,6 @@ import Link from "next/link";
 const routes = [
   {
     name: "Home",
-<<<<<<< HEAD
     href: "/",
   },
   {
@@ -24,31 +23,12 @@ const routes = [
   {
     name: "Contact",
     href: "/#contact",
-=======
-    href: "#home",
-  },
-  {
-    name: "About",
-    href: "#about",
-  },
-  {
-    name: "Academy",
-    href: "#academy",
-  },
-  {
-    name: "Contact",
-    href: "#contact",
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
   },
 ];
 
 const MobileLandingNavbar = () => {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-<<<<<<< HEAD
     // e.preventDefault();
-=======
-    e.preventDefault();
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
     const href = e.currentTarget.href;
     const targetId = href.replace(/.*\#/, "");
     const elem = document.getElementById(targetId);

@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { OFFICIAL_RATES } from "@/constants";
+import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowSwapHorizontal, BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
@@ -59,180 +60,217 @@ const BuyandSellPage = () => {
     router.push("/dashboard/transactions/buy&sell/sell");
   };
   return (
-    <div className="flex w-full justify-center items-center pt-10 ">
-      <Tabs defaultValue="Buy Crypto" className="w-[400px]">
-        <TabsList className="grid w-full grid-cols-2 gap-x-8 bg-transparent">
-          <TabsTrigger
-            value="Buy Crypto"
-            className="bg-transparent font-normal text-black dark:border-white dark:text-white data-[state=active]:bg-[#4168B7] data-[state=active]:text-white dark:data-[state=active]:bg-[#A77700] border border-black data-[state=active]:border-none transition"
-          >
-            Buy Crypto
-          </TabsTrigger>
-          <TabsTrigger
-            value="Sell Crypto"
-            className="bg-transparent text-black dark:text-white border border-black dark:border-white font-normal data-[state=active]:bg-[#4168B7] data-[state=active]:text-white dark:data-[state=active]:bg-[#A77700] data-[state=active]:border-none transition"
-          >
-            Sell Crypto
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="Buy Crypto">
-          <Card className="bg-transparent border-none shadow-none">
-            <CardContent className="py-2">
-              <Form {...form}>
-                <form
-                  className="space-y-12"
-                  onSubmit={form.handleSubmit(onSubmit)}
+    <div className="flex min-[1000px]:flex-row -mt-5 justify-center h-full w-full my-auto flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen  bg-[length:200px_150px] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
+      <div className="flex-col items-start my-auto gap-y-3 min-[1000px]:flex hidden">
+        <Image
+          src="/buyy.svg"
+          alt="Buy Crypto"
+          width={400}
+          height={400}
+          className="ml-8 animate-pulse"
+        />
+      </div>
+      <div className="flex flex-col my-auto space-y-3 min-[912px]:w-[500px] w-full">
+        <div className="text-center space-y-5 flex flex-col items-center">
+          <div className="flex w-full justify-center items-center pt-10 ">
+            <Tabs defaultValue="Buy Crypto" className=" my-3 w-[400px]">
+              <TabsList className="grid w-full my-3 grid-cols-2 gap-x-8 bg-transparent">
+                <TabsTrigger
+                  value="Buy Crypto"
+                  className="bg-transparent py-4 font-normal text-black dark:border-white dark:text-white data-[state=active]:bg-[#4168B7] data-[state=active]:text-white dark:data-[state=active]:bg-[#A77700] border border-black data-[state=active]:border-none transition"
                 >
-                  <FormField
-                    control={form.control}
-                    name="coinType"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="font-normal">Coin Type</FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger className="w-full bg-transparent">
-                              <SelectValue placeholder="Select coin name" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectGroup>
-                              <SelectItem value="bitcoin">Bitcoin</SelectItem>
-                              <SelectItem value="ethereum">Ethereum</SelectItem>
-                              <SelectItem value="usdt">USDT</SelectItem>
-                              <SelectItem value="dodge">Dodge</SelectItem>
-                            </SelectGroup>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="amount"
-                    render={({ field }) => (
-                      <FormItem className="space-y-4">
-                        <FormLabel className="font-normal flex justify-between">
-                          <span>Amount</span>{" "}
-                          <span className="text-muted-foreground">
-                            Rate: {OFFICIAL_RATES} / %
-                          </span>
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            className="bg-transparent"
-                            type="number"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormDescription className="flex justify-between">
-                          <span className="font-normal text-primary">
-                            Amount: 0.0
-                          </span>
-                          <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
-                            Set by Naira{" "}
-                            <ArrowSwapHorizontal className="ml-2 w-6 h-6" />
-                          </span>
-                        </FormDescription>
-                      </FormItem>
-                    )}
-                  />
-                  <Button
-                    type="submit"
-                    variant="custom"
-                    className="w-full"
-                    onSubmit={buyRoute}
-                  >
-                    Buy Crypto <BitcoinRefresh className="ml-2" />
-                  </Button>
-                </form>
-              </Form>
-            </CardContent>
-          </Card>
-        </TabsContent>
-        <TabsContent value="Sell Crypto">
-          <Card className="bg-transparent border-none shadow-none">
-            <CardContent className="py-2">
-              <Form {...form}>
-                <form
-                  className="space-y-12"
-                  onSubmit={form.handleSubmit(onSubmit)}
+                  Buy Crypto
+                </TabsTrigger>
+                <TabsTrigger
+                  value="Sell Crypto"
+                  className="bg-transparent py-4 text-black dark:text-white border border-black dark:border-white font-normal data-[state=active]:bg-[#4168B7] data-[state=active]:text-white dark:data-[state=active]:bg-[#A77700] data-[state=active]:border-none transition"
                 >
-                  <FormField
-                    control={form.control}
-                    name="coinType"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="font-normal">Coin Type</FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger className="w-full bg-transparent">
-                              <SelectValue placeholder="Select coin name" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectGroup>
-                              <SelectItem value="bitcoin">Bitcoin</SelectItem>
-                              <SelectItem value="ethereum">Ethereum</SelectItem>
-                              <SelectItem value="usdt">USDT</SelectItem>
-                              <SelectItem value="dodge">Dodge</SelectItem>
-                            </SelectGroup>
-                          </SelectContent>
-                        </Select>
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="amount"
-                    render={({ field }) => (
-                      <FormItem className="space-y-4">
-                        <FormLabel className="font-normal flex justify-between">
-                          <span>Amount</span>{" "}
-                          <span className="text-muted-foreground">
-                            Rate: {OFFICIAL_RATES} / %
-                          </span>
-                        </FormLabel>
-                        <Input
-                          className="bg-transparent"
-                          type="number"
-                          {...field}
+                  Sell Crypto
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="Buy Crypto">
+                <Card className="bg-transparent border-none shadow-none">
+                  <CardContent className="py-2">
+                    <Form {...form}>
+                      <form
+                        className="space-y-12"
+                        onSubmit={form.handleSubmit(onSubmit)}
+                      >
+                        <FormField
+                          control={form.control}
+                          name="coinType"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="font-normal">
+                                Coin Type
+                              </FormLabel>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger
+                                    style={{ padding: "30px 10px" }}
+                                    className="w-full bg-transparent"
+                                  >
+                                    <SelectValue placeholder="Select coin name" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectGroup>
+                                    <SelectItem value="bitcoin">
+                                      Bitcoin
+                                    </SelectItem>
+                                    <SelectItem value="ethereum">
+                                      Ethereum
+                                    </SelectItem>
+                                    <SelectItem value="usdt">USDT</SelectItem>
+                                    <SelectItem value="dodge">Dodge</SelectItem>
+                                  </SelectGroup>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
                         />
-                        <FormDescription className="flex justify-between">
-                          <span className="font-normal text-primary">
-                            Amount: 0.0
-                          </span>
-                          <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
-                            Set by Naira{" "}
-                            <ArrowSwapHorizontal className="ml-2 w-6 h-6" />
-                          </span>
-                        </FormDescription>
-                      </FormItem>
-                    )}
-                  />
-                  <Button
-                    type="submit"
-                    variant="custom"
-                    className="w-full"
-                    onSubmit={sellRoute}
-                  >
-                    Sell Crypto <BitcoinRefresh className="ml-2" />
-                  </Button>
-                </form>
-              </Form>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+                        <FormField
+                          control={form.control}
+                          name="amount"
+                          render={({ field }) => (
+                            <FormItem className="space-y-4">
+                              <FormLabel className="font-normal flex justify-between">
+                                <span>Amount</span>{" "}
+                                <span className="text-muted-foreground">
+                                  Rate: {OFFICIAL_RATES} / %
+                                </span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  style={{ padding: "30px 10px" }}
+                                  className="bg-transparent"
+                                  type="number"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormDescription className="flex justify-between">
+                                <span className="font-normal text-primary">
+                                  Amount: 0.0
+                                </span>
+                                <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
+                                  Set by Naira{" "}
+                                  <ArrowSwapHorizontal className="ml-2 w-6 h-6" />
+                                </span>
+                              </FormDescription>
+                            </FormItem>
+                          )}
+                        />
+                        <Button
+                          type="submit"
+                          style={{ borderRadius: "30px" }}
+                          className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
+                          variant="custom"
+                          onSubmit={buyRoute}
+                        >
+                          Buy Crypto <BitcoinRefresh className="ml-2" />
+                        </Button>
+                      </form>
+                    </Form>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              <TabsContent value="Sell Crypto">
+                <Card className="bg-transparent border-none shadow-none">
+                  <CardContent className="py-2">
+                    <Form {...form}>
+                      <form
+                        className="space-y-12"
+                        onSubmit={form.handleSubmit(onSubmit)}
+                      >
+                        <FormField
+                          control={form.control}
+                          name="coinType"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="font-normal">
+                                Coin Type
+                              </FormLabel>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger
+                                    style={{ padding: "30px 10px" }}
+                                    className="w-full bg-transparent"
+                                  >
+                                    <SelectValue placeholder="Select coin name" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectGroup>
+                                    <SelectItem value="bitcoin">
+                                      Bitcoin
+                                    </SelectItem>
+                                    <SelectItem value="ethereum">
+                                      Ethereum
+                                    </SelectItem>
+                                    <SelectItem value="usdt">USDT</SelectItem>
+                                    <SelectItem value="dodge">Dodge</SelectItem>
+                                  </SelectGroup>
+                                </SelectContent>
+                              </Select>
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="amount"
+                          render={({ field }) => (
+                            <FormItem className="space-y-4">
+                              <FormLabel className="font-normal flex justify-between">
+                                <span>Amount</span>{" "}
+                                <span className="text-muted-foreground">
+                                  Rate: {OFFICIAL_RATES} / %
+                                </span>
+                              </FormLabel>
+                              <Input
+                                style={{ padding: "30px 10px" }}
+                                className="bg-transparent"
+                                type="number"
+                                {...field}
+                              />
+                              <FormDescription className="flex justify-between">
+                                <span className="font-normal text-primary">
+                                  Amount: 0.0
+                                </span>
+                                <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
+                                  Set by Naira{" "}
+                                  <ArrowSwapHorizontal className="ml-2 w-6 h-6" />
+                                </span>
+                              </FormDescription>
+                            </FormItem>
+                          )}
+                        />
+                        <Button
+                          type="submit"
+                          style={{ borderRadius: "30px" }}
+                          className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
+                          variant="custom"
+                          onSubmit={sellRoute}
+                        >
+                          Sell Crypto <BitcoinRefresh className="ml-2" />
+                        </Button>
+                      </form>
+                    </Form>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default isAuth(BuyandSellPage);
+export default BuyandSellPage;

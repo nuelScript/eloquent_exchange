@@ -171,9 +171,7 @@ const PaymentPage = () => {
 
         <div className="space-y-8">
           <form className="w-full max-w-lg mx-auto">
-            <Label htmlFor="card-number-input" class="sr-only">
-              Card number:{" "}
-            </Label>
+            <Label htmlFor="card-number-input">Card number: </Label>
             <div className="relative">
               <Input
                 type="text"
@@ -199,7 +197,7 @@ const PaymentPage = () => {
             </div>
             <div className="grid grid-cols-3 mx-auto space-x-4 gap-4 my-4">
               <div className="relative max-w-lg col-span-2">
-                <Label htmlFor="card-expiration-input" class="sr-only">
+                <Label htmlFor="card-expiration-input">
                   Card expiration date:
                 </Label>
                 <Popover>
@@ -227,9 +225,7 @@ const PaymentPage = () => {
                 </Popover>
               </div>
               <div className="col-span-1">
-                <Label htmlFor="cvv-input" class="sr-only">
-                  Card CVV:
-                </Label>
+                <Label htmlFor="cvv-input">Card CVV:</Label>
                 <Input
                   type="number"
                   max="3"
@@ -245,10 +241,7 @@ const PaymentPage = () => {
 
             <div className="grid grid-cols-2 items-center max-w-lg mx-auto space-x-2 mx-auto my-4">
               <div className="w-full max-w-lg">
-                <Label htmlFor="cvv-input" class="sr-only">
-                  {" "}
-                  Country{" "}
-                </Label>
+                <Label htmlFor="cvv-input"> Country </Label>
                 <Select>
                   <SelectTrigger style={{ padding: "30px 10px" }}>
                     <SelectValue placeholder="Select Your Country" />

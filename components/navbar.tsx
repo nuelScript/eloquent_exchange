@@ -6,6 +6,8 @@ import {
   Moneys,
   UserTag,
   LogoutCurve,
+  Note,
+  Next,
   ArrowLeft2,
 } from "iconsax-react";
 import Image from "next/image";
@@ -28,22 +30,21 @@ export const routes = [
       "/dashboard/transactions/payment",
   },
   {
-<<<<<<< HEAD
     label: "News",
-    icon: ArrowLeft2,
+    icon: Note,
     href: "/news",
   },
   {
-=======
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
+    label: "Terms",
+    icon: Next,
+    href: "/terms",
+  },
+  {
     label: "Refer and Earn",
     icon: Moneys,
     href: "/refer&earn",
   },
-<<<<<<< HEAD
 
-=======
->>>>>>> 8fd29388e9d31c807186c0f278798cbae48e893c
   {
     label: "Profile",
     icon: UserTag,
@@ -87,6 +88,41 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-x-8">
+        {/* <route.icon
+                variant="Outline"
+                className=
+                  "w-6 h-6 mr-2 text-[#4168B7] dark:text-[#A77700] text-primary"
+                
+              />
+
+      <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuCheckboxItem
+          checked={showStatusBar}
+          onCheckedChange={setShowStatusBar}
+        >
+          Status Bar
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={showActivityBar}
+          onCheckedChange={setShowActivityBar}
+          disabled
+        >
+          Instruction
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={showPanel}
+          onCheckedChange={setShowPanel}
+        >
+          Panel
+        </DropdownMenuCheckboxItem>
+      </DropdownMenuContent>
+    </DropdownMenu> */}
         {routes.map((route) => (
           <Link
             href={route.href}

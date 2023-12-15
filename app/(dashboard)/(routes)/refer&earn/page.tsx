@@ -7,6 +7,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { getCookie } from "@/lib/utils";
 import isAuth from "@/components/isAuth";
+import Image from "next/image";
 
 const ReferPage = () => {
   const [referralId, setReferralId] = useState<string | null>();
@@ -38,34 +39,56 @@ const ReferPage = () => {
   }, []);
 
   return (
-    <main className="flex flex-col space-y-8 items-center pt-12">
-      <h1 className="font-semibold text-primary text-5xl">$0.00</h1>
-      <p className="font-normal text-lg text-primary min-[450px]:text-left text-center min-[450px]:p-0 px-4">
-        Refer your friends and earn 0.05% on all trades
-      </p>
-      <div className="flex flex-col space-y-6 min-[450px]:p-0 px-4">
-        <div className="flex flex-col items-start space-y-4">
-          <Label htmlFor="your referral id">Your Referral ID</Label>
-          <Input
-            readOnly
-            value={referralId || ""}
-            className="bg-transparent text-center "
-          />
-        </div>
-        <div className="flex flex-col items-start space-y-4">
-          <Label htmlFor="total number of referrals">
-            Total Number of Referrals
-          </Label>
-          <Input readOnly value="0" className="bg-transparent text-center" />
-        </div>
-        <div className="flex flex-col items-start space-y-4">
-          <Label htmlFor="balance and total earnings">
-            Balance and Total Earnings
-          </Label>
-          <Input readOnly value="$0" className="bg-transparent text-center" />
+    <div className="grid grid-cols-1 md:grid-cols-2 h-screen w-full items-center my-auto mx-auto justify-between">
+      <div className="flex justify-center  sm:mb-4 my-auto w-full h-full items-center">
+        <Image
+          src="/refer.svg"
+          alt="Referal"
+          width={400}
+          height={400}
+          className="ml-8 !sm:h-[250px] !sm:w-[250px] animate-pulse"
+        />
+      </div>
+      <div className="flex flex-col justify-center my-auto mx-auto w-full h-full items-center">
+        <h1 className="font-semibold text-primary text-5xl">$0.00</h1>
+        <p className="font-normal mt-2 text-lg text-primary min-[450px]:text-left text-left min-[450px]:p-0 px-4">
+          Refer your friends and earn 0.05% on all trades
+        </p>
+        <div className="flex mt-2 sm:w-full mx-auto lg:w-[450px] flex-col space-y-6 sm:px-4 px-6">
+          <div className="flex flex-col items-start space-y-4">
+            <Label htmlFor="your referral id">Your Referral ID</Label>
+            <Input
+              style={{ padding: "30px 10px" }}
+              className="w-full  mx-auto bg-transparent text-left rounded-lg p-2 py-2  mt-1"
+              readOnly
+              value={referralId || ""}
+            />
+          </div>
+          <div className="flex mt-2 flex-col items-start space-y-4">
+            <Label htmlFor="total number of referrals">
+              Total Number of Referrals
+            </Label>
+            <Input
+              style={{ padding: "30px 10px" }}
+              readOnly
+              value="0"
+              className="w-full mx-auto bg-transparent text-left rounded-lg p-2 py-2  mt-1"
+            />
+          </div>
+          <div className="flex mt-2 flex-col items-start space-y-4">
+            <Label htmlFor="balance and total earnings">
+              Balance and Total Earnings
+            </Label>
+            <Input
+              style={{ padding: "30px 10px" }}
+              readOnly
+              value="$0"
+              className="w-full  mx-auto bg-transparent text-left rounded-lg p-2 py-2  mt-1"
+            />
+          </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

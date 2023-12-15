@@ -38,7 +38,7 @@ const SellPage = () => {
             address</p>
         </div>
         <div>
-          <Form>
+          {/* <Form> */}
             <form className="space-y-8 flex flex-col">
               <div className="grid w-full h-full py-3 max-w-lg items-center gap-1.5">
                 <Label htmlFor="bank">Bank Name</Label>
@@ -71,7 +71,7 @@ const SellPage = () => {
                 <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
               </Button>
             </form>
-          </Form>
+          {/* </Form> */}
         </div>
       </div>
     </div>

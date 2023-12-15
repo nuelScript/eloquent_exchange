@@ -32,9 +32,13 @@ const Footer = () => {
       </a>
       <div className="w-full text-center absolute border-[0.6px] rounded-lg bottom-[150px] border-primary"></div>
       <footer
-        className={cn("text-lg mb-3 font-normal text-center", font.className)}
+        className={cn(
+          "text-lg mb-4 -mt-6 font-normal text-center",
+          font.className
+        )}
       >
-        Copyright @ Eloquent Exchange 2023. All Rights Reserved.
+        Copyright @ Eloquent Exchange 2023. All Rights Reserved. Designed by
+        Witt<span className="text-plum-500">Stack</span>
       </footer>
     </div>
   );

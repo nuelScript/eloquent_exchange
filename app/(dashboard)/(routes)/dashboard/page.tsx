@@ -10,9 +10,29 @@ import axios from "axios";
 import { getSoldCrypto, getUsers, postGoogleOAuth } from "@/lib/helpers";
 import isAuth from "@/components/isAuth";
 
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+
 const DashboardPage = () => {
   const [name, setName] = useState("");
   const [data, setData] = useState<Payment[]>([]);
+
+  interface DataTableProps<TData, TValue> {
+    columns: ColumnDef<TData, TValue>[];
+    data: TData[];
+  }
+
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  });
 
   useEffect(() => {
     const fetchCallBackUrl = () => {
@@ -107,31 +127,35 @@ const DashboardPage = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen flex flex-col gap-y-20 px-10 py-8">
+    <div className="w-full h-screen flex flex-col gap-y-10 px-10 py-4">
       <div className="flex min-[912px]:flex-row min-[912px]:space-y-0 space-y-8 flex-col justify-between items-center">
         <h1 className="text-2xl font-normal min-[912px]:text-5xl">
           Welcome back, {name}
         </h1>
-        <div className="flex min-[912px]:flex-col flex-row min-[912px]:gap-y-4 gap-x-4">
-          <Link href="/dashboard/transactions/buy&sell/buy">
-            <Button
-              variant="outline"
-              className="border border-[#4168B7] dark:border-[#A77700] items-center justify-center text-base font-normal text-primary dark:text-muted-foreground px-8 text-center py-5"
-            >
-              Buy Crypto
-            </Button>
-          </Link>
-          <Link href="/dashboard/transactions/buy&sell/sell">
-            <Button
-              variant="outline"
-              className="border border-black dark:border-white items-center justify-center text-base font-normal text-primary dark:text-muted-foreground px-8 text-center py-5"
-            >
-              Sell Crypto
-            </Button>
-          </Link>
-        </div>
+        {table.getRowModel().rows?.length ? (
+          <div className="flex  flex-row min-[912px]:gap-y-4 gap-x-4">
+            <Link href="/dashboard/transactions/buy&sell/buy">
+              <Button
+                variant="outline"
+                className="border bg-[#4168B7] text-white dark:bg-[#A77700] items-center justify-center font-normal  px-8 text-center py-5"
+              >
+                Buy Crypto
+              </Button>
+            </Link>
+            <Link href="/dashboard/transactions/buy&sell/sell">
+              <Button
+                variant="outline"
+                className="border border-black dark:border-white items-center justify-center text-base font-normal  dark:text-muted-foreground px-8 text-center py-5"
+              >
+                Sell Crypto
+              </Button>
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
-      <div className="container mx-auto py-10 space-y-10">
+      <div className="container mx-auto py-3 space-y-6">
         <div className="flex min-[912px]:flex-row flex-col justify-between min-[912px]:items-center items-start min-[912px]:space-y-0 space-y-4">
           <p className="text-primary text-lg min-[912px]:text-lg font-medium text-start">
             Transaction History
@@ -145,7 +169,7 @@ const DashboardPage = () => {
             </Button>
             <Button
               variant="outline"
-              className="border dark:border-primary border-primary text-base font-normal text-primary dark:text-muted-foreground px-8 py-5"
+              className="border bg-[#4168B7] text-white dark:bg-[#A77700] dark:border-primary border-primary font-normal px-8 py-5"
             >
               Buy
             </Button>
@@ -163,4 +187,4 @@ const DashboardPage = () => {
   );
 };
 
-export default isAuth(DashboardPage);
+export default DashboardPage;
