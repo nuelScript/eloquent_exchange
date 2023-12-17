@@ -61,7 +61,7 @@ const HomeSection = () => {
               className="object-cover min-[912px]:hidden object-center"
             />
           </div>
-          <p className="text-primary w-3/4 font-normal min-[912px]:text-2xl text-sm">
+          <p className="text-primary w-full mx-auto px-auto text-center font-normal min-[912px]:text-2xl text-sm">
             Join the world&apos;s biggest and trusted exchange. Trade in
             Bitcoin, Etherum, dodge and many more currencies.
           </p>

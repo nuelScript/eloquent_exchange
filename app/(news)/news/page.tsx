@@ -52,8 +52,8 @@ const NewsPage = () => {
   return (
     <main className="w-full">
       <div className="text-center h-[300px] flex items-center justify-center bg-gradient-to-b from-[#4168B7] to-white dark:from-[#A77700]   w-full space-y-10">
-        <div className="px-10 mt-3 items-center py-20">
-          <p className="lg:text-[58px] mt-5 text-3xl text-white flex flex-col  font-bold text-center my-auto  item-center">
+        <div className="px-10 md:mt-3 mt-32 sm:pt-10 items-center py-20">
+          <p className="lg:text-[58px]  mt-5 text-3xl text-white flex flex-col  font-bold text-center my-auto  item-center">
             Your Gateway to the Future of Finance!
           </p>
           <p className="text-md mt-5 text-center mx-auto px-auto w-full max-w-[1000px]">
@@ -72,13 +72,13 @@ const NewsPage = () => {
 
       {initial.map((items: any, i) => {
         return (
-          <section key={items.article_id} className="px-10">
+          <section key={items.article_id} className=" mt-24 px-10">
             <div className="my-4 space-y-3">
               <h2 className="text-[#4168B7] font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
                 |TOP STORY.|
               </h2>
 
-              <p className="lg:text-[40px] leading-[50px] text-xl font-bold">
+              <p className="lg:text-[40px] md:leading-[50px] leading-[24px] text-xl font-bold">
                 {items.title}
               </p>
             </div>
