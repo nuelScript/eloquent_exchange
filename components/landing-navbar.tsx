@@ -56,7 +56,7 @@ const LandingNavbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center px-10 min-[912px]:py-4 py-8">
+    <div className="flex justify-between items-center px-10 min-[912px]:py-4 py-7">
       <Image
         src={
           resolvedTheme === "dark" ? "/mobile_logo_dark.svg" : "mobile_logo.svg"
