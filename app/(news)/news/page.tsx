@@ -83,28 +83,30 @@ const NewsPage = () => {
               </p>
             </div>
 
-            <div className="flex flex-col md:flex-row mx-auto px-0 items-center md:space-x-5 lg:space-x-8">
-              <div className="w-full max-[992px]:hidden">
-                <Image
-                  src="block.svg"
-                  alt="referral"
-                  width={500}
-                  height={400}
-                  className="max-w-[500] max-h-[400px]"
-                />
+            <div className="grid grid-cols-1 md:grid-cols-3 mx-auto px-0 items-center md:space-x-5 lg:space-x-8">
+              <div>
+                <div className="w-full max-[992px]:hidden">
+                  <Image
+                    src="block.svg"
+                    alt="referral"
+                    width={700}
+                    height={500}
+                    className="max-w-[1000] max-h-[500px]"
+                  />
+                </div>
+
+                <div className="md:hidden">
+                  <Image
+                    src="blocksm.svg"
+                    alt="referral"
+                    width={500}
+                    height={400}
+                    className="max-h-[400px] mb-3"
+                  />
+                </div>
               </div>
 
-              <div className="md:hidden">
-                <Image
-                  src="blocksm.svg"
-                  alt="referral"
-                  width={500}
-                  height={400}
-                  className="max-h-[400px] mb-3"
-                />
-              </div>
-
-              <div className="flex flex-col space-y-8">
+              <div className="flex flex-col col-span-2 space-y-8">
                 <p className="indent-4">{items.content}</p>
                 {/* <p className="indent-4">
                   However, during peak times, both of these chains grapple with
@@ -156,74 +158,94 @@ const NewsPage = () => {
         );
       })}
 
-      <section className="px-10 py-10 mx-auto">
-        <div className="grid items-center my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <section className="md:px-10 px-3 py-10 mx-auto">
+        <div className="grid items-center my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <h2 className="text-[#4168B7] mb-4 font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
               |TOP STORY.|
             </h2>
-            <div>
-              <Image
+
+            {initial.map((items: any, i) => {
+              return (
+                <div key={items.article_id}>
+                  <div>
+                    {/* <Image
                 src="news.svg"
                 alt="referral"
                 width={800}
                 height={400}
                 className=""
-              />
-            </div>
-            {initial.map((items: any, i) => {
-              return (
-                <div key={items.article_id}>
-                  <small className="my-3 py-2 space-x-2  flex flex-row">
-                    <Image
-                      src="calender.svg"
-                      alt="calender"
-                      width={20}
-                      height={20}
-                      className=""
+              /> */}
+
+                    <img
+                      src={items.image_url}
+                      className="rounded-lg bg-[#4168B7] dark:bg-[#A77700]"
+                      width="100%"
+                      height="400px"
+                      alt="crypto image"
                     />
-                    <span>{items.pubDate} |</span>
-                  </small>
+                  </div>
 
                   <div>
-                    <h3 className="text-[#4168B7] font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
-                      {items.title}
-                    </h3>
-
-                    <p className="font-[19px] line-clamp-3 pr-2  my-2 leading-[25px] font-normal">
-                      {items.content}
-                    </p>
-                  </div>
-                  <div className="author flex flex-row justify-between px-1">
-                    <div className="flex flex-row space-x-2 items-center">
+                    <small className="my-3 py-2 space-x-2  flex flex-row">
                       <Image
+                        src="calender.svg"
+                        alt="calender"
+                        width={20}
+                        height={20}
+                        className=""
+                      />
+
+                      <span>{items.pubDate} |</span>
+                    </small>
+
+                    <div>
+                      <h3 className="text-[#4168B7] font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
+                        {items.title}
+                      </h3>
+
+                      <p className="font-[19px] line-clamp-3 pr-2  my-2 leading-[25px] font-normal">
+                        {items.content}
+                      </p>
+                    </div>
+                    <div className="author flex flex-row justify-between px-1">
+                      <div className="flex flex-row space-x-2 items-center">
+                        <img
+                          src={items.image_url}
+                          className="rounded-lg bg-[#4168B7] dark:bg-[#A77700]"
+                          width="20px"
+                          height="20px"
+                          alt="crypto image"
+                        />
+                        {/* <Image
                         className="rounded-lg bg-[#4168B7] dark:bg-[#A77700]"
                         src=""
                         alt="author"
                         width={20}
                         height={20}
-                      />
-                      <span>
-                        {items.creator != null
-                          ? items.creator ?? items.creator
-                          : "Samuel"}
-                      </span>
-                    </div>
+                      /> */}
+                        <span>
+                          {items.creator != null
+                            ? items.creator ?? items.creator
+                            : "Samuel"}
+                        </span>
+                      </div>
 
-                    <div>
-                      <Link href={items.link}>
-                        <Button
-                          style={{ borderRadius: "10px" }}
-                          className="w-full text-white py-4 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary  hover:text-white dark:hover:text-black"
-                          variant="default"
-                        >
-                          Read More
-                          <DirectRight
-                            className="w-5 h-5 ml-2"
-                            variant="Linear"
-                          />
-                        </Button>
-                      </Link>
+                      <div>
+                        <Link href={items.link}>
+                          <Button
+                            style={{ borderRadius: "10px" }}
+                            className="w-full text-white py-4 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary  hover:text-white dark:hover:text-black"
+                            variant="default"
+                          >
+                            Read More
+                            <DirectRight
+                              className="w-5 h-5 ml-2"
+                              variant="Linear"
+                            />
+                          </Button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -231,7 +253,7 @@ const NewsPage = () => {
             })}
           </div>
 
-          <div className="flex flex-col block">
+          <div className="flex ml-0 pl-0 md:mx-auto px-auto flex-col ">
             <h2 className="text-[#4168B7] mt-4 pt-5 md:mt-0  text-center md:text-right mb-4 font-bold lg:text-3xl text-2xl dark:text-[#A77700]">
               More News
             </h2>
@@ -240,14 +262,20 @@ const NewsPage = () => {
               return (
                 <div
                   key={items.article_id}
-                  className="flex flex-row mb-3 lg:mb-4 space-x-2 items-start justify-between"
+                  className="flex flex-row mb-3 lg:mb-4 space-x-2 items-start"
                 >
-                  <Image
+                  <img
+                    src={items.image_url}
+                    width="100px"
+                    height="70px"
+                    alt="crypto image"
+                  />
+                  {/* <Image
                     src="morenews.svg"
                     alt="author"
                     width={100}
                     height={70}
-                  />
+                  /> */}
 
                   <div>
                     <h4 className="text-left mb-2 font-bold  text-[16px]">
