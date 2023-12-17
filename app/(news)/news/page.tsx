@@ -72,7 +72,10 @@ const NewsPage = () => {
 
       {initial.map((items: any, i) => {
         return (
-          <section key={items.article_id} className=" mt-24 px-10">
+          <section
+            key={items.article_id}
+            className=" mt-24 px-3 md:px-6 lg:px-10 "
+          >
             <div className="my-4 space-y-3">
               <h2 className="text-[#4168B7] font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
                 |TOP STORY.|
@@ -158,7 +161,7 @@ const NewsPage = () => {
         );
       })}
 
-      <section className="md:px-10 px-3 py-10 mx-auto">
+      <section className="lg:px-10 px-3 w-full md:px-6 py-10 mx-auto">
         <div className="grid items-center my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <h2 className="text-[#4168B7] mb-4 font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
@@ -253,7 +256,7 @@ const NewsPage = () => {
             })}
           </div>
 
-          <div className="flex ml-0 pl-0 md:mx-auto px-auto flex-col ">
+          <div className="flex ml-0 pl-0 w-full mx-auto px-auto flex-col ">
             <h2 className="text-[#4168B7] mt-4 pt-5 md:mt-0  text-center md:text-right mb-4 font-bold lg:text-3xl text-2xl dark:text-[#A77700]">
               More News
             </h2>
