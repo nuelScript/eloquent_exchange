@@ -37,8 +37,7 @@ const Footer = () => {
           font.className
         )}
       >
-        Copyright @ Eloquent Exchange 2023. All Rights Reserved. Designed by
-        Witt<span className="text-plum-500">Stack</span>
+        Copyright @ Eloquent Exchange 2023. All Rights Reserved.
       </footer>
     </div>
   );
