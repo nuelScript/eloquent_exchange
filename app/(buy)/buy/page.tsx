@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/form";
 import Image from "next/image";
 import Link from "next/link";
+import isAuth from "@/components/isAuth";
 import { DirectRight } from "iconsax-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -87,4 +88,4 @@ const BuyPage = () => {
     </div>
   );
 };
-export default BuyPage;
+export default isAuth(BuyPage);
