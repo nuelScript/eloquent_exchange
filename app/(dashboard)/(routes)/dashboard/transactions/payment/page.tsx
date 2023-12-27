@@ -53,28 +53,7 @@ import { useState } from "react";
 // });
 
 const PaymentPage = () => {
-  // const router = useRouter();
-  // const form = useForm<z.infer<typeof formSchema>>({
-  //   resolver: zodResolver(formSchema),
-  // });
-  // const [date, setDate] = useState<Date>();
-  // const [link, setLink] = useState('');
-
-  // let setLink = localStorage.getItem("link");
-  // const onSubmit = () => {
-
-  //   const flutterwaveLink = paymentLink?.toString();
-
-  //   const paymentMethod = form.getValues("paymentMethod");
-
-  //   if (paymentMethod === "card") {
-  //     router.push(flutterwaveLink || "");
-  //   } else {
-  //     router.push("");
-  //   }
-  // };
-
-  // const PaymentPage = () => {
+  const [date, setDate] = useState<Date>();
 
   return (
     <div className="flex min-[1000px]:flex-row my-auto justify-center h-full w-full flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen  bg-[length:200px_150px] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
