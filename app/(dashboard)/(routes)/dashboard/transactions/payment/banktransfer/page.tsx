@@ -1,3 +1,5 @@
+"use client";
+
 import isAuth from "@/components/isAuth";
 
 const BanktransferPage = () => {
