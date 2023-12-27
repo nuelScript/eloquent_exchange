@@ -110,7 +110,9 @@ const NewsPage = () => {
               </div>
 
               <div className="flex flex-col col-span-2 space-y-8">
-                <p className="indent-4">{items.content}</p>
+                <p className="indent-4 line-clamp-4 md:line-clamp-none md:line-clamp-0">
+                  {items.content}
+                </p>
                 {/* <p className="indent-4">
                   However, during peak times, both of these chains grapple with
                   sluggish transaction speeds and steep fees. Developers from

@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/form";
 import Image from "next/image";
 import Link from "next/link";
+import isAuth from "@/components/isAuth";
 import { DirectRight } from "iconsax-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -32,49 +33,48 @@ const SellPage = () => {
             Sell Transaction!
           </h1>
           <p className="mt-[8px]  text-left lg:text-[16px] w-[432px]">
-            Selling #amt worth of Litecoin at ₦84600 
+            Selling #amt worth of Litecoin at ₦84600
           </p>
-          <p  className="-mt-[8px]">Kindly provide your wallet
-            address</p>
+          <p className="-mt-[8px]">Kindly provide your wallet address</p>
         </div>
         <div>
           {/* <Form> */}
-            <form className="space-y-8 flex flex-col">
-              <div className="grid w-full h-full py-3 max-w-lg items-center gap-1.5">
-                <Label htmlFor="bank">Bank Name</Label>
-                <Input
-                  style={{ padding: "30px 10px" }}
-                  type="text"
-                  id="bank"
-                  className="w-full rounded-lg p-2 py-2  mt-1"
-                  placeholder="Bank Name"
-                />
-              </div>
+          <form className="space-y-8 flex flex-col">
+            <div className="grid w-full h-full py-3 max-w-lg items-center gap-1.5">
+              <Label htmlFor="bank">Bank Name</Label>
+              <Input
+                style={{ padding: "30px 10px" }}
+                type="text"
+                id="bank"
+                className="w-full rounded-lg p-2 py-2  mt-1"
+                placeholder="Bank Name"
+              />
+            </div>
 
-              <div className="grid w-full max-w-lg items-center gap-1.5">
-                <Label htmlFor="number">Account Number</Label>
-                <Input
-                  style={{ padding: "30px 10px" }}
-                  type="number"
-                  id="number"
-                  className="w-full rounded-lg p-2 py-2  mt-1"
-                  placeholder="Account Number"
-                />
-              </div>
+            <div className="grid w-full max-w-lg items-center gap-1.5">
+              <Label htmlFor="number">Account Number</Label>
+              <Input
+                style={{ padding: "30px 10px" }}
+                type="number"
+                id="number"
+                className="w-full rounded-lg p-2 py-2  mt-1"
+                placeholder="Account Number"
+              />
+            </div>
 
-              <Button
-                style={{ borderRadius: "30px" }}
-                className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
-                variant="default"
-              >
-                Continue
-                <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
-              </Button>
-            </form>
+            <Button
+              style={{ borderRadius: "30px" }}
+              className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
+              variant="default"
+            >
+              Continue
+              <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
+            </Button>
+          </form>
           {/* </Form> */}
         </div>
       </div>
     </div>
   );
 };
-export default SellPage;
+export default isAuth(SellPage);
