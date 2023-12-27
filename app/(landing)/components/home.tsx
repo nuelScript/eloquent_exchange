@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+// import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import TypewriterComponent from "typewriter-effect";
@@ -9,7 +9,9 @@ import { Revalia } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { companies } from "./companies";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 // import Ticker from "react-ticker";
 // import Ticker from "react-awesome-ticker";
 // import Marquee from "react-double-marquee";
@@ -20,8 +22,35 @@ const font = Revalia({
 });
 
 const HomeSection = () => {
+  // function round(num: number, fractionDigits: number): number {
+  //   return Number(num.toFixed(fractionDigits));
+  // }
   const { resolvedTheme } = useTheme();
   const router = useRouter();
+
+  // const [news, setNews] = useState([]);
+  const [initial, setInitial] = useState([]);
+
+  useEffect(() => {
+    const fetchNewsdata = async () => {
+      try {
+        const response = await axios.get("https://api.coincap.io/v2/assets", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        let responseData = response.data.data;
+        console.log(responseData);
+        const coinn = responseData.slice(0, 10);
+        console.log(coinn);
+        setInitial(coinn);
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+    fetchNewsdata();
+  }, []);
+
   return (
     <div id="home" className="flex flex-col space-y-8 px-10 pt-10">
       <div className="flex min-[912px]:flex-row md:my-4 flex-col min-[912px]:text-left text-center justify-between items-center">
@@ -127,6 +156,58 @@ const HomeSection = () => {
           />
         ))}
       </div>
+
+      <section>
+        <div className="flex flex-col space-y-8 pt-20">
+          <h1 className="min-[912px]:font-semibold w-[700px] min-h-full leading-[60px] min-[912px]:text-[48px] text-3xl font-normal">
+            Get Accurate Crypto Currency Pricing list
+          </h1>
+          <table className="table-auto rounded-lg text-center border-2 p-3 px-4">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Last Price</th>
+                <th>24 chg(%)</th>
+              </tr>
+            </thead>
+            <tbody className="my-auto border-3 py-3 mx-auto px-auto">
+              {initial.map((ini: any, i) => (
+                <tr className="border-2" key={i}>
+                  <td className="border-r-2 p-4 text-center mb-2">
+                    {ini.name}
+                  </td>
+                  <td className="border-r-2 p-4 text-center mb-2">
+                    {Math.round(ini.priceUsd * 100) / 100}
+                  </td>
+                  <td className="border-r-2 p-4 text-center mb-2">
+                    <span
+                      className={
+                        ini.changePercent24Hr.substring(0, 1) == "-"
+                          ? cn("bg-red-500 text-white p-2 rounded")
+                          : cn("bg-green-500 text-white p-2 rounded")
+                      }
+                    >
+                      {" "}
+                      {Math.round(ini.changePercent24Hr * 100) / 100}{" "}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="text-center flex justify-center items-center">
+            <Button
+              variant="custom"
+              className="rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg"
+              onClick={() => router.push("/crypto")}
+            >
+              Get more pricing list{" "}
+              <Bitcoin className="h-6 w-6 ml-2 rotate-45" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <div className="flex flex-col space-y-8 pt-20">
         <div className="flex min-[912px]:flex-row flex-col min-[912px]:text-left text-center justify-between space-y-8 min-[912px]:space-y-0">
           <div className="flex flex-col space-y-8">

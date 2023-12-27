@@ -48,10 +48,14 @@ const formSchema = z.object({
 
 const Buypage = () => {
   const router = useRouter();
+  const [showMe, setShowMe] = useState(false);
+  const [textme, setTextme] = useState("Set by Nairaa");
+
   const [enteredAmount, setEnteredAmount] = useState<number | undefined>(
     undefined
   );
   const [coinlist, setCoinList] = useState<any[]>([]);
+  const [coinlists, setCoinLists] = useState<any[]>([]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -68,7 +72,12 @@ const Buypage = () => {
       try {
         const response = await axios.get(getCoinList);
         const coinList = response.data;
-        setCoinList(coinList);
+        console.log(coinList);
+        const coinn = coinList.slice(1, 2);
+        const coinns = coinList.slice(3, 4);
+        console.log(coinn);
+        setCoinList(coinn);
+        setCoinLists(coinns);
       } catch (error) {
         console.error("Error", error);
       }
@@ -76,6 +85,11 @@ const Buypage = () => {
 
     fetchCoinData();
   }, [form]);
+
+  function toggle() {
+    setShowMe(!showMe);
+    // setTextme("Set in LRD");
+  }
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
@@ -97,6 +111,7 @@ const Buypage = () => {
       console.error("Error making POST request:", error);
     }
   };
+
   return (
     <div className="flex min-[1000px]:flex-row -mt-5 justify-center h-full w-full my-auto flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen  bg-[length:200px_150px] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
       <div className="flex-col items-start my-auto gap-y-3 min-[1000px]:flex hidden">
@@ -170,14 +185,23 @@ const Buypage = () => {
                             <span className="text-primary font-semibold ">
                               <ScrollArea className="w-36 h-5 items-center whitespace-nowrap rounded-md">
                                 <div className="w-fit space-x-8 p-0">
-                                  {coinlist.map((coin) => (
-                                    <span
-                                      key={coin.id}
-                                      className="flex-1 text-muted-foreground overflow-hidden "
-                                    >
-                                      {coin.name} : {coin.buy_rate}
-                                    </span>
-                                  ))}
+                                  {showMe
+                                    ? coinlist.map((coin, index) => (
+                                        <span
+                                          key={index}
+                                          className="flex-1 text-muted-foreground overflow-hidden "
+                                        >
+                                          {coin.name} : {coin.buy_rate}
+                                        </span>
+                                      ))
+                                    : coinlists.map((coin, index) => (
+                                        <span
+                                          key={index}
+                                          className="flex-1 text-muted-foreground overflow-hidden "
+                                        >
+                                          {coin.name} : {coin.buy_rate}
+                                        </span>
+                                      ))}
                                 </div>
                                 <ScrollBar orientation="horizontal" />
                               </ScrollArea>
@@ -195,8 +219,11 @@ const Buypage = () => {
                             <span className="font-normal text-primary">
                               Amount: 0.0
                             </span>
-                            <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
-                              Set by Naira{" "}
+                            <span
+                              onClick={toggle}
+                              className="text-[#4168B7] cursor-pointer dark:text-[#A77700] font-normal flex items-center"
+                            >
+                              {showMe ? "Set by Naira" : "Set by LRD"}
                               <ArrowSwapHorizontal className="ml-2 w-6 h-6" />
                             </span>
                           </FormDescription>
