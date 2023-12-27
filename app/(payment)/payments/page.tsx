@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+// import Link from "@/node_modules/next/link";
 import { DirectRight } from "iconsax-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -44,8 +45,42 @@ import {
 } from "@/components/ui/popover";
 import { useState } from "react";
 
+
+
+// const formSchema = z.object({
+//   paymentMethod: z.string({
+//     required_error: "Please select a payment method",
+//   }),
+// });
+
+
 const PaymentPage = () => {
-  const [date, setDate] = useState<Date>();
+  
+
+  // const router = useRouter();
+  // const form = useForm<z.infer<typeof formSchema>>({
+  //   resolver: zodResolver(formSchema),
+  // });
+  // const [date, setDate] = useState<Date>();
+  // const [link, setLink] = useState('');
+
+  // let setLink = localStorage.getItem("link");
+  // const onSubmit = () => {
+
+  //   const flutterwaveLink = paymentLink?.toString();
+
+  //   const paymentMethod = form.getValues("paymentMethod");
+
+  //   if (paymentMethod === "card") {
+  //     router.push(flutterwaveLink || "");
+  //   } else {
+  //     router.push("");
+  //   }
+  // };
+
+// const PaymentPage = () => {
+ 
+
   return (
     <div className="flex min-[1000px]:flex-row my-auto justify-center h-full w-full flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen  bg-[length:200px_150px] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
       <div className="flex-col items-start my-auto gap-y-3 min-[1000px]:flex hidden">
@@ -78,7 +113,7 @@ const PaymentPage = () => {
             </CardFooter>
           </Card> */}
 
-          <Card className="items-center my-auto py-auto text-left px-auto">
+          <Link href={localStorage.getItem("link")}><Card className="items-center my-auto py-auto text-left px-auto">
             <CardHeader>
               {/* <CardTitle>Card Title</CardTitle> */}
               <svg
@@ -100,6 +135,8 @@ const PaymentPage = () => {
               <CardDescription>Card</CardDescription>
             </CardHeader>
           </Card>
+          </Link>
+          <Link href="/dashboard/transactions/payment/mobile_money">
           <Card className="items-center text-center  my-auto py-auto  px-auto">
             <CardHeader className="text-center dark:fill-[#ffffff] items-center">
               <svg
@@ -156,18 +193,25 @@ const PaymentPage = () => {
                   fill="black"
                 />
               </svg>
+          
 
               {/* <CardTitle>Card Title</CardTitle> */}
+             
               <CardDescription>Bank Transfer</CardDescription>
             </CardHeader>
           </Card>
+          </Link>
+
+          <Link href="/dashboard/transactions/payment/mobile_money">
           <Card className="items-center text-center  my-auto py-auto  px-auto">
             <CardHeader>
               {/* <CardTitle>Card Title</CardTitle> */}
               <CardDescription>Mobile Money</CardDescription>
             </CardHeader>
           </Card>
+          </Link>
         </div>
+       
 
         <div className="space-y-8">
           <form className="w-full max-w-lg mx-auto">
@@ -270,7 +314,8 @@ const PaymentPage = () => {
               </div>
             </div>
 
-            <Button
+           
+           <Link href='{localStorage.getItem("link")}'> <Button
               style={{ borderRadius: "30px" }}
               className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
               variant="default"
@@ -278,10 +323,11 @@ const PaymentPage = () => {
               Continue
               <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
             </Button>
+            <Link />
           </form>
         </div>
       </div>
     </div>
   );
 };
-export default PaymentPage;
+export default isAuth(PaymentPage);
