@@ -198,7 +198,7 @@ const PaymentPage = () => {
             <Card className="items-center cursor-pointer text-center  my-auto py-auto  px-auto">
               <CardHeader>
                 {/* <CardTitle>Card Title</CardTitle> */}
-                <CardDescription>Mobile Money</CardDescription>
+                <CardDescription>Mobile Moneey</CardDescription>
               </CardHeader>
             </Card>
           </Link>
