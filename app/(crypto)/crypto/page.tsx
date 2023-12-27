@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
-import { companies } from "./companies";
 import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
