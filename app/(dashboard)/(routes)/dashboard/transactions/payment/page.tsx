@@ -285,4 +285,4 @@ const PaymentPage = () => {
     </div>
   );
 };
-export default PaymentPage;
+export default isAuth(PaymentPage);
