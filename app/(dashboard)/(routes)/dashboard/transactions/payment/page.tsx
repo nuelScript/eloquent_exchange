@@ -43,6 +43,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useState } from "react";
+import isAuth from "@/components/isAuth";
 
 const PaymentPage = () => {
   const [date, setDate] = useState<Date>();
