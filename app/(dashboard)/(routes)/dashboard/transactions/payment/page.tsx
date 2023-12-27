@@ -43,10 +43,39 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import isAuth from "@/components/isAuth";
+import { useRouter } from "next/navigation";
+
+// const formSchema = z.object({
+//   paymentMethod: z.string({
+//     required_error: "Please select a payment method",
+//   }),
+// });
 
 const PaymentPage = () => {
   const [date, setDate] = useState<Date>();
+
+  const router = useRouter();
+  // const form = useForm<z.infer<typeof formSchema>>({
+  //   resolver: zodResolver(formSchema),
+  // });
+
+  const onSubmit = () => {
+    const paymentLink = localStorage.getItem("link");
+    const flutterwaveLink = paymentLink?.toString();
+
+    // const paymentMethod = form.getValues("paymentMethod");
+
+    // if (paymentMethod === "card") {
+    router.push(flutterwaveLink || "");
+    // } else {
+    //   router.push("/dashboard/transactions/payment/mobile_money");
+    // }
+  };
+
   return (
     <div className="flex min-[1000px]:flex-row my-auto justify-center h-full w-full flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen  bg-[length:200px_150px] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
       <div className="flex-col items-start my-auto gap-y-3 min-[1000px]:flex hidden">
@@ -78,30 +107,30 @@ const PaymentPage = () => {
               <p>Card Footer</p>
             </CardFooter>
           </Card> */}
-          <Link href={localStorage.getItem("link") ?? " "}>
-            <Card className="items-center cursor-pointer my-auto py-auto text-left px-auto">
-              <CardHeader>
-                {/* <CardTitle>Card Title</CardTitle> */}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    className="text-center  dark:fill-[#ffffff] dark:fill-white   fill-current "
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M16 4H0V3.25C0 2.56 0.448 2 1 2H15C15.552 2 16 2.56 16 3.25V4ZM16 6.5V13C16 13.2652 15.8946 13.5196 15.7071 13.7071C15.5196 13.8946 15.2652 14 15 14H1C0.734784 14 0.48043 13.8946 0.292893 13.7071C0.105357 13.5196 0 13.2652 0 13V6.5H16ZM4 10C3.73478 10 3.48043 10.1054 3.29289 10.2929C3.10536 10.4804 3 10.7348 3 11C3 11.2652 3.10536 11.5196 3.29289 11.7071C3.48043 11.8946 3.73478 12 4 12H5C5.26522 12 5.51957 11.8946 5.70711 11.7071C5.89464 11.5196 6 11.2652 6 11C6 10.7348 5.89464 10.4804 5.70711 10.2929C5.51957 10.1054 5.26522 10 5 10H4Z"
-                    fill="#020202"
-                  />
-                </svg>
 
-                <CardDescription>Card</CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
+          <Card className="items-center cursor-pointer my-auto py-auto text-left px-auto">
+            <CardHeader>
+              {/* <CardTitle>Card Title</CardTitle> */}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  className="text-center  dark:fill-[#ffffff] dark:fill-white   fill-current "
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M16 4H0V3.25C0 2.56 0.448 2 1 2H15C15.552 2 16 2.56 16 3.25V4ZM16 6.5V13C16 13.2652 15.8946 13.5196 15.7071 13.7071C15.5196 13.8946 15.2652 14 15 14H1C0.734784 14 0.48043 13.8946 0.292893 13.7071C0.105357 13.5196 0 13.2652 0 13V6.5H16ZM4 10C3.73478 10 3.48043 10.1054 3.29289 10.2929C3.10536 10.4804 3 10.7348 3 11C3 11.2652 3.10536 11.5196 3.29289 11.7071C3.48043 11.8946 3.73478 12 4 12H5C5.26522 12 5.51957 11.8946 5.70711 11.7071C5.89464 11.5196 6 11.2652 6 11C6 10.7348 5.89464 10.4804 5.70711 10.2929C5.51957 10.1054 5.26522 10 5 10H4Z"
+                  fill="#020202"
+                />
+              </svg>
+
+              <CardDescription>Card</CardDescription>
+            </CardHeader>
+          </Card>
+
           <Link href="/dashboard/transactions/payment/banktransfer">
             <Card className="items-center cursor-pointer text-center  my-auto py-auto  px-auto">
               <CardHeader className="text-center dark:fill-[#ffffff] items-center">
@@ -176,7 +205,7 @@ const PaymentPage = () => {
         </div>
 
         <div className="space-y-8">
-          <form className="w-full max-w-lg mx-auto">
+          <form onSubmit={onSubmit} className="w-full max-w-lg mx-auto">
             <Label htmlFor="card-number-input">Card number: </Label>
             <div className="relative">
               <Input
@@ -275,16 +304,17 @@ const PaymentPage = () => {
                 />
               </div>
             </div>
-            <Link href={localStorage.getItem("link") ?? " "}>
-              <Button
-                style={{ borderRadius: "30px" }}
-                className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
-                variant="default"
-              >
-                Continue
-                <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
-              </Button>
-            </Link>
+            {/* <Link href={localStorage.getItem("link") ?? " "}> */}
+            <Button
+              style={{ borderRadius: "30px" }}
+              type="submit"
+              className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
+              variant="default"
+            >
+              Continue
+              <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
+            </Button>
+            {/* </Link> */}
           </form>
         </div>
       </div>
