@@ -42,7 +42,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -64,6 +64,16 @@ const PaymentPage = () => {
   //   resolver: zodResolver(formSchema),
   // });
 
+  // useEffect(() => {
+  //   setLinks(localStorage.getItem("link"));
+  // }, []);
+
+  const onClick = () => {
+    const paymentLink = localStorage.getItem("link");
+    const flutterwaveLink = paymentLink?.toString();
+
+    router.push(flutterwaveLink || "");
+  };
   const onSubmit = () => {
     const paymentLink = localStorage.getItem("link");
     const flutterwaveLink = paymentLink?.toString();
@@ -72,7 +82,7 @@ const PaymentPage = () => {
 
     // if (paymentMethod === "card") {
     router.push(flutterwaveLink || "");
-    setLinks(flutterwaveLink);
+
     // } else {
     //   router.push("/dashboard/transactions/payment/mobile_money");
     // }
@@ -111,7 +121,10 @@ const PaymentPage = () => {
           </Card> */}
 
           <Link href={links}>
-            <Card className="items-center cursor-pointer my-auto py-auto text-left px-auto">
+            <Card
+              onClick={onClick}
+              className="items-center cursor-pointer my-auto py-auto text-left px-auto"
+            >
               <CardHeader>
                 {/* <CardTitle>Card Title</CardTitle> */}
                 <svg
