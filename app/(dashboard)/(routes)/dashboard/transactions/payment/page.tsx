@@ -78,7 +78,7 @@ const PaymentPage = () => {
               <p>Card Footer</p>
             </CardFooter>
           </Card> */}
-          <Link href={localStorage.getItem("link")}>
+          <Link href={localStorage.getItem("link") ?? " "}>
             <Card className="items-center cursor-pointer my-auto py-auto text-left px-auto">
               <CardHeader>
                 {/* <CardTitle>Card Title</CardTitle> */}
@@ -275,7 +275,7 @@ const PaymentPage = () => {
                 />
               </div>
             </div>
-            <Link href={localStorage.getItem("link")}>
+            <Link href={localStorage.getItem("link") ?? " "}>
               <Button
                 style={{ borderRadius: "30px" }}
                 className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
