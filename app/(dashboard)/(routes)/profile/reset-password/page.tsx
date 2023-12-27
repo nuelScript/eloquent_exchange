@@ -70,21 +70,12 @@ const ResetPasswordPage = () => {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const accessToken = getCookie("access_token");
-      const req = await axios.post(
-        reset_password_url,
-        {
-          uid: 57,
-          token: "hsdgafhgdystvhcvhhsrt12",
-          new_password: "tobiloba",
-          re_new_password: "tobiloba",
+      const req = await axios.post(reset_password_url, data, {
+        headers: {
+          Authorization: `JWT ${accessToken}`,
+          "Content-Type": "application/json",
         },
-        {
-          headers: {
-            Authorization: `JWT ${accessToken}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      });
       toast.success("Password changed successfully");
       form.reset;
       //   router.push("/profile");
