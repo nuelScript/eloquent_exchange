@@ -30,8 +30,8 @@ const ResetPasswordPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      uid: 57,
-      token: "hsdgafhgdystvhcvhhsrt12",
+      // uid: 57,
+      // token: "hsdgafhgdystvhcvhhsrt12",
       new_password: "",
       re_new_password: "",
     },
