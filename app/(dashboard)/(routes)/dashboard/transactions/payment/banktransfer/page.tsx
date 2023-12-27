@@ -29,13 +29,12 @@ const BanktransferPage = () => {
             <CardHeader>
               {/* <CardTitle>Card Title</CardTitle> */}
               <CardDescription>
-                <strong>Bank Name:</strong> Accesss Bankk{" "}
-                <br>
-                  <p>
-                    {" "}
-                    <strong>Account Number: </strong>015637646583
-                  </p>
-                </br>
+                <strong>Bank Name:</strong> Accesss Bankk <br />
+                <p>
+                  {" "}
+                  <strong>Account Number: </strong>015637646583
+                </p>
+                <br />
               </CardDescription>
             </CardHeader>
           </Card>
