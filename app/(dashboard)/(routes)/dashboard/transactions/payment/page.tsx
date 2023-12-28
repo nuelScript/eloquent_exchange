@@ -14,7 +14,7 @@ import Link from "next/link";
 import { DirectRight } from "iconsax-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calenda7r } from "@/components/ui/calendar";
+import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import {
