@@ -22,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { OFFICIAL_RATES } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -333,6 +334,12 @@ const Buypage = () => {
                 </Form>
               </CardContent>
             </Card>
+            <p className="my-2">
+              Would you love to sell?{" "}
+              <span>
+                <Link href="/sell">Click Here!</Link>
+              </span>
+            </p>
           </div>
         </div>
       </div>

@@ -29,6 +29,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import isAuth from "@/components/isAuth";
+import Link from "next/link";
 import axios from "axios";
 import { getCoinList, sellRoute } from "@/lib/helpers";
 import { getCookie } from "@/lib/utils";
@@ -255,6 +256,12 @@ const Sellpage = () => {
                 </Form>
               </CardContent>
             </Card>
+            <p className="my-2">
+              Would you love to sell?{" "}
+              <span>
+                <Link href="/sell">Click Here!</Link>
+              </span>
+            </p>
           </div>
         </div>
       </div>
