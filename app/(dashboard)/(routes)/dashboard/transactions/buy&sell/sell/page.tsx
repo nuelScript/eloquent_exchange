@@ -47,6 +47,7 @@ const formSchema = z.object({
 
 const Sellpage = () => {
   const router = useRouter();
+  const [initial, setInitial] = useState([]);
   const [enteredAmount, setEnteredAmount] = useState<number | undefined>(
     undefined
   );
@@ -76,6 +77,26 @@ const Sellpage = () => {
 
     fetchCoinData();
   }, [form]);
+
+  useEffect(() => {
+    const fetchNewsdata = async () => {
+      try {
+        const response = await axios.get("https://api.coincap.io/v2/assets", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        let responseData = response.data.data;
+        console.log(responseData);
+        const coinn = responseData.slice(0, 10);
+        console.log(coinn);
+        setInitial(coinn);
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+    fetchNewsdata();
+  }, []);
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     router.push("/dashboard/transactions/buy&sell/sell/sell_confirmation");
@@ -236,6 +257,40 @@ const Sellpage = () => {
           </div>
         </div>
       </div>
+
+      <table className="table-auto rounded-lg text-center border-2 p-3 px-4">
+        <thead>
+          <tr>
+            <th>S/N</th>
+            <th>Name</th>
+            <th>Last Price</th>
+            <th>24 chg(%)</th>
+          </tr>
+        </thead>
+        <tbody className="my-auto border-3 py-3 mx-auto px-auto">
+          {initial.map((ini: any, i) => (
+            <tr className="border-2" key={i}>
+              <td className="border-r-2 p-4 text-center mb-2">{i + 1}</td>
+              <td className="border-r-2 p-4 text-center mb-2">{ini.name}</td>
+              <td className="border-r-2 p-4 text-center mb-2">
+                {Math.round(ini.priceUsd * 100) / 100}
+              </td>
+              <td className="border-r-2 p-4 text-center mb-2">
+                <span
+                  className={
+                    ini.changePercent24Hr.substring(0, 1) == "-"
+                      ? cn("bg-red-500 text-white p-2 rounded")
+                      : cn("bg-green-500 text-white p-2 rounded")
+                  }
+                >
+                  {" "}
+                  {Math.round(ini.changePercent24Hr * 100) / 100}{" "}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

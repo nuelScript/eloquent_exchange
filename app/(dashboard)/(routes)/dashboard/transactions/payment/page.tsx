@@ -14,7 +14,7 @@ import Link from "next/link";
 import { DirectRight } from "iconsax-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calendar } from "@/components/ui/calendar";
+import { Calenda7r } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import {
@@ -58,6 +58,7 @@ import { useRouter } from "next/navigation";
 const PaymentPage = () => {
   const [date, setDate] = useState<Date>();
   const [links, setLinks] = useState("");
+  const [initial, setInitial] = useState([]);
 
   const router = useRouter();
   // const form = useForm<z.infer<typeof formSchema>>({

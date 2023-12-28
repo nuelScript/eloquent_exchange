@@ -48,8 +48,9 @@ const formSchema = z.object({
 
 const Buypage = () => {
   const router = useRouter();
+  const [initial, setInitial] = useState([]);
   const [showMe, setShowMe] = useState(false);
-  const [textme, setTextme] = useState("Set by Nairaa");
+  const [textme, setTextme] = useState("Set by Naira");
 
   const [enteredAmount, setEnteredAmount] = useState<number | undefined>(
     undefined
@@ -66,6 +67,26 @@ const Buypage = () => {
     },
   });
   const accessToken = getCookie("access_token");
+
+  useEffect(() => {
+    const fetchNewsdata = async () => {
+      try {
+        const response = await axios.get("https://api.coincap.io/v2/assets", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        let responseData = response.data.data;
+        console.log(responseData);
+        const coinn = responseData.slice(0, 10);
+        console.log(coinn);
+        setInitial(coinn);
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+    fetchNewsdata();
+  }, []);
 
   useEffect(() => {
     const fetchCoinData = async () => {
@@ -186,7 +207,7 @@ const Buypage = () => {
                               <ScrollArea className="w-36 h-5 items-center whitespace-nowrap rounded-md">
                                 <div className="w-fit space-x-8 p-0">
                                   {showMe
-                                    ? coinlist.map((coin, index) => (
+                                    ? coinlists.map((coin, index) => (
                                         <span
                                           key={index}
                                           className="flex-1 text-muted-foreground overflow-hidden "
@@ -194,7 +215,7 @@ const Buypage = () => {
                                           {coin.name} : {coin.buy_rate}
                                         </span>
                                       ))
-                                    : coinlists.map((coin, index) => (
+                                    : coinlist.map((coin, index) => (
                                         <span
                                           key={index}
                                           className="flex-1 text-muted-foreground overflow-hidden "
@@ -314,6 +335,40 @@ const Buypage = () => {
           </div>
         </div>
       </div>
+
+      <table className="table-auto rounded-lg text-center border-2 p-3 px-4">
+        <thead>
+          <tr>
+            <th>S/N</th>
+            <th>Name</th>
+            <th>Last Price</th>
+            <th>24 chg(%)</th>
+          </tr>
+        </thead>
+        <tbody className="my-auto border-3 py-3 mx-auto px-auto">
+          {initial.map((ini: any, i) => (
+            <tr className="border-2" key={i}>
+              <td className="border-r-2 p-4 text-center mb-2">{i + 1}</td>
+              <td className="border-r-2 p-4 text-center mb-2">{ini.name}</td>
+              <td className="border-r-2 p-4 text-center mb-2">
+                {Math.round(ini.priceUsd * 100) / 100}
+              </td>
+              <td className="border-r-2 p-4 text-center mb-2">
+                <span
+                  className={
+                    ini.changePercent24Hr.substring(0, 1) == "-"
+                      ? cn("bg-red-500 text-white p-2 rounded")
+                      : cn("bg-green-500 text-white p-2 rounded")
+                  }
+                >
+                  {" "}
+                  {Math.round(ini.changePercent24Hr * 100) / 100}{" "}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

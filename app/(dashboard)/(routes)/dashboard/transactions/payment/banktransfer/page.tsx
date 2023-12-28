@@ -25,14 +25,22 @@ const BanktransferPage = () => {
       </div>
       <div className="flex flex-col my-auto space-y-3 min-[912px]:w-[600px] w-full">
         <div className="text-center space-y-5 flex flex-col items-center">
-          <Card className="items-center cursor-pointer text-center  my-auto py-auto  px-auto">
+          <Card className="items-center text-[30px] cursor-pointer text-center  my-auto py-auto  px-auto">
             <CardHeader>
               {/* <CardTitle>Card Title</CardTitle> */}
               <CardDescription>
-                <strong>Bank Name:</strong> Accesss Bankk <br />
                 <p>
                   {" "}
-                  <strong>Account Number: </strong>015637646583
+                  <strong>Account Name:</strong> DARLINGTON ONWUEMODO{" "}
+                </p>{" "}
+                <p>
+                  {" "}
+                  <strong>Bank Name:</strong> Accesss Bank{" "}
+                </p>{" "}
+                <br />
+                <p>
+                  {" "}
+                  <strong>Account Number: </strong>6331783431
                 </p>
                 <br />
               </CardDescription>

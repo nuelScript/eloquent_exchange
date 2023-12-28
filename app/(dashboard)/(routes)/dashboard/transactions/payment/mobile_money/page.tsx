@@ -166,14 +166,14 @@ const MobileMoneypage = () => {
               {message && (
                 <div className="flex flex-col justify-start spa">
                   <h3 className="font-semibold">
-                    Kindly send receipt of payment to the following email
-                    address
+                    <strong>NOTE:</strong> Please send a recipient or screenshot
+                    after payment to me personally. Thank you
                   </h3>
-                  <Link href="mailto:support@eloquentexchange.com">
+                  {/* <Link href="mailto:support@eloquentexchange.com">
                     <span className="text-[#4168B7] dark:text-[#A77700] hover:underline cursor-pointer">
                       support@eloquentexchange.com
                     </span>
-                  </Link>
+                  </Link> */}
                 </div>
               )}
             </form>
