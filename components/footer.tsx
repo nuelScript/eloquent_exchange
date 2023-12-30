@@ -16,20 +16,18 @@ const Footer = () => {
 
   return (
     <div className="relative w-50 h-50 my-0 mt-6 flex flex-col items-center space-y-20">
-      <a href="eloquent.ior">
-        {" "}
-        <Image
-          src={
-            resolvedTheme === "light"
-              ? "/contact-light.svg"
-              : "/contact-dark.svg"
-          }
-          width={450}
-          height={450}
-          alt="contact-image"
-          className="object-cover mt-2 object-centerb"
-        />
-      </a>
+      {/* <a href="#">
+        {" "} */}
+      <Image
+        src={
+          resolvedTheme === "light" ? "/contact-light.svg" : "/contact-dark.svg"
+        }
+        width={450}
+        height={450}
+        alt="contact-image"
+        className="object-cover mt-2 object-centerb"
+      />
+      {/* </a> */}
       <div className="w-full text-center absolute border-[0.6px] rounded-lg bottom-[150px] border-primary"></div>
       <footer
         className={cn(

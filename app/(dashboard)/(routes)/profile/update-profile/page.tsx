@@ -38,6 +38,35 @@ const UpdateProfile = () => {
     },
   });
 
+  useEffect(() => {
+    const fetchdata = async () => {
+      const accessToken = getCookie("access_token");
+      if (accessToken) {
+        try {
+          const response = await axios.get(getUsers, {
+            headers: {
+              Authorization: `JWT ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+          const responseData = response.data;
+          const userName = responseData[0].first_name;
+          const uidd = responseData[0].id;
+
+          // console.log(uidd);
+          if (userName) {
+            setName(userName);
+            setUid(uidd);
+          }
+        } catch (error) {
+          console.error("Error", error);
+        }
+      }
+    };
+
+    fetchdata();
+  }, []);
+
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       await axios.post(resetEmailRoute, data);

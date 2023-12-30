@@ -15,6 +15,9 @@ import axios from "axios";
 // import Ticker from "react-ticker";
 // import Ticker from "react-awesome-ticker";
 // import Marquee from "react-double-marquee";
+// import { useIntercom } from "react-use-intercom";
+// import { IntercomProvider } from "react-use-intercom";
+// import { useEffect } from "react";
 
 const font = Revalia({
   subsets: ["latin"],
@@ -25,6 +28,12 @@ const HomeSection = () => {
   // function round(num: number, fractionDigits: number): number {
   //   return Number(num.toFixed(fractionDigits));
   // }
+
+  // const { boot } = useIntercom();
+
+  // useEffect(() => {
+  //   boot();
+  // });
   const { resolvedTheme } = useTheme();
   const router = useRouter();
 
