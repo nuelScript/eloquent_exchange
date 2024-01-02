@@ -81,7 +81,7 @@ const SignInPage = () => {
   // const changeText = (text: any) => setButtonText(text);
 
   function handleClick() {
-    setButtonText("Autheticating....");
+    setButtonText("Autheticating...");
   }
 
   // return (
