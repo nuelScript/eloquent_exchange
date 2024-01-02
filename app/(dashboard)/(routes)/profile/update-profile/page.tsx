@@ -21,7 +21,7 @@ import toast from "react-hot-toast";
 import * as z from "zod";
 import { useEffect, useState } from "react";
 import { getUsers } from "@/lib/helpers";
-import Image from "next/image";
+// import Image from "next/image";
 import { getCookie } from "@/lib/utils";
 import isAuth from "@/components/isAuth";
 
@@ -33,7 +33,6 @@ const formSchema = z.object({
 });
 
 const UpdateProfile = () => {
-  import { useEffect, useState } from "react";
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
