@@ -111,7 +111,7 @@ const UpdateProfile = () => {
                 render={({ field }) => (
                   <FormItem className="space-y-4">
                     <FormLabel className="text-muted-foreground font-medium">
-                      Enter Current Password
+                      Enter Current Password:
                     </FormLabel>
                     <FormControl>
                       <Input
