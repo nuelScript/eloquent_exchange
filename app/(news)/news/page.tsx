@@ -17,48 +17,48 @@ const NewsPage = () => {
   const [news, setNews] = useState([]);
   const [initial, setInitial] = useState([]);
 
-  useEffect(() => {
-    // Intercom code snippet
-    var APP_ID = "4376545hd";
+  // useEffect(() => {
+  //   // Intercom code snippet
+  //   var APP_ID = "4376545hd";
 
-    (function () {
-      var w = window;
-      var ic = w.Intercom;
-      if (typeof ic === "function") {
-        ic("reattach_activator");
-        ic("update", w.intercomSettings);
-      } else {
-        var d = document;
-        var i = function () {
-          i.c(arguments);
-        };
-        i.q = [];
-        i.c = function (args) {
-          i.q.push(args);
-        };
-        w.Intercom = i;
-        var l = function () {
-          var s = d.createElement("script");
-          s.type = "text/javascript";
-          s.async = true;
-          s.src = "https://widget.intercom.io/widget/" + APP_ID;
-          var x = d.getElementsByTagName("script")[0];
-          x.parentNode.insertBefore(s, x);
-        };
-        if (document.readyState === "complete") {
-          l();
-        } else if (w.attachEvent) {
-          w.attachEvent("onload", l);
-        } else {
-          w.addEventListener("load", l, false);
-        }
-      }
-    })();
-    // Call boot method
-    (window as any).Intercom("boot", {
-      app_id: "4376545hd",
-    });
-  }, []);
+  //   (function () {
+  //     var w = window;
+  //     var ic = w.Intercom;
+  //     if (typeof ic === "function") {
+  //       ic("reattach_activator");
+  //       ic("update", w.intercomSettings);
+  //     } else {
+  //       var d = document;
+  //       var i = function () {
+  //         i.c(arguments);
+  //       };
+  //       i.q = [];
+  //       i.c = function (args) {
+  //         i.q.push(args);
+  //       };
+  //       w.Intercom = i;
+  //       var l = function () {
+  //         var s = d.createElement("script");
+  //         s.type = "text/javascript";
+  //         s.async = true;
+  //         s.src = "https://widget.intercom.io/widget/" + APP_ID;
+  //         var x = d.getElementsByTagName("script")[0];
+  //         x.parentNode.insertBefore(s, x);
+  //       };
+  //       if (document.readyState === "complete") {
+  //         l();
+  //       } else if (w.attachEvent) {
+  //         w.attachEvent("onload", l);
+  //       } else {
+  //         w.addEventListener("load", l, false);
+  //       }
+  //     }
+  //   })();
+  //   // Call boot method
+  //   (window as any).Intercom("boot", {
+  //     app_id: "4376545hd",
+  //   });
+  // }, []);
 
   useEffect(() => {
     const fetchNewsdata = async () => {
@@ -208,7 +208,7 @@ const NewsPage = () => {
       })}
 
       <section className="lg:px-10 px-3 w-full md:px-6 py-10 mx-auto">
-        <div className="grid items-center my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-center my-4 gap-3 md:space-x-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <h2 className="text-[#4168B7] mb-4 font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
               |TOP STORY.|
