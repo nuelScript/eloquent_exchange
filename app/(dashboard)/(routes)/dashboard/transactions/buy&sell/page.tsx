@@ -85,7 +85,7 @@ const BuyandSellPage = () => {
     router.push("/dashboard/transactions/buy&sell/sell");
   };
   return (
-    <div className="flex min-[1000px]:flex-row -mt-5 justify-center h-full w-full my-auto flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen  bg-[length:200px_150px] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
+    <div className="flex min-[1000px]:flex-row gap-4 md:space-x-3 -mt-5 justify-center h-full w-full my-auto flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen  bg-[length:200px_150px] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
       <div className="flex-col items-start my-auto gap-y-3 min-[1000px]:flex hidden">
         <Image
           src="/buyy.svg"
