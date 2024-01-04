@@ -35,8 +35,9 @@ export default function RootLayout({ children }) {
   <Drift
     appId="ydun5wkgkrt5"
     style={{
-      bottom: "100px",
+      bottom: "150px",
     }}
+    attributes={{ email: "wittstack@gmail.com", company: "Wittstack" }}
     eventHandlers={[
       { event: "conversation:firstInteraction", function: handleInteraction },
     ]}
@@ -56,6 +57,7 @@ export default function RootLayout({ children }) {
             style={{
               bottom: "100px",
             }}
+            attributes={{ email: "wittstack@gmail.com", company: "Wittstack" }}
             eventHandlers={[
               {
                 event: "conversation:firstInteraction",

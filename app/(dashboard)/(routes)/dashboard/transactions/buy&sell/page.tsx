@@ -28,17 +28,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowSwapHorizontal, BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import * as z from "zod";
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 import isAuth from "@/components/isAuth";
 
 const formSchema = z.object({
   coinType: z.string().min(1, {
     message: "Coin type is required",
   }),
+
   amount: z.coerce.number().min(0, { message: "Amount cannot be negative" }),
 });
 
 const BuyandSellPage = () => {
+  const [initial, setInitial] = useState([]);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,6 +56,26 @@ const BuyandSellPage = () => {
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
   };
+
+  useEffect(() => {
+    const fetchNewsdata = async () => {
+      try {
+        const response = await axios.get("https://api.coincap.io/v2/assets", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        let responseData = response.data.data;
+        console.log(responseData);
+        const coinn = responseData.slice(0, 10);
+        console.log(coinn);
+        setInitial(coinn);
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+    fetchNewsdata();
+  }, []);
 
   const buyRoute = () => {
     router.push("/dashboard/transactions/buy&sell/buy");
@@ -269,6 +294,40 @@ const BuyandSellPage = () => {
           </div>
         </div>
       </div>
+
+      <table className="table-auto rounded-lg text-center border-2 p-3 px-4">
+        <thead>
+          <tr>
+            <th>S/N</th>
+            <th>Name</th>
+            <th>Last Price</th>
+            <th>24 chg(%)</th>
+          </tr>
+        </thead>
+        <tbody className="my-auto border-3 py-3 mx-auto px-auto">
+          {initial.map((ini: any, i) => (
+            <tr className="border-2" key={i}>
+              <td className="border-r-2 p-4 text-center mb-2">{i + 1}</td>
+              <td className="border-r-2 p-4 text-center mb-2">{ini.name}</td>
+              <td className="border-r-2 p-4 text-center mb-2">
+                {Math.round(ini.priceUsd * 100) / 100}
+              </td>
+              <td className="border-r-2 p-4 text-center mb-2">
+                <span
+                  className={
+                    ini.changePercent24Hr.substring(0, 1) == "-"
+                      ? cn("bg-red-500 text-white p-2 rounded")
+                      : cn("bg-green-500 text-white p-2 rounded")
+                  }
+                >
+                  {" "}
+                  {Math.round(ini.changePercent24Hr * 100) / 100}{" "}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
