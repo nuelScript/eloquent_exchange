@@ -15,7 +15,21 @@ import Link from "@/node_modules/next/link";
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
+  const [blog, setBlog] = useState([]);
+  const [blogs, setBlogs] = useState([]);
+  const [blogss, setBlogss] = useState([]);
   const [initial, setInitial] = useState([]);
+
+  function convertToPlain(html: any) {
+    // Create a new div element
+    var tempDivElement = document.createElement("div");
+
+    // Set the HTML content with the given value
+    tempDivElement.innerHTML = html;
+
+    // Retrieve the text property of the element
+    return tempDivElement.textContent || tempDivElement.innerText || "";
+  }
 
   // useEffect(() => {
   //   // Intercom code snippet
@@ -76,9 +90,9 @@ const NewsPage = () => {
         const responseNew = responseData.slice(0, 4);
         const resp = responseData[0];
         const respp = responseData.slice(0, 1);
-        console.log(resp);
+        // console.log(resp);
 
-        console.log(responseNew);
+        // console.log(responseNew);
         // const responseData = response.data;
         // const userName = responseData[0].first_name;
         if (responseNew) {
@@ -90,6 +104,44 @@ const NewsPage = () => {
       }
     };
     fetchNewsdata();
+  }, []);
+
+  useEffect(() => {
+    const fetchBlogdata = async () => {
+      try {
+        const response = await axios.get(
+          "https://eloquent-exchange-7fd058.ingress-earth.ewp.live/wp-json/wp/v2/posts",
+          {
+            headers: {
+              Accept: "*",
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const responseData = response.data;
+
+        const responseNew = responseData.slice(0, 1);
+        const responseNeww = responseData.slice(1, 2);
+        const responseNewww = responseData.slice(2, 20);
+        // const resp = responseData[0];
+        // const respp = responseData.slice(0, 1);
+        // console.log(resp);
+
+        console.log(responseNew);
+        console.log(responseNeww);
+        console.log(responseNewww);
+        // const responseData = response.data;
+        // const userName = responseData[0].first_name;
+        if (responseNew) {
+          setBlog(responseNew);
+          setBlogs(responseNeww);
+          setBlogss(responseNewww);
+        }
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+    fetchBlogdata();
   }, []);
 
   const { resolvedTheme } = useTheme();
@@ -154,7 +206,7 @@ const NewsPage = () => {
               </div>
 
               <div className="flex flex-col col-span-2 space-y-8">
-                <p className="indent-4 line-clamp-4 md:line-clamp-none md:line-clamp-0">
+                <p className="indent-4 line-clamp-4 md:line-clamp-18">
                   {items.content}
                 </p>
                 {/* <p className="indent-4">
@@ -359,6 +411,263 @@ const NewsPage = () => {
               );
             })}
           </div>
+        </div>
+      </section>
+      <Seperation />
+
+      <section className="lg:px-10 px-3 w-full md:px-6 py-10 mx-auto">
+        <div className="grid items-start my-4 gap-3 md:space-x-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <h2 className="text-[#4168B7] font-bold mb-4 md:font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
+              |LATEST BLOG.|
+            </h2>
+
+            {blog.map((items: any, i) => {
+              return (
+                <div key={i}>
+                  <div>
+                    <img
+                      src={
+                        items.yoast_head_json?.og_image
+                          ? items.yoast_head_json?.og_image[0]?.url
+                          : " "
+                      }
+                      className="rounded-lg max-h-[400px] bg-[#4168B7] dark:bg-[#A77700]"
+                      width="100%"
+                      height="400px"
+                      alt="crypto image"
+                    />
+                  </div>
+
+                  <div>
+                    <small className="my-3 py-2 space-x-2  flex flex-row">
+                      <Image
+                        src="calender.svg"
+                        alt="calender"
+                        width={20}
+                        height={20}
+                        className=""
+                      />
+
+                      <span>{items.date} | </span>
+                      <span>
+                        <strong>Content Updated:</strong> {items.modified}
+                      </span>
+                    </small>
+
+                    <div>
+                      <h3 className="text-[#4168B7] font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
+                        {items.title.rendered}
+                      </h3>
+
+                      <p className="font-[19px] line-clamp-3 pr-2  my-2 leading-[25px]">
+                        {convertToPlain(items.content.rendered)}
+                        {/* {items.content.rendered} */}
+                      </p>
+                    </div>
+                    <div className="author flex flex-row justify-between px-1">
+                      <div className="flex flex-row space-x-2 items-center">
+                        <span>
+                          {items.yoast_head_json?.author
+                            ? items.yoast_head_json?.author
+                            : "Samuel"}
+                        </span>
+                      </div>
+
+                      <div>
+                        <Link href={items.link}>
+                          <Button
+                            style={{ borderRadius: "10px" }}
+                            className="w-full text-white py-4 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary  hover:text-white dark:hover:text-black"
+                            variant="default"
+                          >
+                            Read More
+                            <DirectRight
+                              className="w-5 h-5 ml-2"
+                              variant="Linear"
+                            />
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="flex ml-0 pl-0 w-full mx-auto px-auto flex-col pt-0 mt-0">
+            <h2 className="text-[#4168B7] text-right font-bold mb-4 lg:text-3xl text-2xl dark:text-[#A77700]">
+              More Blogs...
+            </h2>
+
+            {blogs.map((items: any, i) => {
+              return (
+                <div key={i}>
+                  <div>
+                    <img
+                      src={
+                        items.yoast_head_json?.og_image
+                          ? items.yoast_head_json?.og_image[0]?.url
+                          : " "
+                      }
+                      className="rounded-lg max-h-[400px] h-full bg-[#4168B7] dark:bg-[#A77700]"
+                      width="100%"
+                      height="400px"
+                      alt="crypto image"
+                    />
+                  </div>
+
+                  <div>
+                    <small className="my-3 py-2 space-x-2  flex flex-row">
+                      <Image
+                        src="calender.svg"
+                        alt="calender"
+                        width={20}
+                        height={20}
+                        className=""
+                      />
+
+                      <span>{items.date} | </span>
+                      {/* <span>
+                        <strong>Content Updated:</strong> {items.modified}
+                      </span> */}
+                    </small>
+
+                    <div>
+                      <h3 className="text-[#4168B7] font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
+                        {items.title.rendered}
+                      </h3>
+
+                      <p className="font-[19px] line-clamp-3 pr-2  my-2 leading-[25px]">
+                        {convertToPlain(items.content.rendered)}
+                        {/* {items.content.rendered} */}
+                      </p>
+                    </div>
+                    <div className="author flex flex-row justify-between px-1">
+                      <div className="flex flex-row space-x-2 items-center">
+                        <span>
+                          {items.yoast_head_json?.author
+                            ? items.yoast_head_json?.author
+                            : "Samuel"}
+                        </span>
+                      </div>
+
+                      <div>
+                        <Link href={items.link}>
+                          <Button
+                            style={{ borderRadius: "10px" }}
+                            className="w-full text-white py-4 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary  hover:text-white dark:hover:text-black"
+                            variant="default"
+                          >
+                            Read More
+                            <DirectRight
+                              className="w-5 h-5 ml-2"
+                              variant="Linear"
+                            />
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="my-4 py-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-center md:spaxe-x-4">
+          {/* <div> */}
+          {blogss.map((items: any, i) => {
+            return (
+              <div
+                className="my-4 py-3 shadow-lg  md:spaxe-x-3 flex flex-col"
+                key={i}
+              >
+                <div className="w-full">
+                  <img
+                    src={
+                      items.yoast_head_json?.og_image
+                        ? items.yoast_head_json?.og_image[0]?.url
+                        : " "
+                    }
+                    className="rounded-lg max-h-[300px] bg-[#4168B7] dark:bg-[#A77700]"
+                    width="100%"
+                    height="300px"
+                    alt="crypto image"
+                  />
+                </div>
+
+                <div>
+                  <small className="my-3 py-2 space-x-2  flex flex-row">
+                    <Image
+                      src="calender.svg"
+                      alt="calender"
+                      width={20}
+                      height={20}
+                      className=""
+                    />
+
+                    <span>{items.date} | </span>
+                    {/* <span>
+                        <strong>Content Updated:</strong> {items.modified}
+                      </span> */}
+                  </small>
+
+                  <div>
+                    <h3 className="text-[#4168B7] font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
+                      {items.title.rendered}
+                    </h3>
+
+                    <p className="font-[19px] line-clamp-3 pr-2  my-2 leading-[25px]">
+                      {convertToPlain(items.content.rendered)}
+                      {/* {items.content.rendered} */}
+                    </p>
+                  </div>
+                  <div className="author flex flex-row justify-between px-1">
+                    <div className="flex flex-row space-x-2 items-center">
+                      {/* <img
+                          src={items.image_url}
+                          className="rounded-lg bg-[#4168B7] dark:bg-[#A77700]"
+                          width="20px"
+                          height="20px"
+                          alt="crypto image"
+                        /> */}
+                      {/* <Image
+                        className="rounded-lg bg-[#4168B7] dark:bg-[#A77700]"
+                        src=""
+                        alt="author"
+                        width={20}
+                        height={20}
+                      /> */}
+                      <span>
+                        {items.yoast_head_json?.author
+                          ? items.yoast_head_json?.author
+                          : "Samuel"}
+                      </span>
+                    </div>
+
+                    <div>
+                      <Link href={items.link}>
+                        <Button
+                          style={{ borderRadius: "10px" }}
+                          className="w-full text-white py-4 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary  hover:text-white dark:hover:text-black"
+                          variant="default"
+                        >
+                          Read More
+                          <DirectRight
+                            className="w-5 h-5 ml-2"
+                            variant="Linear"
+                          />
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+          {/* </div> */}
         </div>
       </section>
       <Seperation />
