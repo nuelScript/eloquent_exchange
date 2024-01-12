@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
   // const { boot } = useIntercom();
 
   const handleInteraction = function () {
-    console.log("User has just interacted with the chatbot");
+    console.log("User has just interacted with the chtbot");
   };
 
   <Drift
