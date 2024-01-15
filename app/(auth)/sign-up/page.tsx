@@ -64,7 +64,7 @@ const SignUpPage = () => {
   const router = useRouter();
 
   function handleClick() {
-    setButtonText("Autheticating...");
+    setButtonText("Authenticating...");
   }
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
