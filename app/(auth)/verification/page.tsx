@@ -88,7 +88,7 @@ const VerificationPage = () => {
             variant="custom"
             onClick={router.refresh}
           >
-            <RefreshSquare className="mr-2" /> Resend
+            <RefreshSquare className="mr-2" /> Resend..
           </Button>
         </div>
       </div>
