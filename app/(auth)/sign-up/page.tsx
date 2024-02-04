@@ -278,7 +278,7 @@ const SignUpPage = () => {
               </Button>
             </form>
             <div className="text-center mb-4 mt-3 flex flex-col items-center space-y-2">
-              <p className="mb-2 font-bold dark:text-white">
+              {/* <p className="mb-2 font-bold dark:text-white">
                 -OR CONTINUE WITH-
               </p>
               <div className="flex flex-row cursor-pointer border-4 p-2 px-3 border-gray-800 dark:border-gray-100 rounded items-center">
@@ -289,7 +289,7 @@ const SignUpPage = () => {
                   width={30}
                   height={30}
                 />
-              </div>
+              </div> */}
               <p className="text-center text-base font-normal pt-4 min-[1000px]:hidden block">
                 <span>Already have an account?</span> <br />{" "}
                 <Link
