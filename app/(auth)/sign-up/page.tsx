@@ -277,7 +277,7 @@ const SignUpPage = () => {
                 <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
               </Button>
             </form>
-            <div className="text-center mb-4 mt-3 flex flex-col items-center">
+            <div className="text-center mb-4 mt-3 flex flex-col items-center space-y-2">
               <p className="mb-2 font-bold dark:text-white">
                 -OR CONTINUE WITH-
               </p>
@@ -290,6 +290,15 @@ const SignUpPage = () => {
                   height={30}
                 />
               </div>
+              <p className="text-center text-base font-normal pt-4 min-[1000px]:hidden block">
+                <span>Already have an account?</span> <br />{" "}
+                <Link
+                  href="/sign-in"
+                  className="text-[#A77700] hover:underline"
+                >
+                  Sign In
+                </Link>
+              </p>
             </div>
           </Form>
         </div>

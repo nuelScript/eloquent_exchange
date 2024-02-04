@@ -25,7 +25,11 @@ const poppins = Poppins({
 //     "Welcome to Eloquent Exchange. Your one stop community for all cryptocurrencies 🚀.",
 // };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   // const { boot } = useIntercom();
 
   const handleInteraction = function () {
