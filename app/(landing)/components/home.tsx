@@ -86,7 +86,9 @@ const HomeSection = () => {
             <Button
               variant="custom"
               className="rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg"
-              onClick={() => router.push("/dashboard/transactions/buy&sell/")}
+              onClick={() =>
+                router.push("/dashboard/transactions/buy&sell/buy")
+              }
             >
               Trade Crypto
               <Bitcoin className="h-6 w-6 ml-2 rotate-45" />
@@ -158,7 +160,7 @@ const HomeSection = () => {
                 in a few steps.
               </p>
             </h2>
-            <div>
+            {/* <div>
               <Button
                 variant="custom"
                 className="rounded-br-none rounded-tl-none rounded-tr-lg rounded-bl-lg"
@@ -166,7 +168,7 @@ const HomeSection = () => {
               >
                 Trade Crypto <Bitcoin className="h-6 w-6 ml-2 rotate-45" />
               </Button>
-            </div>
+            </div> */}
           </div>
           {/* <Image
             src="/rocket-straight.svg"

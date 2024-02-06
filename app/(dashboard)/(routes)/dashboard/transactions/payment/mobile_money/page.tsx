@@ -166,8 +166,9 @@ const MobileMoneypage = () => {
               {message && (
                 <div className="flex flex-col justify-start spa">
                   <h3 className="font-semibold">
-                    <strong>NOTE:</strong> Please send a recipient or screenshot
-                    after payment to me personally. Thank you
+                    <strong>NOTE:</strong> Kindly send a screenshot or receipt
+                    of payment to this WhatsApp Number for confirmation: +23188
+                    746 7773
                   </h3>
                   {/* <Link href="mailto:support@eloquentexchange.com">
                     <span className="text-[#4168B7] dark:text-[#A77700] hover:underline cursor-pointer">

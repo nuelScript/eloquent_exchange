@@ -159,6 +159,9 @@ const Sellpage = () => {
                                 <SelectItem value="usdt">USDT</SelectItem>
                                 <SelectItem value="dodge">Dodge</SelectItem>
                                 <SelectItem value="bnb">BNB</SelectItem>
+                                <SelectItem value="binance id">
+                                  Binance ID
+                                </SelectItem>
                               </SelectGroup>
                             </SelectContent>
                           </Select>

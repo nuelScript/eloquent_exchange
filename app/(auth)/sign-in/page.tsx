@@ -207,7 +207,7 @@ const SignInPage = () => {
                 <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
               </Button>
             </form>
-            <div className="text-center mb-4 mt-3 flex flex-col items-center">
+            {/* <div className="text-center mb-4 mt-3 flex flex-col items-center">
               <p className="mb-2 font-bold dark:text-white">
                 -OR CONTINUE WITH-
               </p>
@@ -220,7 +220,7 @@ const SignInPage = () => {
                   height={30}
                 />
               </div>
-            </div>
+            </div> */}
           </Form>
         </div>
         {/* <p

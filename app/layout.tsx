@@ -33,7 +33,7 @@ export default function RootLayout({
   // const { boot } = useIntercom();
 
   const handleInteraction = function () {
-    console.log("User has just interacted with the chtbot");
+    console.log("User has just interacted with the chatbot");
   };
 
   <Drift
@@ -41,7 +41,10 @@ export default function RootLayout({
     style={{
       bottom: "150px",
     }}
-    attributes={{ email: "wittstack@gmail.com", company: "Wittstack" }}
+    attributes={{
+      email: "support@eloquentexchange.com",
+      company: "Eloquent Exchange",
+    }}
     eventHandlers={[
       { event: "conversation:firstInteraction", function: handleInteraction },
     ]}
@@ -61,7 +64,10 @@ export default function RootLayout({
             style={{
               bottom: "100px",
             }}
-            attributes={{ email: "wittstack@gmail.com", company: "Wittstack" }}
+            attributes={{
+              email: "support@eloquentexchange.com",
+              company: "Eloquent Exchange",
+            }}
             eventHandlers={[
               {
                 event: "conversation:firstInteraction",

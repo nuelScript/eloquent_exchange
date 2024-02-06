@@ -279,20 +279,19 @@ const Buypage = () => {
                             </FormControl>
                             <SelectContent>
                               <SelectGroup>
-                                <SelectItem value="mtn mobile money">
-                                  Trc20
-                                </SelectItem>
-                                <SelectItem value="skrill">
+                                <SelectItem value="trc20">Trc20</SelectItem>
+                                <SelectItem value="eth(erc20)">
                                   Eth(ERC20)
                                 </SelectItem>
-                                <SelectItem value="orange mobile money">
+                                <SelectItem value="bitcoin">
                                   Bitcoin (BTC)
                                 </SelectItem>
-                                <SelectItem value="neteller">
+                                <SelectItem value="bnb(bep20)">
                                   BNB (BEP20)
                                 </SelectItem>
-                                <SelectItem value="airtel mobile money">
-                                  Doge
+                                <SelectItem value="doge">Doge</SelectItem>
+                                <SelectItem value="binance id">
+                                  Binance ID
                                 </SelectItem>
                               </SelectGroup>
                             </SelectContent>
