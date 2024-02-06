@@ -135,7 +135,7 @@ const DashboardPage = () => {
     <div className="w-full h-screen flex flex-col gap-y-10 px-10 py-4">
       <div className="flex min-[912px]:flex-row min-[912px]:space-y-0 space-y-8 flex-col justify-between items-center">
         <h1 className="text-2xl font-normal min-[912px]:text-5xl">
-          Welcome back, {name} {uidd}
+          Welcome back, {name}
         </h1>
         {table.getRowModel().rows?.length ? (
           <div className="flex  flex-row min-[912px]:gap-y-4 gap-x-4">
