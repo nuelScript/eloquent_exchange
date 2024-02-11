@@ -119,13 +119,13 @@ const AcademySection = () => {
         <div className="flex flex-col h-[240px] hover:dark:bg-[#A77700] hover:dark:text-[#000000] hover:dark:border-[#A77700] border-2 border-white border-b-0 bg-gradient-to-b  dark:from-gray-700 hover:dark:from-[#ffffff] hover:from-[#ffffff]    p-6 rounded-3xl space-y-6 w-[300px]">
           <div className="flex min-[912px]:flex-col  flex-row min-[912px]:space-x-0 space-x-4 min-[912px]:space-y-2 space-y-0 min-[912px]:items-start items-center">
             <StatusUp className="w-10 h-10" />
-            <h3 className=" hover:dark:text-[#000000] text-xl font-semibold hover:dark:text-[#000000]">
+            <h3 className=" hover:dark:text-[#000000] text-xl font-semibold">
               Defi Trading
             </h3>
             <div className="w-[40px] min-[912px]:block hidden border border-[#4168B7] dark:border-[#A77700]"></div>
           </div>
           <div className="flex  hover:dark:text-[#000000] flex-col space-y-4">
-            <p className=" hover:dark:text-[#000000] text-base hover:dark:text-[#000000] font-normal">
+            <p className=" hover:dark:text-[#000000] text-base font-normal">
               Your data is safe and secured with us. None of your data is shared
               with a third party company.
             </p>{" "}

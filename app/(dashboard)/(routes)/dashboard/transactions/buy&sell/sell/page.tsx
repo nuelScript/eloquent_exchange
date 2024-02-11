@@ -36,7 +36,7 @@ import { getCookie } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-const formSchema = z.object({
+export const sellFormSchema = z.object({
   bankName: z.string().min(1, { message: "Please provide your bank name" }),
   accountNumber: z
     .string()
@@ -54,8 +54,8 @@ const Sellpage = () => {
     undefined
   );
   const [coinlist, setCoinList] = useState<any[]>([]);
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof sellFormSchema>>({
+    resolver: zodResolver(sellFormSchema),
     defaultValues: {
       coinType: "",
       bankName: "",
@@ -100,7 +100,7 @@ const Sellpage = () => {
     fetchNewsdata();
   }, []);
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: z.infer<typeof sellFormSchema>) => {
     router.push("/dashboard/transactions/buy&sell/sell/sell_confirmation");
   };
   return (

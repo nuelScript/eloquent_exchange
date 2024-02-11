@@ -36,7 +36,7 @@ import { useEffect, useState } from "react";
 import { getCookie } from "@/lib/utils";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-const formSchema = z.object({
+export const formSchema = z.object({
   network: z.string().min(1, { message: "Select a network" }),
   wallet_address: z
     .string()
@@ -116,6 +116,7 @@ const Buypage = () => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
+      localStorage.setItem("buyFormData", JSON.stringify(data));
       await axios
         .post(buyRoute, data, {
           headers: {
@@ -128,7 +129,9 @@ const Buypage = () => {
           const paymentLink = responseData.data.link;
           localStorage.setItem("link", paymentLink);
         })
-        .then(() => router.push("/dashboard/transactions/payment"));
+        .then(() =>
+          router.push("/dashboard/transactions/buy&sell/buy/confirmation")
+        );
       setEnteredAmount(data.amount);
     } catch (error) {
       console.error("Error making POST request:", error);
@@ -323,9 +326,6 @@ const Buypage = () => {
                       type="submit"
                       variant="custom"
                       className="w-full"
-                      onSubmit={() =>
-                        router.push("/dashboard/transactions/checkout")
-                      }
                     >
                       Continue <BitcoinRefresh className="ml-2" />
                     </Button>
