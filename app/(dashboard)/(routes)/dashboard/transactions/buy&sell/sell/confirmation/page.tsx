@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import * as z from "zod";
-import { sellFormSchema } from "../page";
+import { sellFormSchema } from "@/app/schemas/sellSchema";
 import { Button } from "@/components/ui/button";
 import { BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
@@ -15,9 +15,9 @@ const ConfirmationPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const storedBuyFormData = localStorage.getItem("buyFormData");
-    if (storedBuyFormData) {
-      const parsedFormData = JSON.parse(storedBuyFormData);
+    const storedSellFormData = localStorage.getItem("sellFormData");
+    if (storedSellFormData) {
+      const parsedFormData = JSON.parse(storedSellFormData);
       setFormData(parsedFormData);
     }
   }, []);
