@@ -36,7 +36,7 @@ import { getCookie } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-export const sellFormSchema = z.object({
+const sellFormSchema = z.object({
   bankName: z.string().min(1, { message: "Please provide your bank name" }),
   accountNumber: z
     .string()
