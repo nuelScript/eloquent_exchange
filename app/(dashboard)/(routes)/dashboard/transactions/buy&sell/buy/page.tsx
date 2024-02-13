@@ -36,7 +36,7 @@ import { useEffect, useState } from "react";
 import { getCookie } from "@/lib/utils";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-export const formSchema = z.object({
+const formSchema = z.object({
   network: z.string().min(1, { message: "Select a network" }),
   wallet_address: z
     .string()
