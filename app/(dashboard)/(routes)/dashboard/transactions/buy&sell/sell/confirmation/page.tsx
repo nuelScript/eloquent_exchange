@@ -7,6 +7,7 @@ import { sellFormSchema } from "@/app/schemas/sellSchema";
 import { Button } from "@/components/ui/button";
 import { BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
+import isAuth from "@/components/isAuth";
 
 const ConfirmationPage = () => {
   const [formData, setFormData] = useState<z.infer<
@@ -64,4 +65,4 @@ const ConfirmationPage = () => {
   );
 };
 
-export default ConfirmationPage;
+export default isAuth(ConfirmationPage);
