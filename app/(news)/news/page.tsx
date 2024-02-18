@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { RefreshSquare } from "iconsax-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Footer from "@/components/footer";
@@ -11,14 +10,14 @@ import { DirectRight } from "iconsax-react";
 // import { useRouter } from "next/navigation";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import Link from "@/node_modules/next/link";
+import Link from "next/link";
 
 const NewsPage = () => {
-  const [news, setNews] = useState([]);
-  const [blog, setBlog] = useState([]);
-  const [blogs, setBlogs] = useState([]);
-  const [blogss, setBlogss] = useState([]);
-  const [initial, setInitial] = useState([]);
+  const [news, setNews] = useState<[]>([]);
+  const [blog, setBlog] = useState<[]>([]);
+  const [blogs, setBlogs] = useState<[]>([]);
+  const [blogss, setBlogss] = useState<[]>([]);
+  const [initial, setInitial] = useState<[]>([]);
 
   function convertToPlain(html: any) {
     // Create a new div element
@@ -88,13 +87,7 @@ const NewsPage = () => {
         const responseData = response.data.results;
 
         const responseNew = responseData.slice(0, 4);
-        const resp = responseData[0];
         const respp = responseData.slice(0, 1);
-        // console.log(resp);
-
-        // console.log(responseNew);
-        // const responseData = response.data;
-        // const userName = responseData[0].first_name;
         if (responseNew) {
           setNews(responseNew);
           setInitial(respp);
@@ -123,15 +116,10 @@ const NewsPage = () => {
         const responseNew = responseData.slice(0, 1);
         const responseNeww = responseData.slice(1, 2);
         const responseNewww = responseData.slice(2, 20);
-        // const resp = responseData[0];
-        // const respp = responseData.slice(0, 1);
-        // console.log(resp);
 
         console.log(responseNew);
         console.log(responseNeww);
         console.log(responseNewww);
-        // const responseData = response.data;
-        // const userName = responseData[0].first_name;
         if (responseNew) {
           setBlog(responseNew);
           setBlogs(responseNeww);
@@ -209,23 +197,6 @@ const NewsPage = () => {
                 <p className="indent-4 line-clamp-4 md:line-clamp-18">
                   {items.content}
                 </p>
-                {/* <p className="indent-4">
-                  However, during peak times, both of these chains grapple with
-                  sluggish transaction speeds and steep fees. Developers from
-                  several L1 networks are working to improve layer one scaling
-                  through methods like increasing block size, sharding, and
-                  introducing proof-of-stake consensus.
-                </p>
-                <p className="indent-4">
-                  However, substantial layer one upgrades require coordination
-                  among node operators and can take years to implement. Some
-                  blockchains intend to use L2 protocols as either a temporary
-                  or long-term solution. Bitcoin’s Lightning Network (LN) is a
-                  second-layer scaling solution designed to facilitate faster,
-                  low-cost transactions on the Bitcoin blockchain (L1). It
-                  operates on top of Bitcoin’s base layer, allowing for instant
-                  payments by circumventing the need for block confirmations.
-                </p> */}
               </div>
             </div>
             <div className="mt-5 space-y-5">
@@ -270,14 +241,6 @@ const NewsPage = () => {
               return (
                 <div key={items.article_id}>
                   <div>
-                    {/* <Image
-                src="news.svg"
-                alt="referral"
-                width={800}
-                height={400}
-                className=""
-              /> */}
-
                     <img
                       src={items.image_url}
                       className="rounded-lg bg-[#4168B7] dark:bg-[#A77700]"
@@ -286,7 +249,6 @@ const NewsPage = () => {
                       alt="crypto image"
                     />
                   </div>
-
                   <div>
                     <small className="my-3 py-2 space-x-2  flex flex-row">
                       <Image
@@ -304,8 +266,7 @@ const NewsPage = () => {
                       <h3 className="text-[#4168B7] font-medium lg:text-3xl text-2xl dark:text-[#A77700]">
                         {items.title}
                       </h3>
-
-                      <p className="font-[19px] line-clamp-3 pr-2  my-2 leading-[25px] font-normal">
+                      <p className="font-[19px] line-clamp-3 pr-2  my-2 leading-[25px]">
                         {items.content}
                       </p>
                     </div>
@@ -318,13 +279,6 @@ const NewsPage = () => {
                           height="20px"
                           alt="crypto image"
                         />
-                        {/* <Image
-                        className="rounded-lg bg-[#4168B7] dark:bg-[#A77700]"
-                        src=""
-                        alt="author"
-                        width={20}
-                        height={20}
-                      /> */}
                         <span>
                           {items.creator != null
                             ? items.creator ?? items.creator
@@ -414,7 +368,6 @@ const NewsPage = () => {
         </div>
       </section>
       <Seperation />
-
       <section className="lg:px-10 px-3 w-full md:px-6 py-10 mx-auto">
         <div className="grid items-start my-4 gap-3 md:space-x-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           <div className="lg:col-span-2">

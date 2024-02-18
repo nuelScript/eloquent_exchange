@@ -84,15 +84,9 @@ const SellConfirmation = () => {
         </div>
         <div className="flex flex-col justify-start spa">
           <h3 className="font-semibold">
-            Kindly send receipt of payment alongside your{" "}
-            <span className="text-[#4168B7] dark:text-[#A77700]">
-              Bank Name{" "}
-            </span>
-            and{" "}
-            <span className="text-[#4168B7] dark:text-[#A77700]">
-              Account Number
-            </span>{" "}
-            to the following email address
+            <strong>NOTE:</strong> Kindly send a screenshot or receipt of
+            payment through the live chat feature. It&apos;s located at the
+            lower right corner of the screen.
           </h3>
           <Link href="mailto:support@eloquentexchange.com">
             <span className="text-[#4168B7] dark:text-[#A77700] hover:underline cursor-pointer">
