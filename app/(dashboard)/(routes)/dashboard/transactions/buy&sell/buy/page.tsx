@@ -131,6 +131,7 @@ const Buypage = () => {
           router.push("/dashboard/transactions/buy&sell/buy/confirmation")
         );
       setEnteredAmount(data.amount);
+      await axios.post("/api/notification", data);
     } catch (error) {
       console.error("Error making POST request:", error);
     }
