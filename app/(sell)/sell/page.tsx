@@ -1,15 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
 import Image from "next/image";
-import Link from "next/link";
 import isAuth from "@/components/isAuth";
 import { DirectRight } from "iconsax-react";
 import { Input } from "@/components/ui/input";
@@ -17,7 +9,7 @@ import { Label } from "@/components/ui/label";
 
 const SellPage = () => {
   return (
-    <div className="flex min-[1000px]:flex-row justify-center h-full w-full -mt-5 my-auto flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen  bg-[length:200px_150px] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
+    <div className="flex min-[1000px]:flex-row justify-center h-full w-full -mt-5 my-auto flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen  bg-[length:200px_150px] bg-none bg-center bg-no-repeat bg-fixed">
       <div className="flex-col items-start my-auto gap-y-3 min-[1000px]:flex hidden">
         <Image
           src="/buy.svg"
@@ -63,15 +55,13 @@ const SellPage = () => {
             </div>
 
             <Button
-              style={{ borderRadius: "30px" }}
-              className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
+              className="w-full text-white rounded-[30px] bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
               variant="default"
             >
               Continue
               <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
             </Button>
           </form>
-          {/* </Form> */}
         </div>
       </div>
     </div>

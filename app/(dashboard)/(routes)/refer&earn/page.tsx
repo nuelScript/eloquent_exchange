@@ -58,10 +58,9 @@ const ReferPage = () => {
           <div className="flex flex-col items-start space-y-4">
             <Label htmlFor="your referral id">Your Referral ID</Label>
             <Input
-              style={{ padding: "30px 10px" }}
-              className="w-full  mx-auto bg-transparent text-left rounded-lg p-2 py-2  mt-1"
+              className="w-full  mx-auto bg-transparent text-left rounded-lg p-[30px_10px] py-2 mt-1"
               readOnly
-              value={referralId || ""}
+              value={referralId || "Loading..."}
             />
           </div>
           <div className="flex mt-2 flex-col items-start space-y-4">
@@ -69,10 +68,9 @@ const ReferPage = () => {
               Total Number of Referrals
             </Label>
             <Input
-              style={{ padding: "30px 10px" }}
               readOnly
               value="0"
-              className="w-full mx-auto bg-transparent text-left rounded-lg p-2 py-2  mt-1"
+              className="w-full mx-auto bg-transparent text-left rounded-lg py-2  mt-1 p-[30px_10px]"
             />
           </div>
           <div className="flex mt-2 flex-col items-start space-y-4">
@@ -80,10 +78,9 @@ const ReferPage = () => {
               Balance and Total Earnings
             </Label>
             <Input
-              style={{ padding: "30px 10px" }}
               readOnly
               value="$0"
-              className="w-full  mx-auto bg-transparent text-left rounded-lg p-2 py-2  mt-1"
+              className="w-full  mx-auto bg-transparent text-left rounded-lg p-[30px_10px] py-2 mt-1"
             />
           </div>
         </div>

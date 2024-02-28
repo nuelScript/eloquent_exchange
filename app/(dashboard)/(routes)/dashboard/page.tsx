@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { getCookie, setCookie } from "@/lib/utils";
 import axios from "axios";
 import { getSoldCrypto, getUsers, postGoogleOAuth } from "@/lib/helpers";
-import isAuth from "@/components/isAuth";
 
 import {
   ColumnDef,
@@ -40,7 +39,6 @@ const DashboardPage = () => {
       const url = window.location.href;
       const urlParams = new URLSearchParams(url);
       const code = urlParams.get("code");
-      // const state = localStorage.getItem("state");
       const state = "dDOyM3mDtcHYfxna81JXwjbdaVVZrSuU";
       const data = {
         code: code,
@@ -93,7 +91,6 @@ const DashboardPage = () => {
           const userName = responseData[0].first_name;
           const uidd = responseData[0].id;
 
-          // console.log(uidd);
           if (userName) {
             setName(userName);
             setUid(uidd);
