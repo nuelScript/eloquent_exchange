@@ -8,7 +8,7 @@ import Footer from "@/components/footer";
 import Seperation from "@/components/border";
 import { DirectRight } from "iconsax-react";
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 const NewsPage = () => {
@@ -85,7 +85,6 @@ const NewsPage = () => {
     fetchBlogdata();
   }, []);
 
-  const { resolvedTheme } = useTheme();
   return (
     <main className="w-full">
       <div className="text-center h-[300px] flex items-center justify-center bg-gradient-to-b from-[#4168B7] to-white dark:from-[#A77700]   w-full space-y-10">
