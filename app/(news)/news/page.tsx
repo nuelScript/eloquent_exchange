@@ -7,7 +7,6 @@ import Image from "next/image";
 import Footer from "@/components/footer";
 import Seperation from "@/components/border";
 import { DirectRight } from "iconsax-react";
-// import { useRouter } from "next/navigation";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
