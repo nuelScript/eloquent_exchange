@@ -20,58 +20,12 @@ const NewsPage = () => {
   const [initial, setInitial] = useState<[]>([]);
 
   function convertToPlain(html: any) {
-    // Create a new div element
     var tempDivElement = document.createElement("div");
 
-    // Set the HTML content with the given value
     tempDivElement.innerHTML = html;
 
-    // Retrieve the text property of the element
     return tempDivElement.textContent || tempDivElement.innerText || "";
   }
-
-  // useEffect(() => {
-  //   // Intercom code snippet
-  //   var APP_ID = "4376545hd";
-
-  //   (function () {
-  //     var w = window;
-  //     var ic = w.Intercom;
-  //     if (typeof ic === "function") {
-  //       ic("reattach_activator");
-  //       ic("update", w.intercomSettings);
-  //     } else {
-  //       var d = document;
-  //       var i = function () {
-  //         i.c(arguments);
-  //       };
-  //       i.q = [];
-  //       i.c = function (args) {
-  //         i.q.push(args);
-  //       };
-  //       w.Intercom = i;
-  //       var l = function () {
-  //         var s = d.createElement("script");
-  //         s.type = "text/javascript";
-  //         s.async = true;
-  //         s.src = "https://widget.intercom.io/widget/" + APP_ID;
-  //         var x = d.getElementsByTagName("script")[0];
-  //         x.parentNode.insertBefore(s, x);
-  //       };
-  //       if (document.readyState === "complete") {
-  //         l();
-  //       } else if (w.attachEvent) {
-  //         w.attachEvent("onload", l);
-  //       } else {
-  //         w.addEventListener("load", l, false);
-  //       }
-  //     }
-  //   })();
-  //   // Call boot method
-  //   (window as any).Intercom("boot", {
-  //     app_id: "4376545hd",
-  //   });
-  // }, []);
 
   useEffect(() => {
     const fetchNewsdata = async () => {
@@ -250,7 +204,7 @@ const NewsPage = () => {
                     />
                   </div>
                   <div>
-                    <small className="my-3 py-2 space-x-2  flex flex-row">
+                    <small className="my-3 py-2 space-x-2  flex flex-row items-center">
                       <Image
                         src="calender.svg"
                         alt="calender"
@@ -259,7 +213,7 @@ const NewsPage = () => {
                         className=""
                       />
 
-                      <span>{items.pubDate} |</span>
+                      <span>{items.pubDate}</span>
                     </small>
 
                     <div>
@@ -286,21 +240,19 @@ const NewsPage = () => {
                         </span>
                       </div>
 
-                      <div>
-                        <Link href={items.link}>
-                          <Button
-                            style={{ borderRadius: "10px" }}
-                            className="w-full text-white py-4 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary  hover:text-white dark:hover:text-black"
-                            variant="default"
-                          >
-                            Read More
-                            <DirectRight
-                              className="w-5 h-5 ml-2"
-                              variant="Linear"
-                            />
-                          </Button>
-                        </Link>
-                      </div>
+                      <Link href={items.link} passHref>
+                        <Button
+                          style={{ borderRadius: "10px" }}
+                          className="w-full text-white py-4 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary  hover:text-white dark:hover:text-black"
+                          variant="custom"
+                        >
+                          Read More
+                          <DirectRight
+                            className="w-5 h-5 ml-2"
+                            variant="Linear"
+                          />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -336,7 +288,7 @@ const NewsPage = () => {
                     <h4 className="text-left mb-2 font-bold  text-[16px]">
                       {items.title}
                     </h4>
-                    <p className="w-[245px] my-2 truncate ... line-clamp-2 text-13px">
+                    <p className="w-[245px] my-2 truncate line-clamp-2 text-[13px]">
                       {items.description != null
                         ? items.description
                         : items.content}

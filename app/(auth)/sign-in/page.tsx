@@ -24,7 +24,6 @@ import { useTheme } from "next-themes";
 import { googleOAuth, signInRoute } from "@/lib/helpers";
 import * as z from "zod";
 import React, { useEffect, useRef, useState } from "react";
-// import { useState, useEffect } from "React";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -77,17 +76,9 @@ const SignInPage = () => {
 
   const isLoading = form.formState.isSubmitting;
 
-  // const [buttonText, setButtonText] = useState("Next");
-  // const changeText = (text: any) => setButtonText(text);
-
-  function handleClick() {
+  const handleClick = () => {
     setButtonText("Authenticating....");
-  }
-
-  // return (
-  //   <div>
-  //     <button onClick={handleClick}>{buttonText}</button>
-  //   </div>
+  };
 
   const googleCallback = async () => {
     try {
