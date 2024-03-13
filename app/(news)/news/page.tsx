@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Footer from "@/components/footer";
 import Seperation from "@/components/border";
@@ -87,7 +86,7 @@ const NewsPage = () => {
 
   return (
     <main className="w-full">
-      <div className="text-center h-[300px] flex items-center justify-center bg-gradient-to-b from-[#4168B7] to-white dark:from-[#A77700]   w-full space-y-10">
+      <div className="text-center h-[300px] flex items-center justify-center bg-gradient-to-b from-[#4168B7] to-white dark:from-[#A77700] w-full space-y-10">
         <div className="px-10 md:mt-3 mt-32 sm:pt-10 items-center py-20">
           <p className="lg:text-[58px]  mt-5 text-3xl text-white flex flex-col  font-bold text-center my-auto  item-center">
             Your Gateway to the Future of Finance!
