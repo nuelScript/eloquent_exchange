@@ -4,16 +4,25 @@ type slug<T> = T;
 
 export type Author = {
   name: string;
-  slug: slug<string>;
+  slug: string;
   image: Image;
   bio: string[];
 };
 
 export type Post = {
   title: string;
-  slug: string;
+  slug: {
+    current: string;
+    _type: slug<string>;
+  };
   author: Author;
-  mainImage: Image;
+  mainImage: {
+    asset: {
+      _id: string;
+      url: string;
+    };
+    alt: string;
+  };
   categories: Category[];
   publishedAt: Date;
   body: string;
