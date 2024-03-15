@@ -50,10 +50,12 @@ const sellFormSchema = z.object({
 const Sellpage = () => {
   const router = useRouter();
   const [initial, setInitial] = useState([]);
+  const [showMe, setShowMe] = useState(false);
   const [enteredAmount, setEnteredAmount] = useState<number | undefined>(
     undefined
   );
   const [coinlist, setCoinList] = useState<any[]>([]);
+  const [coinlists, setCoinLists] = useState<any[]>([]);
   const form = useForm<z.infer<typeof sellFormSchema>>({
     resolver: zodResolver(sellFormSchema),
     defaultValues: {
@@ -99,6 +101,28 @@ const Sellpage = () => {
     };
     fetchNewsdata();
   }, []);
+
+  useEffect(() => {
+    const fetchCoinData = async () => {
+      try {
+        const response = await axios.get(getCoinList);
+        const coinList = response.data;
+        const coinn = coinList.slice(1, 2);
+        const coinns = coinList.slice(3, 4);
+        console.log(coinn);
+        setCoinList(coinn);
+        setCoinLists(coinns);
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+
+    fetchCoinData();
+  }, [form]);
+
+  function toggle() {
+    setShowMe(!showMe);
+  }
 
   const onSubmit = async (data: z.infer<typeof sellFormSchema>) => {
     router.push("/dashboard/transactions/buy&sell/sell/sell_confirmation");
@@ -179,14 +203,23 @@ const Sellpage = () => {
                             <span className="text-primary font-semibold ">
                               <ScrollArea className="w-36 h-5 items-center whitespace-nowrap rounded-md">
                                 <div className="w-fit space-x-8 p-0">
-                                  {coinlist.map((coin) => (
-                                    <span
-                                      key={coin.id}
-                                      className="flex-1 text-muted-foreground overflow-hidden "
-                                    >
-                                      {coin.name} : {coin.sell_rate}
-                                    </span>
-                                  ))}
+                                  {showMe
+                                    ? coinlists.map((coin, index) => (
+                                        <span
+                                          key={index}
+                                          className="flex-1 text-muted-foreground overflow-hidden "
+                                        >
+                                          {coin.name} : {coin.buy_rate}
+                                        </span>
+                                      ))
+                                    : coinlist.map((coin, index) => (
+                                        <span
+                                          key={index}
+                                          className="flex-1 text-muted-foreground overflow-hidden "
+                                        >
+                                          {coin.name} : {coin.buy_rate}
+                                        </span>
+                                      ))}
                                 </div>
                                 <ScrollBar orientation="horizontal" />
                               </ScrollArea>
@@ -204,8 +237,11 @@ const Sellpage = () => {
                             <span className="font-normal text-primary">
                               Amount: 0.0
                             </span>
-                            <span className="text-[#4168B7] dark:text-[#A77700] font-normal flex items-center">
-                              Set by Naira{" "}
+                            <span
+                              onClick={toggle}
+                              className="text-[#4168B7] cursor-pointer dark:text-[#A77700] font-normal flex items-center"
+                            >
+                              {showMe ? "Set by Naira" : "Set by LRD"}
                               <ArrowSwapHorizontal className="ml-2 w-6 h-6" />
                             </span>
                           </FormDescription>
