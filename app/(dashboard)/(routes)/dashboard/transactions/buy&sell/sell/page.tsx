@@ -22,7 +22,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { OFFICIAL_RATES } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowSwapHorizontal, BitcoinRefresh } from "iconsax-react";
 import { useRouter } from "next/navigation";
@@ -31,7 +30,7 @@ import * as z from "zod";
 import isAuth from "@/components/isAuth";
 import Link from "next/link";
 import axios from "axios";
-import { getCoinList, sellRoute } from "@/lib/helpers";
+import { getCoinList } from "@/lib/helpers";
 import { getCookie } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
@@ -73,7 +72,10 @@ const Sellpage = () => {
       try {
         const response = await axios.get(getCoinList);
         const coinList = response.data;
-        setCoinList(coinList);
+        const coinn = coinList.slice(0, 1);
+        const coinns = coinList.slice(1, 2);
+        setCoinList(coinn);
+        setCoinLists(coinns);
       } catch (error) {
         console.error("Error", error);
       }
@@ -91,9 +93,7 @@ const Sellpage = () => {
           },
         });
         let responseData = response.data.data;
-        console.log(responseData);
         const coinn = responseData.slice(0, 10);
-        console.log(coinn);
         setInitial(coinn);
       } catch (error) {
         console.error("Error", error);
@@ -101,24 +101,6 @@ const Sellpage = () => {
     };
     fetchNewsdata();
   }, []);
-
-  useEffect(() => {
-    const fetchCoinData = async () => {
-      try {
-        const response = await axios.get(getCoinList);
-        const coinList = response.data;
-        const coinn = coinList.slice(1, 2);
-        const coinns = coinList.slice(3, 4);
-        console.log(coinn);
-        setCoinList(coinn);
-        setCoinLists(coinns);
-      } catch (error) {
-        console.error("Error", error);
-      }
-    };
-
-    fetchCoinData();
-  }, [form]);
 
   function toggle() {
     setShowMe(!showMe);
@@ -209,7 +191,7 @@ const Sellpage = () => {
                                           key={index}
                                           className="flex-1 text-muted-foreground overflow-hidden "
                                         >
-                                          {coin.name} : {coin.buy_rate}
+                                          {coin.name} : {coin.sell_rate}
                                         </span>
                                       ))
                                     : coinlist.map((coin, index) => (
@@ -217,7 +199,7 @@ const Sellpage = () => {
                                           key={index}
                                           className="flex-1 text-muted-foreground overflow-hidden "
                                         >
-                                          {coin.name} : {coin.buy_rate}
+                                          {coin.name} : {coin.sell_rate}
                                         </span>
                                       ))}
                                 </div>

@@ -94,10 +94,8 @@ const Buypage = () => {
       try {
         const response = await axios.get(getCoinList);
         const coinList = response.data;
-        console.log(coinList);
-        const coinn = coinList.slice(1, 2);
-        const coinns = coinList.slice(3, 4);
-        console.log(coinn);
+        const coinn = coinList.slice(0, 1);
+        const coinns = coinList.slice(1, 2);
         setCoinList(coinn);
         setCoinLists(coinns);
       } catch (error) {
