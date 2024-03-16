@@ -78,9 +78,7 @@ const Buypage = () => {
           },
         });
         let responseData = response.data.data;
-        console.log(responseData);
         const coinn = responseData.slice(0, 10);
-        console.log(coinn);
         setInitial(coinn);
       } catch (error) {
         console.error("Error", error);
