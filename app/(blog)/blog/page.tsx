@@ -1,9 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { client } from "@/sanity/lib/client";
-import { getPosts } from "@/sanity/sanity-utils";
 import { Post } from "@/types";
 import Image from "next/image";
 import Link from "next/link";

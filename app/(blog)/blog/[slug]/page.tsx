@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { getPost } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
@@ -10,15 +9,7 @@ import { Post } from "@/types";
 import { useParams } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 
-// type Props = {
-//   params: {
-//     slug: string;
-//   };
-// };
-
 const BlogPages = () => {
-  //   const slug = params.slug;
-  //   const post = await getPost(slug);
   const [post, setPost] = useState<Post>();
 
   const { slug } = useParams();
@@ -36,6 +27,7 @@ const BlogPages = () => {
                 },
                 alt
             },
+            "authorName": author -> name,
         }`
       )
       .then((data) => setPost(data[0]));
