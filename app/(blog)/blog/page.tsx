@@ -1,11 +1,36 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { client } from "@/sanity/lib/client";
 import { getPosts } from "@/sanity/sanity-utils";
+import { Post } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const BlogPage = async () => {
-  const posts = await getPosts();
+const BlogPage = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "post"] {
+            _id,
+            title,
+            slug,
+            mainImage {
+                asset -> {
+                    _id,
+                    url
+                },
+                alt
+            }
+        }`
+      )
+      .then((data) => setPosts(data))
+      .catch((error) => console.error(error));
+  });
   return (
     <>
       <section className="px-5 2xl:max-w-7xl 2xl:mx-auto">
