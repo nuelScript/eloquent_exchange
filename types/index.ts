@@ -15,7 +15,7 @@ export type Post = {
     current: string;
     _type: slug<string>;
   };
-  author: Author;
+  authorName: string;
   mainImage: {
     asset: {
       _id: string;
