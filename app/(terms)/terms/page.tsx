@@ -1,13 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
 import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
