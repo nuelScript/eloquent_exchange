@@ -12,8 +12,6 @@ import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import { DirectRight } from "iconsax-react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 const TermsPage = () => {
   return (
