@@ -84,7 +84,7 @@ const VerificationPage = () => {
           <Button
             style={{ borderRadius: "30px" }}
             type="button"
-            className="w-5/6 text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
+            className="w-5/6 text-white rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
             variant="custom"
             onClick={router.refresh}
           >

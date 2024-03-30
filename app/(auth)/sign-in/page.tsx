@@ -32,7 +32,7 @@ const formSchema = z.object({
   }),
 });
 
-const font = Revalia({ subsets: ["latin"], weight: ["400"] });
+// const font = Revalia({ subsets: ["latin"], weight: ["400"] });
 
 const SignInPage = () => {
   const [buttonText, setButtonText] = useState("Sign In");
@@ -59,7 +59,6 @@ const SignInPage = () => {
     } catch (err: any) {
       if (err.response) {
         console.error("Server responded with status:", err.response.status);
-        console.error("Response data:", err.response.data);
         setButtonText("Sign In");
       } else if (err.request) {
         console.error("No response received from the server");
@@ -80,20 +79,20 @@ const SignInPage = () => {
     setButtonText("Authenticating....");
   };
 
-  const googleCallback = async () => {
-    try {
-      const response = await axios.get(googleOAuth);
-      const googleResponse = response.data;
-      const authorizationUrl: string = googleResponse.authorization_url;
-      const urlParams = new URLSearchParams(authorizationUrl);
-      const state = urlParams.get("state");
-      localStorage.setItem("state", state || "");
-      router.push(authorizationUrl);
-    } catch (error: any) {
-      toast.error("Unable to sign in. Try Again");
-      setButtonText("Sign In");
-    }
-  };
+  // const googleCallback = async () => {
+  //   try {
+  //     const response = await axios.get(googleOAuth);
+  //     const googleResponse = response.data;
+  //     const authorizationUrl: string = googleResponse.authorization_url;
+  //     const urlParams = new URLSearchParams(authorizationUrl);
+  //     const state = urlParams.get("state");
+  //     localStorage.setItem("state", state || "");
+  //     router.push(authorizationUrl);
+  //   } catch (error: any) {
+  //     toast.error("Unable to sign in. Try Again");
+  //     setButtonText("Sign In");
+  //   }
+  // };
 
   return (
     <div className="flex min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen  min-[912px]:bg-[url('/rockets.svg')] bg-[length:240px_150px] bg-none bg-center bg-no-repeat bg-fixed">
@@ -191,7 +190,7 @@ const SignInPage = () => {
               <Button
                 onClick={handleClick}
                 style={{ borderRadius: "30px" }}
-                className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
+                className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary hover:text-white dark:hover:text-black"
                 variant="default"
               >
                 {buttonText}

@@ -75,7 +75,7 @@ const SignUpPage = () => {
       );
       router.push("/sign-in");
       form.reset();
-      setButtonText(" Create Account");
+      setButtonText("Create Account");
     } catch (err: any) {
       if (err?.response?.status === 400) {
         toast.error("Email already exists.");

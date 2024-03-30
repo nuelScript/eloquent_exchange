@@ -1,12 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useTheme } from "next-themes";
-import React, { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "@/components/footer";
-// import Ticker from "reac
 
 const CryptoPage = () => {
   const [initial, setInitial] = useState([]);
