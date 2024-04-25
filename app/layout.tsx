@@ -3,6 +3,7 @@ import "./globals.css";
 import { Poppins } from "next/font/google";
 import ToasterProvider from "./providers/toast-provider";
 import { CrispProvider } from "@/components/crisp-provider";
+import { Analytics } from "@vercel/analytics/react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en-US">
       <body className={poppins.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Analytics />
           <CrispProvider />
           <ToasterProvider />
           {children}
