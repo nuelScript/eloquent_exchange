@@ -1,11 +1,11 @@
-import { Image } from "sanity";
+import { Image as SanityImage } from "sanity";
 
 type slug<T> = T;
 
 export type Author = {
   name: string;
   slug: string;
-  image: Image;
+  image: SanityImage;
   bio: string[];
 };
 
@@ -32,3 +32,10 @@ export type Category = {
   title: string;
   description: string;
 };
+
+export interface Route {
+  label: string;
+  icon: React.ElementType;
+  href: string;
+  subRoutes?: string[];
+}

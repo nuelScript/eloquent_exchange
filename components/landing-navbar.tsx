@@ -6,7 +6,6 @@ import { Crown1 } from "iconsax-react";
 import { ModeToggle } from "./mode-toggle";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import MobileSidebar from "./mobile-navbar";
 import MobileLandingNavbar from "./landing-mobile-navbar";
 import { useEffect, useState } from "react";
 
@@ -33,7 +32,7 @@ const routes = [
   },
 ];
 
-const LandingNavbar = () => {
+export const LandingNavbar = () => {
   const { resolvedTheme } = useTheme();
   const [isMounted, setisMounted] = useState(false);
 
@@ -46,7 +45,6 @@ const LandingNavbar = () => {
   }
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    // e.preventDefault();
     const href = e.currentTarget.href;
     const targetId = href.replace(/.*\#/, "");
     const elem = document.getElementById(targetId);
@@ -98,5 +96,3 @@ const LandingNavbar = () => {
     </div>
   );
 };
-
-export default LandingNavbar;

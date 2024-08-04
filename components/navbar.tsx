@@ -12,22 +12,24 @@ import {
 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ModeToggle } from "@/components/mode-toggle";
 import MobileSidebar from "@/components/mobile-navbar";
 import { useTheme } from "next-themes";
+import { Route } from "@/types";
 
 export const routes = [
   {
     label: "Dashboard",
     icon: Building4,
-    href:
-      "/dashboard" ||
-      "/dashboard/transactions" ||
-      "/dashboard/transactions/buy&sell" ||
-      "/dashboard/transactions/checkout" ||
-      "/dashboard/transactions/instructions" ||
+    href: "/dashboard",
+    subRoutes: [
+      "/dashboard/transactions",
+      "/dashboard/transactions/buy&sell",
+      "/dashboard/transactions/checkout",
+      "/dashboard/transactions/instructions",
       "/dashboard/transactions/payment",
+    ],
   },
   {
     label: "News",
@@ -44,7 +46,6 @@ export const routes = [
     icon: Moneys,
     href: "/refer&earn",
   },
-
   {
     label: "Profile",
     icon: UserTag,
@@ -52,10 +53,19 @@ export const routes = [
   },
 ];
 
-const Navbar = () => {
+export const Navbar = () => {
   const pathname = usePathname();
   const { resolvedTheme } = useTheme();
   const router = useRouter();
+
+  const isCurrentPath = (route: Route) => {
+    if (route.href === pathname) return true;
+    if (route.subRoutes) {
+      return route.subRoutes.includes(pathname);
+    }
+    return false;
+  };
+
   return (
     <div className="w-full flex justify-between items-center px-4 min-[915px]:px-8 min-[450px]:py-4 py-8">
       <div>
@@ -88,41 +98,6 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-x-8">
-        {/* <route.icon
-                variant="Outline"
-                className=
-                  "w-6 h-6 mr-2 text-[#4168B7] dark:text-[#A77700] text-primary"
-                
-              />
-
-      <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">Open</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuCheckboxItem
-          checked={showStatusBar}
-          onCheckedChange={setShowStatusBar}
-        >
-          Status Bar
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showActivityBar}
-          onCheckedChange={setShowActivityBar}
-          disabled
-        >
-          Instruction
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
-        >
-          Panel
-        </DropdownMenuCheckboxItem>
-      </DropdownMenuContent>
-    </DropdownMenu> */}
         {routes.map((route) => (
           <Link
             href={route.href}
@@ -134,7 +109,7 @@ const Navbar = () => {
                 variant="Outline"
                 className={cn(
                   "w-6 h-6 mr-2",
-                  pathname.startsWith(route.href)
+                  isCurrentPath(route)
                     ? "text-[#4168B7] dark:text-[#A77700]"
                     : "text-primary"
                 )}
@@ -163,5 +138,3 @@ const Navbar = () => {
     </div>
   );
 };
-
-export default Navbar;

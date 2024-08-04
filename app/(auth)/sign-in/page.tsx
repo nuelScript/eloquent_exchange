@@ -9,21 +9,19 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { cn, setCookie } from "@/lib/utils";
+import { setCookie } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DirectRight } from "iconsax-react";
-import { Revalia } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { googleOAuth, signInRoute } from "@/lib/helpers";
 import * as z from "zod";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -31,8 +29,6 @@ const formSchema = z.object({
     message: "Input your password",
   }),
 });
-
-// const font = Revalia({ subsets: ["latin"], weight: ["400"] });
 
 const SignInPage = () => {
   const [buttonText, setButtonText] = useState("Sign In");
@@ -51,7 +47,7 @@ const SignInPage = () => {
     try {
       const response = await axios.post(signInRoute, data);
       toast.success("Login Success");
-      const { refresh, access } = response.data;
+      const { access } = response.data;
       setCookie("access_token", access, 7);
       form.reset();
       router.push("/dashboard");

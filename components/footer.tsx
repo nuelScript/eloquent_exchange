@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Link from "@/node_modules/next/link";
 import { useTheme } from "next-themes";
 import { PT_Sans } from "next/font/google";
 import Image from "next/image";
@@ -25,7 +24,7 @@ const Footer = () => {
         width={450}
         height={450}
         alt="contact-image"
-        className="object-cover mt-2 object-centerb"
+        className="object-cover mt-2 object-center"
       />
       {/* </a> */}
       <div className="w-full text-center absolute border-[0.6px] rounded-lg bottom-[150px] border-primary"></div>

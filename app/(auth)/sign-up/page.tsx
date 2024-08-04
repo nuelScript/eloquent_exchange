@@ -114,7 +114,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="flex min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen min-[912px]:bg-[url('/rockets.svg')]  bg-[length:260px_150px] bg-none bg-center bg-no-repeat bg-contain bg-fixed">
+    <div className="flex min-[1000px]:flex-row flex-col min-[1000px]:justify-between min-[1000px]:items-start items-center pt-12 px-10 relative min-h-screen min-[912px]:bg-[url('/rockets.svg')]  bg-none bg-center bg-no-repeat bg-contain bg-fixed">
       <div className="flex-col items-start gap-y-8 min-[1000px]:flex hidden">
         <Image
           src="/coin.svg"
@@ -266,11 +266,10 @@ const SignUpPage = () => {
                   </FormItem>
                 )}
               />
-              <div className="flex items-center w-full justify-end"></div>
               <Button
                 onClick={handleClick}
                 style={{ borderRadius: "30px" }}
-                className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
+                className="w-full text-white py-8 rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary hover:text-white dark:hover:text-black"
                 variant="default"
               >
                 {buttonText}

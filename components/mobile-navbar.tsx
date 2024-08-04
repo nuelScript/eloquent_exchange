@@ -2,7 +2,7 @@
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Firstline, LogoutCurve } from "iconsax-react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { routes } from "./navbar";
 import Link from "next/link";
 import { cn } from "@/lib/utils";

@@ -1,15 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
 import Image from "next/image";
-import Link from "next/link";
 import isAuth from "@/components/isAuth";
 import { DirectRight } from "iconsax-react";
 import { Input } from "@/components/ui/input";
@@ -38,7 +30,6 @@ const BuyPage = () => {
           </p>
         </div>
         <div>
-          {/* <Form> */}
           <form className="space-y-8 flex flex-col">
             <div className="grid w-full h-full py-3 max-w-lg items-center gap-1.5">
               <Label htmlFor="network">Network</Label>
@@ -61,18 +52,6 @@ const BuyPage = () => {
                 placeholder="Wallet"
               />
             </div>
-            {/* <Input
-                type="email"
-                placeholder="Email Address"
-                className="border-t-0 font-medium text-primary rounded-none border-x-0 dark:border-b-[#A77700] border-b-[#F7931A80] border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent focus-visible:ring-offset-0"
-              /> */}
-
-            {/* <Input
-                placeholder="Password"
-                type="password"
-                className="border-t-0 font-medium text-primary rounded-none border-x-0 dark:border-b-[#A77700] border-b-[#F7931A80] border-b-2 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent focus-visible:ring-offset-0"
-              /> */}
-
             <Button
               style={{ borderRadius: "30px" }}
               className="w-full text-white rounded-lg bg-[#4168B7] hover:bg-primary text-lg dark:bg-[#A77700] dark:hover:bg-primary py-8 hover:text-white dark:hover:text-black"
@@ -82,7 +61,6 @@ const BuyPage = () => {
               <DirectRight className="w-5 h-5 ml-2" variant="Linear" />
             </Button>
           </form>
-          {/* </Form> */}
         </div>
       </div>
     </div>
